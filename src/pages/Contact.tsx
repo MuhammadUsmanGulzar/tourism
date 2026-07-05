@@ -1,7 +1,49 @@
-import { useEffect } from 'react';
+import { useEffect, useState, FormEvent } from 'react';
 import '../css/contact.css';
+import { db } from '../firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const form = e.currentTarget;
+    const fullname = (form.querySelector('#fullname') as HTMLInputElement).value;
+    const email = (form.querySelector('#email') as HTMLInputElement).value;
+    const country = (form.querySelector('#country') as HTMLInputElement).value;
+    const interest = (form.querySelector('#interest') as HTMLSelectElement).value;
+    const month = (form.querySelector('#month') as HTMLSelectElement).value;
+    const groupsize = (form.querySelector('#groupsize') as HTMLSelectElement).value;
+    const message = (form.querySelector('#message') as HTMLTextAreaElement).value;
+
+    try {
+      await addDoc(collection(db, 'inquiries'), {
+        fullname,
+        email,
+        country,
+        interest,
+        month,
+        groupsize,
+        message,
+        createdAt: serverTimestamp(),
+      });
+      
+      // Navigate to thank you page
+      window.history.pushState({}, '', '/thank-you');
+      window.dispatchEvent(new Event('pushstate'));
+    } catch (err: any) {
+      console.error('Error saving inquiry:', err);
+      setSubmitError('Failed to send inquiry. Please try again or WhatsApp us.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
     
@@ -231,27 +273,27 @@ export default function Contact() {
                 </div>
 
                 <div className="con-inquiry__form-wrapper">
-                    <form className="con-inquiry__form" action="thank-you.html">
+                    <form className="con-inquiry__form" onSubmit={handleSubmit}>
                         
                         <div className="con-inquiry__form-row">
                             <div className="con-inquiry__form-group">
                                 <label htmlFor="fullname">Full Name</label>
-                                <input type="text" id="fullname" placeholder="Your name" required />
+                                <input type="text" id="fullname" placeholder="Your name" required disabled={isSubmitting} />
                             </div>
                             <div className="con-inquiry__form-group">
                                 <label htmlFor="email">Email</label>
-                                <input type="email" id="email" placeholder="Your email" required />
+                                <input type="email" id="email" placeholder="Your email" required disabled={isSubmitting} />
                             </div>
                         </div>
 
                         <div className="con-inquiry__form-row">
                             <div className="con-inquiry__form-group">
                                 <label htmlFor="country">Country</label>
-                                <input type="text" id="country" placeholder="Your country" required />
+                                <input type="text" id="country" placeholder="Your country" required disabled={isSubmitting} />
                             </div>
                             <div className="con-inquiry__form-group">
                                 <label htmlFor="interest">Expedition Interest</label>
-                                <select id="interest" required defaultValue="">
+                                <select id="interest" required defaultValue="" disabled={isSubmitting}>
                                     <option value="" disabled>Select an expedition</option>
                                     <option value="k2">K2 Base Camp Trek</option>
                                     <option value="concordia">Concordia Trek</option>
@@ -269,7 +311,7 @@ export default function Contact() {
                         <div className="con-inquiry__form-row">
                             <div className="con-inquiry__form-group">
                                 <label htmlFor="month">Preferred Travel Month</label>
-                                <select id="month" required defaultValue="">
+                                <select id="month" required defaultValue="" disabled={isSubmitting}>
                                     <option value="" disabled>Select a month</option>
                                     <option value="jan">January</option>
                                     <option value="feb">February</option>
@@ -287,7 +329,7 @@ export default function Contact() {
                             </div>
                             <div className="con-inquiry__form-group">
                                 <label htmlFor="groupsize">Group Size</label>
-                                <select id="groupsize" required>
+                                <select id="groupsize" required disabled={isSubmitting}>
                                     <option value="1">1 Person</option>
                                     <option value="2">2 People</option>
                                     <option value="3-5">3 - 5 People</option>
@@ -299,11 +341,19 @@ export default function Contact() {
 
                         <div className="con-inquiry__form-group">
                             <label htmlFor="message">Message</label>
-                            <textarea id="message" rows="5" placeholder="Share any specific dates, preferences, or fitness questions..." required></textarea>
+                            <textarea id="message" rows="5" placeholder="Share any specific dates, preferences, or fitness questions..." required disabled={isSubmitting}></textarea>
                         </div>
 
+                        {submitError && (
+                            <div className="form-error-message" style={{ color: '#ef4444', marginBottom: '1rem', fontSize: '0.875rem', fontWeight: '500' }}>
+                                {submitError}
+                            </div>
+                        )}
+
                         <div className="con-inquiry__form-buttons">
-                            <button type="submit" className="con-btn-primary">SEND INQUIRY</button>
+                            <button type="submit" className="con-btn-primary" disabled={isSubmitting}>
+                                {isSubmitting ? 'SENDING...' : 'SEND INQUIRY'}
+                            </button>
                             <a href="https://wa.me/923001234567" target="_blank" rel="noopener" className="con-btn-whatsapp"><i className="ri-whatsapp-line"></i> WHATSAPP US</a>
                         </div>
 
