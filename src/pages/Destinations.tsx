@@ -199,7 +199,7 @@ export default function Destinations() {
                 
                 <article className="dest-card">
                     <div className="dest-card__image">
-                        <a href="/expedition-detail"><img src="/assets/images/destination_skardu_1783185586097.png" alt="Skardu" loading="lazy" /></a>
+                        <a href="/expedition-detail"><img src="/assets/images/destination_skardu_1783185586097.png" alt="Skardu" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="dest-card__badge">Adventure</span>
                     </div>
                     <div className="dest-card__body">
@@ -222,7 +222,7 @@ export default function Destinations() {
                 
                 <article className="dest-card">
                     <div className="dest-card__image">
-                        <a href="/expedition-detail"><img src="/assets/images/destination_hunza_1783185596174.png" alt="Hunza Valley" loading="lazy" /></a>
+                        <a href="/expedition-detail"><img src="/assets/images/destination_hunza_1783185596174.png" alt="Hunza Valley" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="dest-card__badge">Culture</span>
                     </div>
                     <div className="dest-card__body">
@@ -245,7 +245,7 @@ export default function Destinations() {
                 
                 <article className="dest-card">
                     <div className="dest-card__image">
-                        <a href="/expedition-detail"><img src="/assets/images/destination_fairy_meadows_1783185607151.png" alt="Fairy Meadows" loading="lazy" /></a>
+                        <a href="/expedition-detail"><img src="/assets/images/destination_fairy_meadows_1783185607151.png" alt="Fairy Meadows" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="dest-card__badge">Nature</span>
                     </div>
                     <div className="dest-card__body">
@@ -268,7 +268,7 @@ export default function Destinations() {
                 
                 <article className="dest-card">
                     <div className="dest-card__image">
-                        <a href="/expedition-detail"><img src="/assets/images/destination_attabad_lake_1783185617186.png" alt="Attabad Lake" loading="lazy" /></a>
+                        <a href="/expedition-detail"><img src="/assets/images/destination_attabad_lake_1783185617186.png" alt="Attabad Lake" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="dest-card__badge">Photography</span>
                     </div>
                     <div className="dest-card__body">
@@ -291,7 +291,7 @@ export default function Destinations() {
                 
                 <article className="dest-card">
                     <div className="dest-card__image">
-                        <a href="/expedition-detail"><img src="/assets/images/destination_deosai_1783185627767.png" alt="Deosai National Park" loading="lazy" /></a>
+                        <a href="/expedition-detail"><img src="/assets/images/destination_deosai_1783185627767.png" alt="Deosai National Park" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="dest-card__badge">Wildlife</span>
                     </div>
                     <div className="dest-card__body">
@@ -314,7 +314,7 @@ export default function Destinations() {
                 
                 <article className="dest-card">
                     <div className="dest-card__image">
-                        <a href="/expedition-detail"><img src="/assets/images/passu-cones.png" alt="Passu Cones" loading="lazy" /></a>
+                        <a href="/expedition-detail"><img src="/assets/images/passu-cones.png" alt="Passu Cones" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="dest-card__badge">Nature</span>
                     </div>
                     <div className="dest-card__body">
@@ -337,7 +337,7 @@ export default function Destinations() {
                 
                 <article className="dest-card">
                     <div className="dest-card__image">
-                        <a href="/expedition-detail"><img src="/assets/images/soothing-clouds.png" alt="Khunjerab Pass" loading="lazy" /></a>
+                        <a href="/expedition-detail"><img src="/assets/images/soothing-clouds.png" alt="Khunjerab Pass" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="dest-card__badge">Adventure</span>
                     </div>
                     <div className="dest-card__body">
@@ -360,7 +360,7 @@ export default function Destinations() {
                 
                 <article className="dest-card">
                     <div className="dest-card__image">
-                        <a href="/expedition-detail"><img src="/assets/images/soothing-valley.png" alt="Shigar Valley" loading="lazy" /></a>
+                        <a href="/expedition-detail"><img src="/assets/images/soothing-valley.png" alt="Shigar Valley" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="dest-card__badge">Culture</span>
                     </div>
                     <div className="dest-card__body">
@@ -397,7 +397,7 @@ export default function Destinations() {
                 
                 <div className="dest-region-row">
                     <div className="dest-region-row__image">
-                        <img src="/assets/images/soothing-lake.png" alt="Skardu Region" loading="lazy" />
+                        <img src="/assets/images/soothing-lake.png" alt="Skardu Region" loading="lazy" referrerPolicy="no-referrer" />
                     </div>
                     <div className="dest-region-row__content">
                         <h3 className="dest-region-row__title">Skardu Region</h3>
@@ -411,7 +411,7 @@ export default function Destinations() {
                 
                 <div className="dest-region-row dest-region-row--reversed">
                     <div className="dest-region-row__image">
-                        <img src="/assets/images/hunza.png" alt="Hunza Region" loading="lazy" />
+                        <img src="/assets/images/hunza.png" alt="Hunza Region" loading="lazy" referrerPolicy="no-referrer" />
                     </div>
                     <div className="dest-region-row__content">
                         <h3 className="dest-region-row__title">Hunza Region</h3>
@@ -425,7 +425,7 @@ export default function Destinations() {
                 
                 <div className="dest-region-row">
                     <div className="dest-region-row__image">
-                        <img src="/assets/images/activity-trekking.png" alt="Ghanche Region" loading="lazy" />
+                        <img src="/assets/images/activity-trekking.png" alt="Ghanche Region" loading="lazy" referrerPolicy="no-referrer" />
                     </div>
                     <div className="dest-region-row__content">
                         <h3 className="dest-region-row__title">Ghanche Region</h3>

@@ -1,7 +1,17 @@
 import { useEffect } from 'react';
+import { blogsData } from '../data/blogsData';
 import '../css/blog-post.css';
 
 export default function BlogPost() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const blogId = urlParams.get('id') || 'k2-guide';
+  const blog = blogsData[blogId] || blogsData['k2-guide'];
+
+  // Select 3 other blogs to display in the Related Posts section
+  const relatedBlogs = Object.values(blogsData)
+    .filter(b => b.id !== blog.id)
+    .slice(0, 3);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     
@@ -46,56 +56,6 @@ export default function BlogPost() {
       heroBg.classList.add('abt-hero__bg--loaded');
     }
 
-    // --- General FAQ accordion toggles ---
-    const faqButtons = document.querySelectorAll('.faq-accordion__header, [class$="-faq__header-btn"]');
-    faqButtons.forEach(btn => {
-      const btnHandler = () => {
-        const item = btn.closest('.faq-accordion__item, [class$="-faq__item"]');
-        if (!item) return;
-        const isOpen = item.classList.contains('active');
-        const body = item.querySelector('.faq-accordion__body, [class$="-faq__body"]');
-        const icon = btn.querySelector('.faq-icon');
-
-        // Close siblings
-        const section = btn.closest('section, .faq-preview-section');
-        if (section) {
-          section.querySelectorAll('.faq-accordion__item, [class$="-faq__item"]').forEach(otherItem => {
-            if (otherItem !== item) {
-              otherItem.classList.remove('active');
-              const otherBody = otherItem.querySelector('.faq-accordion__body, [class$="-faq__body"]');
-              if (otherBody) {
-                (otherBody as HTMLElement).style.display = 'none';
-              }
-              const otherIcon = otherItem.querySelector('.faq-icon');
-              if (otherIcon) {
-                otherIcon.classList.remove('ri-subtract-line');
-                otherIcon.classList.add('ri-add-line');
-              }
-            }
-          });
-        }
-
-        // Toggle self
-        if (isOpen) {
-          item.classList.remove('active');
-          if (body) (body as HTMLElement).style.display = 'none';
-          if (icon) {
-            icon.classList.remove('ri-subtract-line');
-            icon.classList.add('ri-add-line');
-          }
-        } else {
-          item.classList.add('active');
-          if (body) (body as HTMLElement).style.display = 'block';
-          if (icon) {
-            icon.classList.remove('ri-add-line');
-            icon.classList.add('ri-subtract-line');
-          }
-        }
-      };
-      btn.addEventListener('click', btnHandler);
-      (btn as any)._handler = btnHandler;
-    });
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
       hamburger?.removeEventListener('click', openMenu);
@@ -103,14 +63,9 @@ export default function BlogPost() {
       links.forEach(link => {
         link.removeEventListener('click', closeMenu);
       });
-      faqButtons.forEach(btn => {
-        if ((btn as any)._handler) {
-          btn.removeEventListener('click', (btn as any)._handler);
-        }
-      });
     };
   
-  }, []);
+  }, [blog.id]);
 
   return (
     <div className="page-wrapper animate-fade-in">
@@ -162,17 +117,21 @@ export default function BlogPost() {
 
     
     <section className="post-hero" id="post-hero">
-        <div className="post-hero__bg" id="post-hero-bg"></div>
+        <div 
+          className="post-hero__bg" 
+          id="post-hero-bg" 
+          style={{ backgroundImage: `url(${blog.bgImage})` }}
+        ></div>
         <div className="post-hero__overlay"></div>
         <div className="post-hero__container post-container">
-            <span className="post-hero__tagline">Expedition Planning</span>
-            <h1 className="post-hero__title">K2 BASE CAMP TREK 2026:<br />THE COMPLETE PLANNING GUIDE</h1>
+            <span className="post-hero__tagline">{blog.category}</span>
+            <h1 className="post-hero__title" style={{ textTransform: 'uppercase' }}>{blog.title}</h1>
             <div className="post-hero__meta">
-                <span><i className="ri-calendar-line"></i> 17 January 2026</span>
+                <span><i className="ri-calendar-line"></i> {blog.date}</span>
                 <span className="separator">•</span>
-                <span><i className="ri-time-line"></i> 12 min read</span>
+                <span><i className="ri-time-line"></i> {blog.readTime}</span>
                 <span className="separator">•</span>
-                <span><i className="ri-user-line"></i> Broad Peak Team</span>
+                <span><i className="ri-user-line"></i> {blog.author}</span>
             </div>
         </div>
     </section>
@@ -183,98 +142,48 @@ export default function BlogPost() {
 
             
             <div className="post-section">
-                <p className="lead-text">Trekking to the base camp of K2 (8,611m), the second-highest mountain in the world, is often described as one of the most magnificent and demanding treks on the planet. Deep in the heart of the Karakoram range, this expedition takes you through the legendary Baltoro Glacier to Concordia, the "Throne Room of the Mountain Gods."</p>
-                <p>For 2026, the demand for this trek is higher than ever. With evolving logistics, permit regulations, and changing weather patterns, meticulous preparation is essential. This guide covers everything you need to know to successfully conquer the K2 Base Camp Trek.</p>
+                <p className="lead-text">{blog.leadText}</p>
             </div>
 
-            
-            <div className="post-section">
-                <h2>Best Time To Visit</h2>
-                <p>The Karakoram mountains have a remarkably short window for safe trekking. The optimal time to attempt the K2 Base Camp trek is between <strong>mid-June and late August</strong>.</p>
-                <ul>
-                    <li><strong>Late June to July:</strong> This is peak season. The snow on the Baltoro Glacier has usually melted enough to make the trails visible and safer to navigate. The days are longer and generally warmer.</li>
-                    <li><strong>August:</strong> The weather is often at its most stable, though the glacier can become more broken and crevassed later in the month.</li>
-                </ul>
-                <p>Attempting the trek outside of this window dramatically increases the risk of extreme cold, heavy snow blocking the Gondogoro La pass, and severe logistical disruptions.</p>
-            </div>
-
-            
-            <div className="post-section">
-                <h2>Physical Preparation</h2>
-                <p>Make no mistake: this is a strenuous expedition. You will be trekking on uneven, rocky glacial moraine for 5-8 hours a day, at altitudes steadily increasing from 3,000m to over 5,100m at Concordia.</p>
-                <p>Your training should begin at least 4 to 6 months before your departure date. Focus on:</p>
-                <ul>
-                    <li><strong>Cardiovascular Endurance:</strong> Running, cycling, or swimming for 45-60 minutes, 3-4 times a week.</li>
-                    <li><strong>Strength Training:</strong> Focus on your core, legs, and lower back. Squats, lunges, and deadlifts are highly recommended.</li>
-                    <li><strong>Hike Training:</strong> Nothing prepares you for trekking like trekking. Do long hikes (10-15km) carrying a weighted backpack (8-10kg) to simulate expedition conditions.</li>
-                </ul>
-            </div>
-
-            <div className="post-image-break">
-                <img src="/assets/images/k2.png" alt="Majestic view of K2 peak" loading="lazy" />
-                <span className="image-caption">The imposing pyramid of K2 (8,611m) viewed from Concordia.</span>
-            </div>
-
-            
-            <div className="post-section">
-                <h2>Permits &amp; Documentation</h2>
-                <p>Because the trek takes place in a restricted border zone, independent trekking is strictly prohibited. You must travel with a registered tour operator like Broad Peak Adventures.</p>
-                <p>You will need:</p>
-                <ol>
-                    <li><strong>Pakistan E-Visa:</strong> Apply for a tourist visa well in advance. We will provide the necessary Letter of Invitation (LOI).</li>
-                    <li><strong>NOC (No Objection Certificate):</strong> Required for foreign nationals entering the restricted zone. We handle this application process for you upon booking.</li>
-                    <li><strong>Central Karakoram National Park (CKNP) Fee:</strong> Included in our standard packages, this fee goes toward conservation efforts.</li>
-                </ol>
-            </div>
-
-            
-            <div className="post-section">
-                <h2>Packing Checklist</h2>
-                <p>The key to packing for the Karakoram is layering. The temperature can swing from 25°C in the valleys during the day to -10°C at Concordia at night.</p>
-                <div className="checklist">
-                    <p><strong>Essential Gear:</strong></p>
+            {blog.sections.map((section, index) => (
+              <div className="post-section" key={index}>
+                {section.heading && <h2>{section.heading}</h2>}
+                {section.paragraphs.map((p, pIndex) => (
+                  <p key={pIndex} dangerouslySetInnerHTML={{ __html: p }} />
+                ))}
+                
+                {section.checklist && (
+                  <div className="checklist">
+                    <p style={{ fontWeight: '600', marginBottom: '10px' }}>Essential Checklist / Highlights:</p>
                     <ul>
-                        <li>4-season sleeping bag (rated to -15°C)</li>
-                        <li>Sturdy, waterproof trekking boots (broken in)</li>
-                        <li>GORE-TEX outer shell jacket and pants</li>
-                        <li>High-quality down jacket (800+ fill)</li>
-                        <li>Thermal base layers (merino wool preferred)</li>
-                        <li>Trekking poles (crucial for glacier crossings)</li>
-                        <li>Category 4 polarized sunglasses</li>
+                      {section.checklist.map((item, itemIdx) => (
+                        <li key={itemIdx}>{item}</li>
+                      ))}
                     </ul>
-                </div>
-            </div>
+                  </div>
+                )}
 
-            
-            <div className="post-section">
-                <h2>Altitude &amp; Safety Tips</h2>
-                <p>Acute Mountain Sickness (AMS) is the biggest threat on this trek. Our itineraries are designed with mandatory acclimatization days built in, typically at Paju (3,400m) and Urdukas (4,130m).</p>
-                <p><strong>Golden Rules of Altitude:</strong></p>
-                <ul>
-                    <li><em>Climb high, sleep low.</em></li>
-                    <li>Drink at least 3-4 liters of water daily. Hydration is critical for acclimatization.</li>
-                    <li>Communicate openly with your guide. Never hide headaches, nausea, or dizziness.</li>
-                    <li>Walk at a slow, steady pace ("Pole Pole").</li>
-                </ul>
-            </div>
+                {section.numberedList && (
+                  <ol style={{ marginLeft: '20px', listStyleType: 'decimal', marginBottom: '25px' }}>
+                    {section.numberedList.map((item, itemIdx) => (
+                      <li key={itemIdx} style={{ marginBottom: '10px' }}>{item}</li>
+                    ))}
+                  </ol>
+                )}
 
-            
-            <div className="post-section">
-                <h2>Cost Breakdown</h2>
-                <p>A reputable, fully-supported K2 Base Camp trek usually costs between $2,200 and $3,500 USD for a 20-22 day itinerary. Beware of operators offering prices significantly below this, as it often compromises guide wages, food quality, or safety equipment.</p>
-                <p>Our comprehensive packages cover domestic flights (Islamabad to Skardu), all accommodations, meals during the trek, permits, guide fees, and porter wages.</p>
-            </div>
-
-            
-            <div className="post-section">
-                <h2>Final Thoughts</h2>
-                <p>The trek to K2 Base Camp is not just a physical challenge; it is a journey through some of the most dramatic and awe-inspiring landscapes on Earth. With proper preparation, the right team, and a deep respect for the mountains, you will return with memories that will last a lifetime.</p>
-            </div>
+                {section.image && (
+                  <div className="post-image-break" style={{ marginTop: '35px', marginBottom: '35px' }}>
+                    <img src={section.image} alt={section.imageCaption || "Expedition visual"} loading="lazy" referrerPolicy="no-referrer" />
+                    {section.imageCaption && <span className="image-caption">{section.imageCaption}</span>}
+                  </div>
+                )}
+              </div>
+            ))}
 
             
             <div className="author-box">
                 <div className="author-box__image">
-                    <img src="/assets/images/who-we-are-small.png" alt="Broad Peak Team" />
+                    <img src="/assets/images/who-we-are-small.png" alt="Broad Peak Team" referrerPolicy="no-referrer" />
                 </div>
                 <div className="author-box__content">
                     <h3>Broad Peak Expedition Team</h3>
@@ -291,43 +200,24 @@ export default function BlogPost() {
             <h2 className="related-posts__title">FURTHER READING</h2>
             
             <div className="related-grid">
-                
-                
-                <article className="related-card">
-                    <div className="related-card__image">
-                        <a href="#"><img src="/assets/images/article_snow_lake_1783186049575.png" alt="Snow Lake Trek Guide" loading="lazy" /></a>
-                    </div>
-                    <div className="related-card__body">
-                        <span className="related-card__cat">Expedition Planning</span>
-                        <h3 className="related-card__title"><a href="#">Snow Lake Trek Guide</a></h3>
-                        <a href="#" className="related-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
-                    </div>
-                </article>
-
-                
-                <article className="related-card">
-                    <div className="related-card__image">
-                        <a href="#"><img src="/assets/images/article_visa_logistics_1783186040279.png" alt="Pakistan Visa Requirements" loading="lazy" /></a>
-                    </div>
-                    <div className="related-card__body">
-                        <span className="related-card__cat">Logistics</span>
-                        <h3 className="related-card__title"><a href="#">Pakistan Visa Requirements</a></h3>
-                        <a href="#" className="related-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
-                    </div>
-                </article>
-
-                
-                <article className="related-card">
-                    <div className="related-card__image">
-                        <a href="#"><img src="/assets/images/destination_hunza_1783185596174.png" alt="Hunza Travel Guide" loading="lazy" /></a>
-                    </div>
-                    <div className="related-card__body">
-                        <span className="related-card__cat">Destinations</span>
-                        <h3 className="related-card__title"><a href="#">Hunza Travel Guide</a></h3>
-                        <a href="#" className="related-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
-                    </div>
-                </article>
-
+                {relatedBlogs.map((rel) => (
+                  <article className="related-card" key={rel.id}>
+                      <div className="related-card__image">
+                          <a href={`/blog-post?id=${rel.id}`}>
+                              <img src={rel.bgImage} alt={rel.title} loading="lazy" referrerPolicy="no-referrer" />
+                          </a>
+                      </div>
+                      <div className="related-card__body">
+                          <span className="related-card__cat">{rel.category}</span>
+                          <h3 className="related-card__title">
+                              <a href={`/blog-post?id=${rel.id}`}>{rel.title}</a>
+                          </h3>
+                          <a href={`/blog-post?id=${rel.id}`} className="related-card__btn">
+                              Read Article <i className="ri-arrow-right-line"></i>
+                          </a>
+                      </div>
+                  </article>
+                ))}
             </div>
         </div>
     </section>
@@ -339,7 +229,7 @@ export default function BlogPost() {
             <div className="post-cta__content">
                 <div className="post-cta__text">
                     <span className="post-cta__tag">THE JOURNEY BEGINS</span>
-                    <h2 className="post-cta__title">READY TO EXPERIENCE K2 YOURSELF?</h2>
+                    <h2 className="post-cta__title">READY TO EXPERIENCE THESE STORIES YOURSELF?</h2>
                     <p className="post-cta__desc">Join our team of local guides and discover the mountains, valleys, and glaciers of Gilgit-Baltistan.</p>
                 </div>
                 <div className="post-cta__buttons">

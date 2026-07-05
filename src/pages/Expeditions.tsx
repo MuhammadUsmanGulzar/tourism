@@ -199,7 +199,7 @@ export default function Expeditions() {
                 
                 <article className="exp-card">
                     <div className="exp-card__image">
-                        <a href="/expedition-detail?id=k2"><img src="/assets/images/k2.png" alt="K2 Base Camp Trek" loading="lazy" /></a>
+                        <a href="/expedition-detail?id=k2"><img src="/assets/images/k2.png" alt="K2 Base Camp Trek" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="exp-card__badge exp-card__badge--extreme">Extreme</span>
                     </div>
                     <div className="exp-card__body">
@@ -232,7 +232,7 @@ export default function Expeditions() {
                 
                 <article className="exp-card">
                     <div className="exp-card__image">
-                        <a href="/expedition-detail?id=concordia"><img src="/assets/images/passu-cones.png" alt="Concordia Trek" loading="lazy" /></a>
+                        <a href="/expedition-detail?id=concordia"><img src="/assets/images/passu-cones.png" alt="Concordia Trek" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="exp-card__badge exp-card__badge--hard">Hard</span>
                     </div>
                     <div className="exp-card__body">
@@ -265,7 +265,7 @@ export default function Expeditions() {
                 
                 <article className="exp-card">
                     <div className="exp-card__image">
-                        <a href="/expedition-detail?id=snow-lake"><img src="/assets/images/snow-lake.png" alt="Snow Lake Trek" loading="lazy" /></a>
+                        <a href="/expedition-detail?id=snow-lake"><img src="/assets/images/snow-lake.png" alt="Snow Lake Trek" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="exp-card__badge exp-card__badge--extreme">Extreme</span>
                     </div>
                     <div className="exp-card__body">
@@ -298,7 +298,7 @@ export default function Expeditions() {
                 
                 <article className="exp-card">
                     <div className="exp-card__image">
-                        <a href="/expedition-detail?id=nanga-parbat"><img src="/assets/images/deosai-sunrise.png" alt="Nanga Parbat Base Camp" loading="lazy" /></a>
+                        <a href="/expedition-detail?id=nanga-parbat"><img src="/assets/images/deosai-sunrise.png" alt="Nanga Parbat Base Camp" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="exp-card__badge exp-card__badge--moderate">Moderate</span>
                     </div>
                     <div className="exp-card__body">
@@ -331,7 +331,7 @@ export default function Expeditions() {
                 
                 <article className="exp-card">
                     <div className="exp-card__image">
-                        <a href="/expedition-detail?id=fairy-meadows"><img src="/assets/images/destination_fairy_meadows_1783185607151.png" alt="Fairy Meadows" loading="lazy" /></a>
+                        <a href="/expedition-detail?id=fairy-meadows"><img src="/assets/images/destination_fairy_meadows_1783185607151.png" alt="Fairy Meadows" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="exp-card__badge exp-card__badge--easy">Easy</span>
                     </div>
                     <div className="exp-card__body">
@@ -364,7 +364,7 @@ export default function Expeditions() {
                 
                 <article className="exp-card">
                     <div className="exp-card__image">
-                        <a href="/expedition-detail?id=hunza"><img src="/assets/images/hunza.png" alt="Hunza Explorer" loading="lazy" /></a>
+                        <a href="/expedition-detail?id=hunza"><img src="/assets/images/hunza.png" alt="Hunza Explorer" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="exp-card__badge exp-card__badge--easy">Easy</span>
                     </div>
                     <div className="exp-card__body">
@@ -397,7 +397,7 @@ export default function Expeditions() {
                 
                 <article className="exp-card">
                     <div className="exp-card__image">
-                        <a href="/expedition-detail?id=attabad"><img src="/assets/images/attabad-lake.png" alt="Attabad Lake Adventure" loading="lazy" /></a>
+                        <a href="/expedition-detail?id=attabad"><img src="/assets/images/attabad-lake.png" alt="Attabad Lake Adventure" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="exp-card__badge exp-card__badge--easy">Easy</span>
                     </div>
                     <div className="exp-card__body">
@@ -430,7 +430,7 @@ export default function Expeditions() {
                 
                 <article className="exp-card">
                     <div className="exp-card__image">
-                        <a href="/expedition-detail?id=deosai"><img src="/assets/images/destination_deosai_1783185627767.png" alt="Deosai Experience" loading="lazy" /></a>
+                        <a href="/expedition-detail?id=deosai"><img src="/assets/images/destination_deosai_1783185627767.png" alt="Deosai Experience" loading="lazy" referrerPolicy="no-referrer" /></a>
                         <span className="exp-card__badge exp-card__badge--moderate">Moderate</span>
                     </div>
                     <div className="exp-card__body">

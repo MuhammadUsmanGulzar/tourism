@@ -193,9 +193,7 @@ export default function Home() {
 
         <div className="hero__overlay"></div>
 
-         <button className="hero__sound-toggle">
-        <i className="ri-volume-mute-line"></i>
-        </button>
+
 
         <div className="hero__container">
 
@@ -307,6 +305,7 @@ export default function Home() {
                     <img
                         src="/assets/images/k2.png"
                         alt="K2 Base Camp Expedition"
+                        referrerPolicy="no-referrer"
                      />
 
                     <div className="trip-card__altitude">
@@ -374,6 +373,7 @@ export default function Home() {
                     <img
                         src="/assets/images/fairy-meadows.png"
                         alt="Fairy Meadows & Nanga Parbat"
+                        referrerPolicy="no-referrer"
                      />
 
                     <div className="trip-card__altitude">
@@ -441,6 +441,7 @@ export default function Home() {
                     <img
                         src="/assets/images/hunza.png"
                         alt="Hunza Valley Explorer"
+                        referrerPolicy="no-referrer"
                      />
 
                     <div className="trip-card__altitude">
@@ -508,6 +509,7 @@ export default function Home() {
                     <img
                         src="/assets/images/attabad-lake.png"
                         alt="Attabad Lake Adventure"
+                        referrerPolicy="no-referrer"
                      />
 
                     <div className="trip-card__altitude">
@@ -574,6 +576,7 @@ export default function Home() {
                     <img
                         src="/assets/images/snow-lake.png"
                         alt="Snow Lake & Hispar La Trek"
+                        referrerPolicy="no-referrer"
                      />
 
                     <div className="trip-card__altitude">
@@ -640,6 +643,7 @@ export default function Home() {
                     <img
                         src="/assets/images/deosai-sunrise.png"
                         alt="Deosai Plains Safari"
+                        referrerPolicy="no-referrer"
                      />
 
                     <div className="trip-card__altitude">
@@ -706,6 +710,7 @@ export default function Home() {
                     <img
                         src="/assets/images/passu-cones.png"
                         alt="Passu Cones & Hunza"
+                        referrerPolicy="no-referrer"
                      />
 
                     <div className="trip-card__altitude">
@@ -790,8 +795,8 @@ export default function Home() {
         
         <div className="who-we-are__images">
             <div className="who-we-are__badge"><span>2021</span><span>EST</span></div>
-            <img src="/assets/images/who-we-are-main.png" alt="Hunza Valley Morning" className="who-we-are__img-main" />
-            <img src="/assets/images/who-we-are-small.png" alt="Mountain Tea" className="who-we-are__img-small" />
+            <img src="/assets/images/who-we-are-main.png" alt="Hunza Valley Morning" className="who-we-are__img-main" referrerPolicy="no-referrer" />
+            <img src="/assets/images/who-we-are-small.png" alt="Mountain Tea" className="who-we-are__img-small" referrerPolicy="no-referrer" />
         </div>
 
         
@@ -1116,7 +1121,7 @@ export default function Home() {
             
             
             <a href="/travel-guides" className="insight-card insight-card--large">
-                <img src="/assets/images/article_k2_guide_1783186031585.png" alt="K2 Base Camp Guide" className="insight-card__image" />
+                <img src="/assets/images/article_k2_guide_1783186031585.png" alt="K2 Base Camp Guide" className="insight-card__image" referrerPolicy="no-referrer" />
                 <div className="insight-card__overlay"></div>
                 <div className="insight-card__content">
                     <span className="insight-card__category">TRAVEL GUIDE</span>
@@ -1133,7 +1138,7 @@ export default function Home() {
             <div className="travel-insights__stack">
                 
                 <a href="#" className="insight-card insight-card--small">
-                    <img src="/assets/images/article_visa_logistics_1783186040279.png" alt="Visa Logistics" className="insight-card__image" />
+                    <img src="/assets/images/article_visa_logistics_1783186040279.png" alt="Visa Logistics" className="insight-card__image" referrerPolicy="no-referrer" />
                     <div className="insight-card__overlay"></div>
                     <div className="insight-card__content">
                         <span className="insight-card__category">TRAVEL LOGISTICS</span>
@@ -1147,7 +1152,7 @@ export default function Home() {
                 </a>
 
                 <a href="#" className="insight-card insight-card--small">
-                    <img src="/assets/images/article_snow_lake_1783186049575.png" alt="Snow Lake Trek" className="insight-card__image" />
+                    <img src="/assets/images/article_snow_lake_1783186049575.png" alt="Snow Lake Trek" className="insight-card__image" referrerPolicy="no-referrer" />
                     <div className="insight-card__overlay"></div>
                     <div className="insight-card__content">
                         <span className="insight-card__category">TREKKING & EXPEDITIONS</span>

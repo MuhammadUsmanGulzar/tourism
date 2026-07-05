@@ -208,7 +208,7 @@ export default function ExpeditionDetail() {
               ))}
             </div>
             <div className="expd-overview__media">
-              <img src={expedition.overviewImage} alt={`${expedition.title} trekking`} loading="lazy" />
+              <img src={expedition.overviewImage} alt={`${expedition.title} trekking`} loading="lazy" referrerPolicy="no-referrer" />
             </div>
           </div>
         </div>
@@ -276,7 +276,7 @@ export default function ExpeditionDetail() {
           <div className="expd-gallery__grid">
             {expedition.gallery.map((imgUrl, i) => (
               <div key={i} className="expd-gallery__item">
-                <img src={imgUrl} alt={`${expedition.title} peak panorama ${i + 1}`} loading="lazy" />
+                <img src={imgUrl} alt={`${expedition.title} peak panorama ${i + 1}`} loading="lazy" referrerPolicy="no-referrer" />
               </div>
             ))}
           </div>

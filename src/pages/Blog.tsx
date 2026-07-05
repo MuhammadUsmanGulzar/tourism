@@ -176,7 +176,7 @@ export default function Blog() {
         <div className="blog-container">
             <div className="blog-featured__inner">
                 <div className="blog-featured__image">
-                    <img src="/assets/images/article_k2_guide_1783186031585.png" alt="K2 Base camp mountains view" loading="lazy" />
+                    <a href="/blog-post?id=k2-guide"><img src="/assets/images/article_k2_guide_1783186031585.png" alt="K2 Base camp mountains view" loading="lazy" referrerPolicy="no-referrer" /></a>
                 </div>
                 <div className="blog-featured__content">
                     <div className="blog-featured__meta">
@@ -184,9 +184,9 @@ export default function Blog() {
                         <span className="blog-featured__separator">•</span>
                         <span className="blog-featured__reading-time"><i className="ri-time-line"></i> 12 min read</span>
                     </div>
-                    <h2 className="blog-featured__title">K2 Base Camp Trek 2026: Complete Planning Guide</h2>
+                    <h2 className="blog-featured__title"><a href="/blog-post?id=k2-guide">K2 Base Camp Trek 2026: Complete Planning Guide</a></h2>
                     <p className="blog-featured__desc">Prepare for the adventure of a lifetime. Our comprehensive guide covers the route, acclimatization schedules, physical fitness training, packing lists, and local safety protocols for the ultimate Karakoram expedition.</p>
-                    <a href="/blog-post" className="blog-btn-primary">READ ARTICLE <i className="ri-arrow-right-line"></i></a>
+                    <a href="/blog-post?id=k2-guide" className="blog-btn-primary">READ ARTICLE <i className="ri-arrow-right-line"></i></a>
                 </div>
             </div>
         </div>
@@ -205,7 +205,7 @@ export default function Blog() {
                 
                 <article className="blog-card">
                     <div className="blog-card__image">
-                        <a href="#"><img src="/assets/images/article_visa_logistics_1783186040279.png" alt="Pakistan Visa & Permit Requirements" loading="lazy" /></a>
+                        <a href="/blog-post?id=visa-logistics"><img src="/assets/images/article_visa_logistics_1783186040279.png" alt="Pakistan Visa & Permit Requirements" loading="lazy" referrerPolicy="no-referrer" /></a>
                     </div>
                     <div className="blog-card__body">
                         <div className="blog-card__meta">
@@ -213,16 +213,16 @@ export default function Blog() {
                             <span className="blog-card__date">10 July 2026</span>
                             <span className="blog-card__time"><i className="ri-time-line"></i> 5 min read</span>
                         </div>
-                        <h3 className="blog-card__title"><a href="#">Pakistan Visa &amp; Permit Requirements</a></h3>
+                        <h3 className="blog-card__title"><a href="/blog-post?id=visa-logistics">Pakistan Visa &amp; Permit Requirements</a></h3>
                         <p className="blog-card__desc">A complete guide to navigating the E-Visa system and obtaining trekking permits for your upcoming journey.</p>
-                        <a href="#" className="blog-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
+                        <a href="/blog-post?id=visa-logistics" className="blog-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
                     </div>
                 </article>
 
                 
                 <article className="blog-card">
                     <div className="blog-card__image">
-                        <a href="#"><img src="/assets/images/article_snow_lake_1783186049575.png" alt="Snow Lake Trek Preparation Guide" loading="lazy" /></a>
+                        <a href="/blog-post?id=snow-lake-guide"><img src="/assets/images/article_snow_lake_1783186049575.png" alt="Snow Lake Trek Preparation Guide" loading="lazy" referrerPolicy="no-referrer" /></a>
                     </div>
                     <div className="blog-card__body">
                         <div className="blog-card__meta">
@@ -230,16 +230,16 @@ export default function Blog() {
                             <span className="blog-card__date">28 June 2026</span>
                             <span className="blog-card__time"><i className="ri-time-line"></i> 8 min read</span>
                         </div>
-                        <h3 className="blog-card__title"><a href="#">Snow Lake Trek Preparation Guide</a></h3>
+                        <h3 className="blog-card__title"><a href="/blog-post?id=snow-lake-guide">Snow Lake Trek Preparation Guide</a></h3>
                         <p className="blog-card__desc">Everything you need to know about navigating the Biafo and Hispar glaciers, one of the longest continuous glacial systems.</p>
-                        <a href="#" className="blog-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
+                        <a href="/blog-post?id=snow-lake-guide" className="blog-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
                     </div>
                 </article>
 
                 
                 <article className="blog-card">
                     <div className="blog-card__image">
-                        <a href="#"><img src="/assets/images/destination_hunza_1783185596174.png" alt="Best Time To Visit Hunza Valley" loading="lazy" /></a>
+                        <a href="/blog-post?id=best-time-hunza"><img src="/assets/images/destination_hunza_1783185596174.png" alt="Best Time To Visit Hunza Valley" loading="lazy" referrerPolicy="no-referrer" /></a>
                     </div>
                     <div className="blog-card__body">
                         <div className="blog-card__meta">
@@ -247,16 +247,16 @@ export default function Blog() {
                             <span className="blog-card__date">15 June 2026</span>
                             <span className="blog-card__time"><i className="ri-time-line"></i> 6 min read</span>
                         </div>
-                        <h3 className="blog-card__title"><a href="#">Best Time To Visit Hunza Valley</a></h3>
+                        <h3 className="blog-card__title"><a href="/blog-post?id=best-time-hunza">Best Time To Visit Hunza Valley</a></h3>
                         <p className="blog-card__desc">From spring cherry blossoms to autumn colors, discover the perfect season for your Hunza Valley itinerary.</p>
-                        <a href="#" className="blog-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
+                        <a href="/blog-post?id=best-time-hunza" className="blog-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
                     </div>
                 </article>
 
                 
                 <article className="blog-card">
                     <div className="blog-card__image">
-                        <a href="#"><img src="/assets/images/destination_deosai_1783185627767.png" alt="Deosai Wildlife & Photography Guide" loading="lazy" /></a>
+                        <a href="/blog-post?id=deosai-guide"><img src="/assets/images/destination_deosai_1783185627767.png" alt="Deosai Wildlife & Photography Guide" loading="lazy" referrerPolicy="no-referrer" /></a>
                     </div>
                     <div className="blog-card__body">
                         <div className="blog-card__meta">
@@ -264,16 +264,16 @@ export default function Blog() {
                             <span className="blog-card__date">02 June 2026</span>
                             <span className="blog-card__time"><i className="ri-time-line"></i> 7 min read</span>
                         </div>
-                        <h3 className="blog-card__title"><a href="#">Deosai Wildlife &amp; Photography Guide</a></h3>
+                        <h3 className="blog-card__title"><a href="/blog-post?id=deosai-guide">Deosai Wildlife &amp; Photography Guide</a></h3>
                         <p className="blog-card__desc">Capture the beauty of the Himalayan brown bear and the vibrant wildflowers of the Deosai Plains.</p>
-                        <a href="#" className="blog-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
+                        <a href="/blog-post?id=deosai-guide" className="blog-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
                     </div>
                 </article>
 
                 
                 <article className="blog-card">
                     <div className="blog-card__image">
-                        <a href="#"><img src="/assets/images/travel-boots.png" alt="Altitude Sickness Prevention" loading="lazy" /></a>
+                        <a href="/blog-post?id=altitude-sickness"><img src="/assets/images/travel-boots.png" alt="Altitude Sickness Prevention" loading="lazy" referrerPolicy="no-referrer" /></a>
                     </div>
                     <div className="blog-card__body">
                         <div className="blog-card__meta">
@@ -281,16 +281,16 @@ export default function Blog() {
                             <span className="blog-card__date">20 May 2026</span>
                             <span className="blog-card__time"><i className="ri-time-line"></i> 10 min read</span>
                         </div>
-                        <h3 className="blog-card__title"><a href="#">Altitude Sickness Prevention</a></h3>
+                        <h3 className="blog-card__title"><a href="/blog-post?id=altitude-sickness">Altitude Sickness Prevention</a></h3>
                         <p className="blog-card__desc">Essential tips for recognizing AMS symptoms, acclimatizing properly, and ensuring a safe trek at high altitudes.</p>
-                        <a href="#" className="blog-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
+                        <a href="/blog-post?id=altitude-sickness" className="blog-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
                     </div>
                 </article>
 
                 
                 <article className="blog-card">
                     <div className="blog-card__image">
-                        <a href="#"><img src="/assets/images/activity-culture.png" alt="Local Culture & Traditions of Baltistan" loading="lazy" /></a>
+                        <a href="/blog-post?id=baltistan-culture"><img src="/assets/images/activity-culture.png" alt="Local Culture & Traditions of Baltistan" loading="lazy" referrerPolicy="no-referrer" /></a>
                     </div>
                     <div className="blog-card__body">
                         <div className="blog-card__meta">
@@ -298,9 +298,9 @@ export default function Blog() {
                             <span className="blog-card__date">05 May 2026</span>
                             <span className="blog-card__time"><i className="ri-time-line"></i> 7 min read</span>
                         </div>
-                        <h3 className="blog-card__title"><a href="#">Local Culture &amp; Traditions of Baltistan</a></h3>
+                        <h3 className="blog-card__title"><a href="/blog-post?id=baltistan-culture">Local Culture &amp; Traditions of Baltistan</a></h3>
                         <p className="blog-card__desc">Immerse yourself in the rich heritage, culinary traditions, and warm hospitality of the Balti people.</p>
-                        <a href="#" className="blog-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
+                        <a href="/blog-post?id=baltistan-culture" className="blog-card__btn">Read Article <i className="ri-arrow-right-line"></i></a>
                     </div>
                 </article>
 

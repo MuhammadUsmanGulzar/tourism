@@ -176,7 +176,7 @@ export default function TravelGuides() {
         <div className="tg-container">
             <div className="tg-featured__inner">
                 <div className="tg-featured__image">
-                    <img src="/assets/images/article_k2_guide_1783186031585.png" alt="K2 Base camp mountains view" loading="lazy" />
+                    <img src="/assets/images/article_k2_guide_1783186031585.png" alt="K2 Base camp mountains view" loading="lazy" referrerPolicy="no-referrer" />
                 </div>
                 <div className="tg-featured__content">
                     <div className="tg-featured__meta">
@@ -205,7 +205,7 @@ export default function TravelGuides() {
                 
                 <article className="tg-card">
                     <div className="tg-card__image">
-                        <img src="/assets/images/article_k2_guide_1783186031585.png" alt="K2 Base Camp Trek Guide" loading="lazy" />
+                        <img src="/assets/images/article_k2_guide_1783186031585.png" alt="K2 Base Camp Trek Guide" loading="lazy" referrerPolicy="no-referrer" />
                     </div>
                     <div className="tg-card__body">
                         <div className="tg-card__meta">
@@ -220,7 +220,7 @@ export default function TravelGuides() {
                 
                 <article className="tg-card">
                     <div className="tg-card__image">
-                        <img src="/assets/images/article_visa_logistics_1783186040279.png" alt="Pakistan Visa & Permits Guide" loading="lazy" />
+                        <img src="/assets/images/article_visa_logistics_1783186040279.png" alt="Pakistan Visa & Permits Guide" loading="lazy" referrerPolicy="no-referrer" />
                     </div>
                     <div className="tg-card__body">
                         <div className="tg-card__meta">
@@ -235,7 +235,7 @@ export default function TravelGuides() {
                 
                 <article className="tg-card">
                     <div className="tg-card__image">
-                        <img src="/assets/images/destination_hunza_1783185596174.png" alt="Best Time to Visit Hunza Valley" loading="lazy" />
+                        <img src="/assets/images/destination_hunza_1783185596174.png" alt="Best Time to Visit Hunza Valley" loading="lazy" referrerPolicy="no-referrer" />
                     </div>
                     <div className="tg-card__body">
                         <div className="tg-card__meta">
@@ -250,7 +250,7 @@ export default function TravelGuides() {
                 
                 <article className="tg-card">
                     <div className="tg-card__image">
-                        <img src="/assets/images/article_snow_lake_1783186049575.png" alt="Snow Lake Trek Guide" loading="lazy" />
+                        <img src="/assets/images/article_snow_lake_1783186049575.png" alt="Snow Lake Trek Guide" loading="lazy" referrerPolicy="no-referrer" />
                     </div>
                     <div className="tg-card__body">
                         <div className="tg-card__meta">
@@ -265,7 +265,7 @@ export default function TravelGuides() {
                 
                 <article className="tg-card">
                     <div className="tg-card__image">
-                        <img src="/assets/images/travel-boots.png" alt="High Altitude Packing List" loading="lazy" />
+                        <img src="/assets/images/travel-boots.png" alt="High Altitude Packing List" loading="lazy" referrerPolicy="no-referrer" />
                     </div>
                     <div className="tg-card__body">
                         <div className="tg-card__meta">
@@ -280,7 +280,7 @@ export default function TravelGuides() {
                 
                 <article className="tg-card">
                     <div className="tg-card__image">
-                        <img src="/assets/images/travel-iceaxe.png" alt="Beginner guide to trekking in Karakoram" loading="lazy" />
+                        <img src="/assets/images/travel-iceaxe.png" alt="Beginner guide to trekking in Karakoram" loading="lazy" referrerPolicy="no-referrer" />
                     </div>
                     <div className="tg-card__body">
                         <div className="tg-card__meta">
@@ -357,7 +357,7 @@ export default function TravelGuides() {
                     <p className="tg-insights__desc">We are committed to sharing this local wisdom. Through our editorial team of guides, cooks, and porters, we catalog ancestral weather tracking styles, historical routes, balti culinary choices, and local traditions to prepare you mentally and physically for the Karakoram.</p>
                 </div>
                 <div className="tg-insights__media">
-                    <img src="/assets/images/who-we-are-small.png" alt="Balti guide standing in mountains" loading="lazy" />
+                    <img src="/assets/images/who-we-are-small.png" alt="Balti guide standing in mountains" loading="lazy" referrerPolicy="no-referrer" />
                 </div>
             </div>
         </div>
