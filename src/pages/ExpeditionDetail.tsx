@@ -55,8 +55,7 @@ export default function ExpeditionDetail() {
 
     const webhookUrl = 'https://n8n.flyinvict.com/webhook-test/68b765b2-3fa4-4aa7-a451-dbae46315db1';
 
-    // Trigger n8n webhook asynchronously with no-cors to prevent any CORS block/delay
-    const queryParams = new URLSearchParams({
+    const payload = {
       fullname: name,
       email,
       country,
@@ -66,11 +65,15 @@ export default function ExpeditionDetail() {
       interest: expedition.title,
       formType: 'expedition-inquiry',
       submittedAt: new Date().toISOString()
-    }).toString();
+    };
 
-    fetch(`${webhookUrl}?${queryParams}`, {
-      method: 'GET',
-      mode: 'no-cors'
+    // Trigger n8n webhook asynchronously with JSON POST
+    fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
     }).catch((err) => console.warn('n8n Webhook Error:', err));
 
     // Immediately redirect to thank you page without blocking
