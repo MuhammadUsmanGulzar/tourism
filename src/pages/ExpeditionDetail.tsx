@@ -63,6 +63,14 @@ export default function ExpeditionDetail() {
       groupsize: size,
       message,
       interest: expedition.title,
+      expedition: {
+        id: expedition.id,
+        title: expedition.title,
+        difficulty: expedition.difficulty,
+        duration: expedition.duration,
+        maxAltitude: expedition.maxAltitude,
+        startingPrice: expedition.startingPrice
+      },
       formType: 'expedition-inquiry',
       submittedAt: new Date().toISOString()
     };

@@ -22,6 +22,8 @@ export default function Contact() {
 
         const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL || '';
 
+        const selectedExped = expeditionsData[interest];
+
         const payload = {
             fullname,
             email,
@@ -30,6 +32,14 @@ export default function Contact() {
             month,
             groupsize,
             message,
+            expedition: selectedExped ? {
+                id: selectedExped.id,
+                title: selectedExped.title,
+                difficulty: selectedExped.difficulty,
+                duration: selectedExped.duration,
+                maxAltitude: selectedExped.maxAltitude,
+                startingPrice: selectedExped.startingPrice
+            } : null,
             formType: 'contact',
             submittedAt: new Date().toISOString()
         };
