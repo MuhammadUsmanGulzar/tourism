@@ -34,39 +34,34 @@ export default function Contact() {
       submittedAt: new Date().toISOString()
     };
 
-    // Trigger n8n webhook with POST and GET fallback
-    try {
-      const response = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
+    // Trigger n8n webhook asynchronously (fire-and-forget) so it never blocks the user redirection
+    fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    }).then((response) => {
       if (response.status === 405 || response.status === 404) {
-        throw new Error('Method not allowed or not found, falling back to GET');
+        throw new Error('Method not allowed or not found, trying GET fallback');
       }
-    } catch (err) {
-      console.warn('POST to n8n failed/not allowed, retrying with GET...', err);
-      try {
-        const queryParams = new URLSearchParams({
-          fullname,
-          email,
-          country,
-          interest,
-          month,
-          groupsize,
-          message,
-          formType: 'contact',
-          submittedAt: payload.submittedAt
-        }).toString();
-        await fetch(`${webhookUrl}?${queryParams}`, {
-          method: 'GET',
-        });
-      } catch (getErr) {
-        console.error('GET to n8n failed too:', getErr);
-      }
-    }
+    }).catch((err) => {
+      console.warn('POST to n8n failed or fallback triggered, trying GET...', err);
+      const queryParams = new URLSearchParams({
+        fullname,
+        email,
+        country,
+        interest,
+        month,
+        groupsize,
+        message,
+        formType: 'contact',
+        submittedAt: payload.submittedAt
+      }).toString();
+      fetch(`${webhookUrl}?${queryParams}`, {
+        method: 'GET',
+      }).catch((getErr) => console.error('GET to n8n failed too:', getErr));
+    });
 
     try {
       await addDoc(collection(db, 'inquiries'), {
