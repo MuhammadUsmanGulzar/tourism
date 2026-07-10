@@ -395,40 +395,8 @@ if (testimonialsSlider && testimonialsProgressBar) {
 
 /* ==========================================
    FAQ ACCORDION LOGIC
+   (Handled globally in App.tsx)
 ========================================== */
-const faqHeaders = document.querySelectorAll('.faq-accordion__header');
-
-faqHeaders.forEach(header => {
-    header.addEventListener('click', () => {
-        const item = header.parentElement;
-        const isActive = item.classList.contains('active');
-        const body = item.querySelector('.faq-accordion__body');
-        const icon = header.querySelector('.faq-icon');
-
-        // Close all other items
-        document.querySelectorAll('.faq-accordion__item').forEach(otherItem => {
-            if (otherItem !== item) {
-                otherItem.classList.remove('active');
-                otherItem.querySelector('.faq-accordion__body').style.display = 'none';
-                otherItem.querySelector('.faq-icon').classList.remove('ri-subtract-line');
-                otherItem.querySelector('.faq-icon').classList.add('ri-add-line');
-            }
-        });
-
-        // Toggle current item
-        if (isActive) {
-            item.classList.remove('active');
-            body.style.display = 'none';
-            icon.classList.remove('ri-subtract-line');
-            icon.classList.add('ri-add-line');
-        } else {
-            item.classList.add('active');
-            body.style.display = 'block';
-            icon.classList.remove('ri-add-line');
-            icon.classList.add('ri-subtract-line');
-        }
-    });
-});
 };
 
 // Initial run on script load

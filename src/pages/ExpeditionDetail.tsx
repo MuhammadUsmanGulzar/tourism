@@ -68,7 +68,6 @@ export default function ExpeditionDetail() {
           <ul className="navbar__menu">
             <li><a href="/">Home</a></li>
             <li><a href="/expeditions" className="active">Expeditions</a></li>
-            <li><a href="/destinations">Destinations</a></li>
             <li><a href="/blog">Blog</a></li>
             <li><a href="/about">About Us</a></li>
             <li><a href="/contact">Contact</a></li>
@@ -97,7 +96,6 @@ export default function ExpeditionDetail() {
           <ul className="mobile-menu__links">
             <li><a href="/" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
             <li><a href="/expeditions" onClick={() => setMobileMenuOpen(false)}>Expeditions</a></li>
-            <li><a href="/destinations" onClick={() => setMobileMenuOpen(false)}>Destinations</a></li>
             <li><a href="/blog" onClick={() => setMobileMenuOpen(false)}>Blog</a></li>
             <li><a href="/about" onClick={() => setMobileMenuOpen(false)}>About Us</a></li>
             <li><a href="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</a></li>
@@ -415,7 +413,6 @@ export default function ExpeditionDetail() {
               <li><a href="/">Home</a></li>
               <li><a href="/about">About Us</a></li>
               <li><a href="/expeditions">Expeditions</a></li>
-              <li><a href="/destinations">Destinations</a></li>
               <li><a href="/travel-guides">Travel Guides</a></li>
               <li><a href="/contact">Contact</a></li>
             </ul>

@@ -78,7 +78,6 @@ export default function BlogPost() {
             <ul className="navbar__menu">
                 <li><a href="/">Home</a></li>
                 <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/destinations">Destinations</a></li>
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/contact">Contact</a></li>
@@ -107,7 +106,6 @@ export default function BlogPost() {
             <ul className="mobile-menu__links">
                 <li><a href="/">Home</a></li>
                 <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/destinations">Destinations</a></li>
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/contact">Contact</a></li>
@@ -262,7 +260,6 @@ export default function BlogPost() {
                     <li><a href="/">Home</a></li>
                     <li><a href="/about">About Us</a></li>
                     <li><a href="/expeditions">Expeditions</a></li>
-                    <li><a href="/destinations">Destinations</a></li>
                     <li><a href="/travel-guides">Travel Guides</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>

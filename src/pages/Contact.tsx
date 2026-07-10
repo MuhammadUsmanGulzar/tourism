@@ -88,67 +88,12 @@ export default function Contact() {
       heroBg.classList.add('abt-hero__bg--loaded');
     }
 
-    // --- General FAQ accordion toggles ---
-    const faqButtons = document.querySelectorAll('.faq-accordion__header, [class$="-faq__header-btn"]');
-    faqButtons.forEach(btn => {
-      const btnHandler = () => {
-        const item = btn.closest('.faq-accordion__item, [class$="-faq__item"]');
-        if (!item) return;
-        const isOpen = item.classList.contains('active');
-        const body = item.querySelector('.faq-accordion__body, [class$="-faq__body"]');
-        const icon = btn.querySelector('.faq-icon');
-
-        // Close siblings
-        const section = btn.closest('section, .faq-preview-section');
-        if (section) {
-          section.querySelectorAll('.faq-accordion__item, [class$="-faq__item"]').forEach(otherItem => {
-            if (otherItem !== item) {
-              otherItem.classList.remove('active');
-              const otherBody = otherItem.querySelector('.faq-accordion__body, [class$="-faq__body"]');
-              if (otherBody) {
-                (otherBody as HTMLElement).style.display = 'none';
-              }
-              const otherIcon = otherItem.querySelector('.faq-icon');
-              if (otherIcon) {
-                otherIcon.classList.remove('ri-subtract-line');
-                otherIcon.classList.add('ri-add-line');
-              }
-            }
-          });
-        }
-
-        // Toggle self
-        if (isOpen) {
-          item.classList.remove('active');
-          if (body) (body as HTMLElement).style.display = 'none';
-          if (icon) {
-            icon.classList.remove('ri-subtract-line');
-            icon.classList.add('ri-add-line');
-          }
-        } else {
-          item.classList.add('active');
-          if (body) (body as HTMLElement).style.display = 'block';
-          if (icon) {
-            icon.classList.remove('ri-add-line');
-            icon.classList.add('ri-subtract-line');
-          }
-        }
-      };
-      btn.addEventListener('click', btnHandler);
-      (btn as any)._handler = btnHandler;
-    });
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
       hamburger?.removeEventListener('click', openMenu);
       menuClose?.removeEventListener('click', closeMenu);
       links.forEach(link => {
         link.removeEventListener('click', closeMenu);
-      });
-      faqButtons.forEach(btn => {
-        if ((btn as any)._handler) {
-          btn.removeEventListener('click', (btn as any)._handler);
-        }
       });
     };
   
@@ -165,7 +110,6 @@ export default function Contact() {
             <ul className="navbar__menu">
                 <li><a href="/">Home</a></li>
                 <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/destinations">Destinations</a></li>
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/contact">Contact</a></li>
@@ -194,7 +138,6 @@ export default function Contact() {
             <ul className="mobile-menu__links">
                 <li><a href="/">Home</a></li>
                 <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/destinations">Destinations</a></li>
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/contact">Contact</a></li>
@@ -469,7 +412,6 @@ export default function Contact() {
                 </div>
                 <div className="con-cta__buttons">
                     <a href="/expeditions" className="con-btn-white">EXPLORE EXPEDITIONS</a>
-                    <a href="/destinations" className="con-btn-outline-light">DISCOVER DESTINATIONS</a>
                 </div>
             </div>
         </div>
@@ -497,7 +439,6 @@ export default function Contact() {
                     <li><a href="/">Home</a></li>
                     <li><a href="/about">About Us</a></li>
                     <li><a href="/expeditions">Expeditions</a></li>
-                    <li><a href="/destinations">Destinations</a></li>
                     <li><a href="/travel-guides">Travel Guides</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>

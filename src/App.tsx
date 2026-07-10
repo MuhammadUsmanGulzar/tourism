@@ -2,7 +2,6 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
-const Destinations = lazy(() => import('./pages/Destinations'));
 const Expeditions = lazy(() => import('./pages/Expeditions'));
 const ExpeditionDetail = lazy(() => import('./pages/ExpeditionDetail'));
 const Blog = lazy(() => import('./pages/Blog'));
@@ -49,12 +48,100 @@ export default function App() {
       }
     };
 
+    // Global Accordion / FAQ click event delegation handler
+    const handleGlobalAccordionClicks = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      
+      // Selectors for accordion header buttons across all FAQ implementations
+      const btnSelector = '.faq-accordion__header, .faq-item__question, .exp-faq__header-btn, .con-faq__header-btn';
+      const btn = target.closest(btnSelector) as HTMLElement | null;
+      if (!btn) return;
+      
+      e.preventDefault();
+      
+      // Determine what variant we are handling
+      const isFaqPage = btn.classList.contains('faq-item__question');
+      
+      // 1. Parent Item Selector
+      const itemSelector = isFaqPage 
+        ? '.faq-item' 
+        : '.faq-accordion__item, .exp-faq__item, .con-faq__item';
+      const item = btn.closest(itemSelector) as HTMLElement | null;
+      if (!item) return;
+      
+      // 2. Body element Selector
+      const bodySelector = isFaqPage 
+        ? '.faq-item__answer' 
+        : '.faq-accordion__body, .exp-faq__body, .con-faq__body';
+      const body = item.querySelector(bodySelector) as HTMLElement | null;
+      
+      // 3. Icon element Selector
+      const icon = btn.querySelector('i, .faq-icon, .exp-faq__icon, .con-faq__icon') as HTMLElement | null;
+      
+      const isOpen = item.classList.contains('active');
+      
+      // Close other accordion items inside the same parent section (to maintain sibling collapse behavior)
+      const sectionSelector = isFaqPage 
+        ? '.faq-category' 
+        : 'section, .faq-preview-section';
+      const section = btn.closest(sectionSelector);
+      if (section) {
+        section.querySelectorAll(itemSelector).forEach((otherItem) => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+            
+            // Adjust other body (not for Faq.tsx since it uses CSS max-height transition)
+            const otherBody = otherItem.querySelector(bodySelector) as HTMLElement | null;
+            if (otherBody && !isFaqPage) {
+              otherBody.style.display = 'none';
+            }
+            
+            // Adjust other icon
+            const otherIcon = otherItem.querySelector('i, .faq-icon, .exp-faq__icon, .con-faq__icon') as HTMLElement | null;
+            if (otherIcon) {
+              if (otherIcon.classList.contains('ri-subtract-line')) {
+                otherIcon.classList.remove('ri-subtract-line');
+                otherIcon.classList.add('ri-add-line');
+              }
+            }
+          }
+        });
+      }
+      
+      // Toggle current item
+      if (isOpen) {
+        item.classList.remove('active');
+        if (body && !isFaqPage) {
+          body.style.display = 'none';
+        }
+        if (icon) {
+          if (icon.classList.contains('ri-subtract-line')) {
+            icon.classList.remove('ri-subtract-line');
+            icon.classList.add('ri-add-line');
+          }
+        }
+      } else {
+        item.classList.add('active');
+        if (body && !isFaqPage) {
+          body.style.display = 'block';
+        }
+        if (icon) {
+          if (icon.classList.contains('ri-add-line')) {
+            icon.classList.remove('ri-add-line');
+            icon.classList.add('ri-subtract-line');
+          }
+        }
+      }
+    };
+
     document.addEventListener('click', handleGlobalLinkClicks);
+    document.addEventListener('click', handleGlobalAccordionClicks);
 
     return () => {
       window.removeEventListener('popstate', handleLocationChange);
       window.removeEventListener('pushstate', handleLocationChange);
       document.removeEventListener('click', handleGlobalLinkClicks);
+      document.removeEventListener('click', handleGlobalAccordionClicks);
     };
   }, []);
 
@@ -120,8 +207,6 @@ export default function App() {
         return <Home />;
       case '/about':
         return <About />;
-      case '/destinations':
-        return <Destinations />;
       case '/expeditions':
         return <Expeditions />;
       case '/expedition-detail':

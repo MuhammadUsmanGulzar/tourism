@@ -46,67 +46,12 @@ export default function NotFound() {
       heroBg.classList.add('abt-hero__bg--loaded');
     }
 
-    // --- General FAQ accordion toggles ---
-    const faqButtons = document.querySelectorAll('.faq-accordion__header, [class$="-faq__header-btn"]');
-    faqButtons.forEach(btn => {
-      const btnHandler = () => {
-        const item = btn.closest('.faq-accordion__item, [class$="-faq__item"]');
-        if (!item) return;
-        const isOpen = item.classList.contains('active');
-        const body = item.querySelector('.faq-accordion__body, [class$="-faq__body"]');
-        const icon = btn.querySelector('.faq-icon');
-
-        // Close siblings
-        const section = btn.closest('section, .faq-preview-section');
-        if (section) {
-          section.querySelectorAll('.faq-accordion__item, [class$="-faq__item"]').forEach(otherItem => {
-            if (otherItem !== item) {
-              otherItem.classList.remove('active');
-              const otherBody = otherItem.querySelector('.faq-accordion__body, [class$="-faq__body"]');
-              if (otherBody) {
-                (otherBody as HTMLElement).style.display = 'none';
-              }
-              const otherIcon = otherItem.querySelector('.faq-icon');
-              if (otherIcon) {
-                otherIcon.classList.remove('ri-subtract-line');
-                otherIcon.classList.add('ri-add-line');
-              }
-            }
-          });
-        }
-
-        // Toggle self
-        if (isOpen) {
-          item.classList.remove('active');
-          if (body) (body as HTMLElement).style.display = 'none';
-          if (icon) {
-            icon.classList.remove('ri-subtract-line');
-            icon.classList.add('ri-add-line');
-          }
-        } else {
-          item.classList.add('active');
-          if (body) (body as HTMLElement).style.display = 'block';
-          if (icon) {
-            icon.classList.remove('ri-add-line');
-            icon.classList.add('ri-subtract-line');
-          }
-        }
-      };
-      btn.addEventListener('click', btnHandler);
-      (btn as any)._handler = btnHandler;
-    });
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
       hamburger?.removeEventListener('click', openMenu);
       menuClose?.removeEventListener('click', closeMenu);
       links.forEach(link => {
         link.removeEventListener('click', closeMenu);
-      });
-      faqButtons.forEach(btn => {
-        if ((btn as any)._handler) {
-          btn.removeEventListener('click', (btn as any)._handler);
-        }
       });
     };
   
@@ -123,7 +68,6 @@ export default function NotFound() {
             <ul className="navbar__menu">
                 <li><a href="/">Home</a></li>
                 <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/destinations">Destinations</a></li>
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/contact">Contact</a></li>
@@ -152,7 +96,6 @@ export default function NotFound() {
             <ul className="mobile-menu__links">
                 <li><a href="/">Home</a></li>
                 <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/destinations">Destinations</a></li>
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/contact">Contact</a></li>
@@ -198,9 +141,9 @@ export default function NotFound() {
         <div className="error-container">
             <h3 className="error-links-title">QUICK LINKS</h3>
             <div className="error-links-grid">
-                <a href="/destinations" className="error-link-card">
-                    <div className="error-link-card__icon"><i className="ri-map-pin-line"></i></div>
-                    <div className="error-link-card__text">Destinations</div>
+                <a href="/expeditions" className="error-link-card">
+                    <div className="error-link-card__icon"><i className="ri-compass-3-line"></i></div>
+                    <div className="error-link-card__text">Expeditions</div>
                 </a>
                 <a href="/travel-guides" className="error-link-card">
                     <div className="error-link-card__icon"><i className="ri-book-read-line"></i></div>
@@ -256,7 +199,6 @@ export default function NotFound() {
                     <li><a href="/">Home</a></li>
                     <li><a href="/about">About Us</a></li>
                     <li><a href="/expeditions">Expeditions</a></li>
-                    <li><a href="/destinations">Destinations</a></li>
                     <li><a href="/travel-guides">Travel Guides</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>

@@ -47,67 +47,12 @@ export default function Home() {
       heroBg.classList.add('abt-hero__bg--loaded');
     }
 
-    // --- General FAQ accordion toggles ---
-    const faqButtons = document.querySelectorAll('.faq-accordion__header, [class$="-faq__header-btn"]');
-    faqButtons.forEach(btn => {
-      const btnHandler = () => {
-        const item = btn.closest('.faq-accordion__item, [class$="-faq__item"]');
-        if (!item) return;
-        const isOpen = item.classList.contains('active');
-        const body = item.querySelector('.faq-accordion__body, [class$="-faq__body"]');
-        const icon = btn.querySelector('.faq-icon');
-
-        // Close siblings
-        const section = btn.closest('section, .faq-preview-section');
-        if (section) {
-          section.querySelectorAll('.faq-accordion__item, [class$="-faq__item"]').forEach(otherItem => {
-            if (otherItem !== item) {
-              otherItem.classList.remove('active');
-              const otherBody = otherItem.querySelector('.faq-accordion__body, [class$="-faq__body"]');
-              if (otherBody) {
-                (otherBody as HTMLElement).style.display = 'none';
-              }
-              const otherIcon = otherItem.querySelector('.faq-icon');
-              if (otherIcon) {
-                otherIcon.classList.remove('ri-subtract-line');
-                otherIcon.classList.add('ri-add-line');
-              }
-            }
-          });
-        }
-
-        // Toggle self
-        if (isOpen) {
-          item.classList.remove('active');
-          if (body) (body as HTMLElement).style.display = 'none';
-          if (icon) {
-            icon.classList.remove('ri-subtract-line');
-            icon.classList.add('ri-add-line');
-          }
-        } else {
-          item.classList.add('active');
-          if (body) (body as HTMLElement).style.display = 'block';
-          if (icon) {
-            icon.classList.remove('ri-add-line');
-            icon.classList.add('ri-subtract-line');
-          }
-        }
-      };
-      btn.addEventListener('click', btnHandler);
-      (btn as any)._handler = btnHandler;
-    });
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
       hamburger?.removeEventListener('click', openMenu);
       menuClose?.removeEventListener('click', closeMenu);
       links.forEach(link => {
         link.removeEventListener('click', closeMenu);
-      });
-      faqButtons.forEach(btn => {
-        if ((btn as any)._handler) {
-          btn.removeEventListener('click', (btn as any)._handler);
-        }
       });
     };
   
@@ -126,7 +71,6 @@ export default function Home() {
             <ul className="navbar__menu">
                 <li><a href="/">Home</a></li>
                 <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/destinations">Destinations</a></li>
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/contact">Contact</a></li>
@@ -162,7 +106,6 @@ export default function Home() {
             <ul className="mobile-menu__links">
                 <li><a href="/">Home</a></li>
                 <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/destinations">Destinations</a></li>
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/contact">Contact</a></li>
@@ -843,69 +786,7 @@ export default function Home() {
 </section>
 
 
-<section className="trending-activities" id="trending-activities">
-    <div className="container">
-        <div className="trending-activities__header">
-            <span className="section-subtitle">DISCOVER THE NORTH</span>
-            <h2 className="section-title">POPULAR DESTINATIONS</h2>
-        </div>
-    </div>
-    
-    <div className="accordion-container">
-        
-        <div className="accordion-item" style={{ backgroundImage: "url('/assets/images/destination_skardu_1783185586097.png')" }}>
-            <div className="accordion-overlay"></div>
-            <div className="accordion-content">
-                <span className="accordion-badge">MOST POPULAR</span>
-                <h3 className="accordion-title">SKARDU</h3>
-                <p className="accordion-desc">Experience the world's greatest trails in the Karakoram and Himalayas.</p>
-                <a href="/destinations" className="btn btn--primary">EXPLORE</a>
-            </div>
-            <div className="accordion-label">SKARDU</div>
-        </div>
 
-        <div className="accordion-item" style={{ backgroundImage: "url('/assets/images/destination_hunza_1783185596174.png')" }}>
-            <div className="accordion-overlay"></div>
-            <div className="accordion-content">
-                <h3 className="accordion-title">HUNZA VALLEY</h3>
-                <p className="accordion-desc">Challenge yourself on some of the highest and most beautiful peaks on Earth.</p>
-                <a href="/destinations" className="btn btn--primary">EXPLORE</a>
-            </div>
-            <div className="accordion-label">HUNZA VALLEY</div>
-        </div>
-
-        <div className="accordion-item" style={{ backgroundImage: "url('/assets/images/destination_fairy_meadows_1783185607151.png')" }}>
-            <div className="accordion-overlay"></div>
-            <div className="accordion-content">
-                <h3 className="accordion-title">FAIRY MEADOWS</h3>
-                <p className="accordion-desc">Immerse yourself in the rich heritage and traditions of the mountain valleys.</p>
-                <a href="/destinations" className="btn btn--primary">EXPLORE</a>
-            </div>
-            <div className="accordion-label">FAIRY MEADOWS</div>
-        </div>
-
-        <div className="accordion-item" style={{ backgroundImage: "url('/assets/images/destination_attabad_lake_1783185617186.png')" }}>
-            <div className="accordion-overlay"></div>
-            <div className="accordion-content">
-                <h3 className="accordion-title">ATTABAD LAKE</h3>
-                <p className="accordion-desc">Carve through untouched powder in the ultimate backcountry ski destinations.</p>
-                <a href="/destinations" className="btn btn--primary">EXPLORE</a>
-            </div>
-            <div className="accordion-label">ATTABAD LAKE</div>
-        </div>
-
-        <div className="accordion-item" style={{ backgroundImage: "url('/assets/images/destination_deosai_1783185627767.png')" }}>
-            <div className="accordion-overlay"></div>
-            <div className="accordion-content">
-                <h3 className="accordion-title">DEOSAI</h3>
-                <p className="accordion-desc">Tailor-made itineraries designed exclusively for your dream adventure.</p>
-                <a href="/destinations" className="btn btn--primary">EXPLORE</a>
-            </div>
-            <div className="accordion-label">DEOSAI</div>
-        </div>
-
-    </div>
-</section>
 
 <section className="testimonials" id="testimonials">
     
@@ -1315,7 +1196,6 @@ export default function Home() {
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/destinations">Destinations</a></li>
                 <li><a href="/travel-guides">Travel Guides</a></li>
                 <li><a href="/contact">Contact</a></li>
             </ul>
