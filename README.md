@@ -9,7 +9,7 @@ Broad Peak Adventures is a premium, immersive, and high-performance Single Page 
 - **Blazing Fast SPA Routing**: Custom React-based hash/path router implemented in `src/App.tsx` that intercept clicks globally to achieve instant page transitions.
 - **ScrollTrigger Animation Reinitialization**: Smart route-change listeners that clean up and re-initialize GSAP, ScrollTrigger, and custom animations, avoiding memory leaks and layout bugs.
 - **Dynamic Content System**: Full separation of concerns using typed structured data templates (`blogsData.ts` and `expeditionsData.ts`) to render expedition itineraries, maps, stats, and articles.
-- **Firebase Firestore Integration**: Direct binding of contact forms and trip inquiry forms to Firebase Firestore database storage.
+- **Webhook Lead Capture**: Direct binding of contact forms and trip inquiry forms to n8n webhook system for automated, non-blocking submission.
 - **High Visual Premium Aesthetics**: Immersive hero video header, responsive interactive sliders, custom accordion FAQ modules, and glassmorphic designs matching the majesty of the Karakoram.
 
 ---
@@ -20,7 +20,7 @@ Broad Peak Adventures is a premium, immersive, and high-performance Single Page 
 | :--- | :--- |
 | **Core Framework** | React 19, TypeScript, Vite 6 |
 | **Styling** | Custom Vanilla CSS (Structure, Typography, Animations, and Layouts) & Tailwind CSS v4 |
-| **Database** | Firebase Firestore SDK (v12) |
+| **Integrations** | n8n Webhook System |
 | **Animations** | GSAP, ScrollTrigger, and Motion |
 | **Icons** | Lucide React & Remix Icon (`ri-` classes) |
 
@@ -45,11 +45,8 @@ tourism/
 │   │   └── expeditionsData.ts
 │   ├── pages/                    # 14 modular page components
 │   ├── App.tsx                   # App wrapper with global SPA routing & scroll hooks
-│   ├── firebase.ts               # Firebase initialization and Firestore db bindings
 │   └── main.tsx                  # React DOM entry point
 ├── package.json                  # Script execution configuration
-├── firebase-applet-config.json   # Active Firebase applet credentials
-└── firestore.rules               # Firestore security configurations
 ```
 
 ---
@@ -103,7 +100,7 @@ A dynamic detail builder that parses the URL query parameter (e.g., `?id=k2` or 
 - **Itinerary Timeline (`expd-itinerary`)**: Vertical timeline accordion containing day-by-day schedules and camp highlights.
 - **Inclusions & Exclusions (`expd-inclusions`)**: Clearly labeled lists of what is paid for (Permits, Porters, Flights) vs. excluded (Insurance, Gear).
 - **Gallery Carousel (`expd-gallery`)**: Grid of landscape views matching the trek.
-- **Inquiry Form (`expd-inquiry`)**: Inline booking module submitting variables directly to Firestore.
+- **Inquiry Form (`expd-inquiry`)**: Inline booking module submitting variables directly to n8n webhook.
 
 ---
 
@@ -117,7 +114,7 @@ A content hub driving search engine optimization (SEO) and user education.
 ### 8. Contact (`Contact.tsx`)
 The primary conversion page for customer service.
 - **Contact Details (`con-methods`)**: Details hotlines, WhatsApp shortcuts, and headquarters locations.
-- **Detailed Inquiry Form (`con-inquiry-section`)**: An interactive 7-field form (Name, Email, Interest, Target Date, Group Size, Comments) connected to Firebase, redirecting to the Thank You page upon completion.
+- **Detailed Inquiry Form (`con-inquiry-section`)**: An interactive 7-field form (Name, Email, Interest, Target Date, Group Size, Comments) connected to n8n webhook, redirecting to the Thank You page upon completion.
 
 ---
 
@@ -157,26 +154,14 @@ Clone this repository to your local directory and navigate to the project folder
 npm install
 ```
 
-### 3. Firebase Environment Configuration
-Create a `.env` or `.env.local` file in the root folder and configure the credentials matched in `firebase-applet-config.json`:
-```env
-VITE_FIREBASE_API_KEY="AIzaSyAgLMgIMaW69OASsvrrXp2SQ9fiX56Tihc"
-VITE_FIREBASE_AUTH_DOMAIN="gen-lang-client-0560878319.firebaseapp.com"
-VITE_FIREBASE_PROJECT_ID="gen-lang-client-0560878319"
-VITE_FIREBASE_STORAGE_BUCKET="gen-lang-client-0560878319.firebasestorage.app"
-VITE_FIREBASE_MESSAGING_SENDER_ID="704984734200"
-VITE_FIREBASE_APP_ID="1:704984734200:web:40ec80096c7c35b14c9e0d"
-VITE_FIREBASE_DATABASE_ID="ai-studio-broadpeakadventu-fae44d01-240a-4948-ba1b-38d4080a8aed"
-```
-
-### 4. Running the Development Server
+### 3. Running the Development Server
 Run the local dev server (default port `3000`):
 ```bash
 npm run dev
 ```
 Open `http://localhost:3000` in your web browser.
 
-### 5. Production Compilation
+### 4. Production Compilation
 To build the static application bundle:
 ```bash
 npm run build
