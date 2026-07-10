@@ -20,7 +20,7 @@ export default function Contact() {
     const groupsize = (form.querySelector('#groupsize') as HTMLSelectElement).value;
     const message = (form.querySelector('#message') as HTMLTextAreaElement).value;
 
-    const webhookUrl = 'https://n8n.flyinvict.com/webhook-test/68b765b2-3fa4-4aa7-a451-dbae46315db1';
+    const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL || '';
 
     const payload = {
       fullname,
