@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import '../css/travel-guides.css';
+import { blogsData } from '../data/blogsData';
 
 export default function TravelGuides() {
   useEffect(() => {
@@ -56,6 +57,8 @@ export default function TravelGuides() {
     };
   
   }, []);
+
+  const featuredPost = blogsData['k2-guide'];
 
   return (
     <div className="page-wrapper animate-fade-in">
@@ -117,21 +120,27 @@ export default function TravelGuides() {
     
     <section className="tg-featured">
         <div className="tg-container">
-            <div className="tg-featured__inner">
-                <div className="tg-featured__image">
-                    <a href="/blog-post?id=k2-guide"><img src="/assets/images/article_k2_guide_1783186031585.png" alt="K2 Base camp mountains view" loading="lazy" referrerPolicy="no-referrer" /></a>
-                </div>
-                <div className="tg-featured__content">
-                    <div className="tg-featured__meta">
-                        <span className="tg-featured__date">17 January 2026</span>
-                        <span className="tg-featured__separator">•</span>
-                        <span className="tg-featured__cat">Travel Guide</span>
+            {featuredPost && (
+                <div className="tg-featured__inner">
+                    <div className="tg-featured__image">
+                        <a href={`/blog-post?id=${featuredPost.id}`}>
+                            <img src={featuredPost.bgImage} alt={featuredPost.title} loading="lazy" referrerPolicy="no-referrer" />
+                        </a>
                     </div>
-                    <h2 className="tg-featured__title"><a href="/blog-post?id=k2-guide">K2 BASE CAMP TREK 2026: THE COMPLETE PLANNING GUIDE</a></h2>
-                    <p className="tg-featured__desc">Prepare for the adventure of a lifetime. Our comprehensive guide covers the route, acclimatization schedules, physical fitness training, packing lists, and local safety protocols for the ultimate Karakoram expedition.</p>
-                    <a href="/blog-post?id=k2-guide" className="tg-btn-primary">READ GUIDE <i className="ri-arrow-right-line"></i></a>
+                    <div className="tg-featured__content">
+                        <div className="tg-featured__meta">
+                            <span className="tg-featured__date">{featuredPost.date}</span>
+                            <span className="tg-featured__separator">•</span>
+                            <span className="tg-featured__cat">{featuredPost.category}</span>
+                        </div>
+                        <h2 className="tg-featured__title">
+                            <a href={`/blog-post?id=${featuredPost.id}`}>{featuredPost.title}</a>
+                        </h2>
+                        <p className="tg-featured__desc">{featuredPost.desc}</p>
+                        <a href={`/blog-post?id=${featuredPost.id}`} className="tg-btn-primary">READ GUIDE <i className="ri-arrow-right-line"></i></a>
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     </section>
 
@@ -144,97 +153,28 @@ export default function TravelGuides() {
             </div>
 
             <div className="tg-grid">
-
-                
-                <article className="tg-card">
-                    <div className="tg-card__image">
-                        <a href="/blog-post?id=k2-guide"><img src="/assets/images/article_k2_guide_1783186031585.png" alt="K2 Base Camp Trek Guide" loading="lazy" referrerPolicy="no-referrer" /></a>
-                    </div>
-                    <div className="tg-card__body">
-                        <div className="tg-card__meta">
-                            <span className="tg-card__date">15 January 2026</span>
-                            <span className="tg-card__cat">Travel Guide</span>
-                        </div>
-                        <h3 className="tg-card__title"><a href="/blog-post?id=k2-guide">K2 Base Camp Trek: Essential Planning Guide</a></h3>
-                        <a href="/blog-post?id=k2-guide" className="tg-card__btn">Read More <i className="ri-arrow-right-line"></i></a>
-                    </div>
-                </article>
-
-                
-                <article className="tg-card">
-                    <div className="tg-card__image">
-                        <a href="/blog-post?id=visa-logistics"><img src="/assets/images/article_visa_logistics_1783186040279.png" alt="Pakistan Visa & Permits Guide" loading="lazy" referrerPolicy="no-referrer" /></a>
-                    </div>
-                    <div className="tg-card__body">
-                        <div className="tg-card__meta">
-                            <span className="tg-card__date">08 January 2026</span>
-                            <span className="tg-card__cat">Travel Logistics</span>
-                        </div>
-                        <h3 className="tg-card__title"><a href="/blog-post?id=visa-logistics">Pakistan Visa, Permits &amp; Requirements For International Travelers</a></h3>
-                        <a href="/blog-post?id=visa-logistics" className="tg-card__btn">Read More <i className="ri-arrow-right-line"></i></a>
-                    </div>
-                </article>
-
-                
-                <article className="tg-card">
-                    <div className="tg-card__image">
-                        <a href="/blog-post?id=best-time-hunza"><img src="/assets/images/destination_hunza_1783185596174.png" alt="Best Time to Visit Hunza Valley" loading="lazy" referrerPolicy="no-referrer" /></a>
-                    </div>
-                    <div className="tg-card__body">
-                        <div className="tg-card__meta">
-                            <span className="tg-card__date">28 December 2025</span>
-                            <span className="tg-card__cat">Seasonal Guide</span>
-                        </div>
-                        <h3 className="tg-card__title"><a href="/blog-post?id=best-time-hunza">Best Time To Visit Hunza Valley</a></h3>
-                        <a href="/blog-post?id=best-time-hunza" className="tg-card__btn">Read More <i className="ri-arrow-right-line"></i></a>
-                    </div>
-                </article>
-
-                
-                <article className="tg-card">
-                    <div className="tg-card__image">
-                        <a href="/blog-post?id=snow-lake-guide"><img src="/assets/images/article_snow_lake_1783186049575.png" alt="Snow Lake Trek Guide" loading="lazy" referrerPolicy="no-referrer" /></a>
-                    </div>
-                    <div className="tg-card__body">
-                        <div className="tg-card__meta">
-                            <span className="tg-card__date">14 December 2025</span>
-                            <span className="tg-card__cat">Trekking &amp; Expeditions</span>
-                        </div>
-                        <h3 className="tg-card__title"><a href="/blog-post?id=snow-lake-guide">Snow Lake Trek: Everything You Need To Know Before You Go</a></h3>
-                        <a href="/blog-post?id=snow-lake-guide" className="tg-card__btn">Read More <i className="ri-arrow-right-line"></i></a>
-                    </div>
-                </article>
-
-                
-                <article className="tg-card">
-                    <div className="tg-card__image">
-                        <a href="/blog-post?id=altitude-sickness"><img src="/assets/images/travel-boots.png" alt="High Altitude Packing List" loading="lazy" referrerPolicy="no-referrer" /></a>
-                    </div>
-                    <div className="tg-card__body">
-                        <div className="tg-card__meta">
-                            <span className="tg-card__date">03 December 2025</span>
-                            <span className="tg-card__cat">Equipment &amp; Safety</span>
-                        </div>
-                        <h3 className="tg-card__title"><a href="/blog-post?id=altitude-sickness">High Altitude Packing List For Northern Pakistan</a></h3>
-                        <a href="/blog-post?id=altitude-sickness" className="tg-card__btn">Read More <i className="ri-arrow-right-line"></i></a>
-                    </div>
-                </article>
-
-                
-                <article className="tg-card">
-                    <div className="tg-card__image">
-                        <a href="/blog-post?id=baltistan-culture"><img src="/assets/images/travel-iceaxe.png" alt="Beginner guide to trekking in Karakoram" loading="lazy" referrerPolicy="no-referrer" /></a>
-                    </div>
-                    <div className="tg-card__body">
-                        <div className="tg-card__meta">
-                            <span className="tg-card__date">18 November 2025</span>
-                            <span className="tg-card__cat">Adventure Basics</span>
-                        </div>
-                        <h3 className="tg-card__title"><a href="/blog-post?id=baltistan-culture">A Beginner's Guide To Trekking In The Karakoram</a></h3>
-                        <a href="/blog-post?id=baltistan-culture" className="tg-card__btn">Read More <i className="ri-arrow-right-line"></i></a>
-                    </div>
-                </article>
-
+                {Object.values(blogsData)
+                    .filter(post => post.id !== 'k2-guide')
+                    .map((post) => (
+                        <article className="tg-card" key={post.id}>
+                            <div className="tg-card__image">
+                                <a href={`/blog-post?id=${post.id}`}>
+                                    <img src={post.bgImage} alt={post.title} loading="lazy" referrerPolicy="no-referrer" />
+                                </a>
+                            </div>
+                            <div className="tg-card__body">
+                                <div className="tg-card__meta">
+                                    <span className="tg-card__date">{post.date}</span>
+                                    <span className="tg-card__cat">{post.category}</span>
+                                </div>
+                                <h3 className="tg-card__title">
+                                    <a href={`/blog-post?id=${post.id}`}>{post.title}</a>
+                                </h3>
+                                <a href={`/blog-post?id=${post.id}`} className="tg-card__btn">Read More <i className="ri-arrow-right-line"></i></a>
+                            </div>
+                        </article>
+                    ))
+                }
             </div>
         </div>
     </section>
@@ -371,10 +311,10 @@ export default function TravelGuides() {
                 <h4>POPULAR EXPEDITIONS</h4>
                 <ul>
                     <li><a href="/expedition-detail?id=k2">K2 Base Camp Trek</a></li>
-                    <li><a href="/expedition-detail?id=concordia">Concordia Trek</a></li>
-                    <li><a href="/expedition-detail?id=fairy-meadows">Fairy Meadows Trek</a></li>
-                    <li><a href="/expedition-detail?id=snow-lake">Snow Lake Trek</a></li>
-                    <li><a href="/expedition-detail?id=nanga-parbat">Nanga Parbat Base Camp</a></li>
+                    <li><a href="/expedition-detail?id=basho-valley">Basho Valley Trek</a></li>
+                    <li><a href="/expedition-detail?id=haramosh-pass">Haramosh Pass Trek</a></li>
+                    <li><a href="/expedition-detail?id=minimarg">Minimarg Valley Escape</a></li>
+                    <li><a href="/expedition-detail?id=hoper-valley">Hoper Valley Explorer</a></li>
                 </ul>
             </div>
 

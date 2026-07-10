@@ -1,5 +1,6 @@
 import { useEffect, useState, FormEvent } from 'react';
 import '../css/contact.css';
+import { expeditionsData } from '../data/expeditionsData';
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -241,14 +242,9 @@ export default function Contact() {
                                 <label htmlFor="interest">Expedition Interest</label>
                                 <select id="interest" required defaultValue="" disabled={isSubmitting}>
                                     <option value="" disabled>Select an expedition</option>
-                                    <option value="k2">K2 Base Camp Trek</option>
-                                    <option value="concordia">Concordia Trek</option>
-                                    <option value="snowlake">Snow Lake Trek</option>
-                                    <option value="nangaparbat">Nanga Parbat Base Camp</option>
-                                    <option value="fairymeadows">Fairy Meadows</option>
-                                    <option value="hunza">Hunza Explorer</option>
-                                    <option value="attabad">Attabad Lake Adventure</option>
-                                    <option value="deosai">Deosai Experience</option>
+                                    {Object.values(expeditionsData).map((exp) => (
+                                        <option key={exp.id} value={exp.id}>{exp.title}</option>
+                                    ))}
                                     <option value="custom">Custom Private Journey</option>
                                 </select>
                             </div>
@@ -452,10 +448,10 @@ export default function Contact() {
                 <h4>POPULAR EXPEDITIONS</h4>
                 <ul>
                     <li><a href="/expedition-detail?id=k2">K2 Base Camp Trek</a></li>
-                    <li><a href="/expedition-detail?id=concordia">Concordia Trek</a></li>
-                    <li><a href="/expedition-detail?id=fairy-meadows">Fairy Meadows Trek</a></li>
-                    <li><a href="/expedition-detail?id=snow-lake">Snow Lake Trek</a></li>
-                    <li><a href="/expedition-detail?id=nanga-parbat">Nanga Parbat Base Camp</a></li>
+                    <li><a href="/expedition-detail?id=basho-valley">Basho Valley Trek</a></li>
+                    <li><a href="/expedition-detail?id=haramosh-pass">Haramosh Pass Trek</a></li>
+                    <li><a href="/expedition-detail?id=minimarg">Minimarg Valley Escape</a></li>
+                    <li><a href="/expedition-detail?id=hoper-valley">Hoper Valley Explorer</a></li>
                 </ul>
             </div>
 

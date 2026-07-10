@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import '../css/expeditions.css';
+import { expeditionsData } from '../data/expeditionsData';
 
 export default function Expeditions() {
   useEffect(() => {
@@ -138,271 +139,43 @@ export default function Expeditions() {
             </div>
 
             <div className="exp-grid">
-
-                
-                <article className="exp-card">
-                    <div className="exp-card__image">
-                        <a href="/expedition-detail?id=k2"><img src="/assets/images/k2.png" alt="K2 Base Camp Trek" loading="lazy" referrerPolicy="no-referrer" /></a>
-                        <span className="exp-card__badge exp-card__badge--extreme">Extreme</span>
-                    </div>
-                    <div className="exp-card__body">
-                        <h3 className="exp-card__title"><a href="/expedition-detail?id=k2">K2 Base Camp Trek</a></h3>
-                        <div className="exp-card__stats">
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Duration</span>
-                                <span className="exp-card__stat-value"><i className="ri-time-line"></i>21 Days</span>
+                {Object.values(expeditionsData).map((exp) => (
+                    <article className="exp-card" key={exp.id}>
+                        <div className="exp-card__image">
+                            <a href={`/expedition-detail?id=${exp.id}`}>
+                                <img src={exp.gallery[0] || "/assets/images/k2.png"} alt={exp.title} loading="lazy" referrerPolicy="no-referrer" />
+                            </a>
+                            <span className={`exp-card__badge exp-card__badge--${exp.difficultyClass}`}>{exp.difficulty}</span>
+                        </div>
+                        <div className="exp-card__body">
+                            <h3 className="exp-card__title">
+                                <a href={`/expedition-detail?id=${exp.id}`}>{exp.title}</a>
+                            </h3>
+                            <div className="exp-card__stats">
+                                <div className="exp-card__stat">
+                                    <span className="exp-card__stat-label">Duration</span>
+                                    <span className="exp-card__stat-value"><i className="ri-time-line"></i>{exp.duration}</span>
+                                </div>
+                                <div className="exp-card__stat">
+                                    <span className="exp-card__stat-label">Max Alt.</span>
+                                    <span className="exp-card__stat-value"><i className="ri-mountain-line"></i>{exp.maxAltitude}</span>
+                                </div>
+                                <div className="exp-card__stat">
+                                    <span className="exp-card__stat-label">Group</span>
+                                    <span className="exp-card__stat-value"><i className="ri-group-line"></i>{exp.groupSize}</span>
+                                </div>
                             </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Max Alt.</span>
-                                <span className="exp-card__stat-value"><i className="ri-mountain-line"></i>5,150m</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Group</span>
-                                <span className="exp-card__stat-value"><i className="ri-group-line"></i>Max 12</span>
+                            <p className="exp-card__desc">{exp.desc}</p>
+                            <div className="exp-card__footer">
+                                <div>
+                                    <div className="exp-card__price-label">Starting from</div>
+                                    <div className="exp-card__price-value">{exp.startingPrice}</div>
+                                </div>
+                                <a href={`/expedition-detail?id=${exp.id}`} className="exp-card__btn">Explore <i className="ri-arrow-right-line"></i></a>
                             </div>
                         </div>
-                        <p className="exp-card__desc">The ultimate trekking experience to the base of the world's second-highest peak. Traverse the legendary Baltoro Glacier through some of the most dramatic mountain scenery on Earth.</p>
-                        <div className="exp-card__footer">
-                            <div>
-                                <div className="exp-card__price-label">Starting from</div>
-                                <div className="exp-card__price-value">$2,450</div>
-                            </div>
-                            <a href="/expedition-detail?id=k2" className="exp-card__btn">Explore <i className="ri-arrow-right-line"></i></a>
-                        </div>
-                    </div>
-                </article>
-
-                
-                <article className="exp-card">
-                    <div className="exp-card__image">
-                        <a href="/expedition-detail?id=concordia"><img src="/assets/images/passu-cones.png" alt="Concordia Trek" loading="lazy" referrerPolicy="no-referrer" /></a>
-                        <span className="exp-card__badge exp-card__badge--hard">Hard</span>
-                    </div>
-                    <div className="exp-card__body">
-                        <h3 className="exp-card__title"><a href="/expedition-detail?id=concordia">Concordia Trek</a></h3>
-                        <div className="exp-card__stats">
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Duration</span>
-                                <span className="exp-card__stat-value"><i className="ri-time-line"></i>18 Days</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Max Alt.</span>
-                                <span className="exp-card__stat-value"><i className="ri-mountain-line"></i>4,600m</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Group</span>
-                                <span className="exp-card__stat-value"><i className="ri-group-line"></i>Max 10</span>
-                            </div>
-                        </div>
-                        <p className="exp-card__desc">Journey into the "Throne Room of the Mountain Gods" where the Baltoro and Godwin-Austen glaciers converge, surrounded by four of the world's fourteen 8,000m peaks.</p>
-                        <div className="exp-card__footer">
-                            <div>
-                                <div className="exp-card__price-label">Starting from</div>
-                                <div className="exp-card__price-value">$1,950</div>
-                            </div>
-                            <a href="/expedition-detail?id=concordia" className="exp-card__btn">Explore <i className="ri-arrow-right-line"></i></a>
-                        </div>
-                    </div>
-                </article>
-
-                
-                <article className="exp-card">
-                    <div className="exp-card__image">
-                        <a href="/expedition-detail?id=snow-lake"><img src="/assets/images/snow-lake.png" alt="Snow Lake Trek" loading="lazy" referrerPolicy="no-referrer" /></a>
-                        <span className="exp-card__badge exp-card__badge--extreme">Extreme</span>
-                    </div>
-                    <div className="exp-card__body">
-                        <h3 className="exp-card__title"><a href="/expedition-detail?id=snow-lake">Snow Lake Trek</a></h3>
-                        <div className="exp-card__stats">
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Duration</span>
-                                <span className="exp-card__stat-value"><i className="ri-time-line"></i>24 Days</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Max Alt.</span>
-                                <span className="exp-card__stat-value"><i className="ri-mountain-line"></i>5,151m</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Group</span>
-                                <span className="exp-card__stat-value"><i className="ri-group-line"></i>Max 8</span>
-                            </div>
-                        </div>
-                        <p className="exp-card__desc">A remote, challenging traverse across one of the world's largest glacial basins. Cross the magnificent Hispar La Pass in a true wilderness adventure.</p>
-                        <div className="exp-card__footer">
-                            <div>
-                                <div className="exp-card__price-label">Starting from</div>
-                                <div className="exp-card__price-value">$2,850</div>
-                            </div>
-                            <a href="/expedition-detail?id=snow-lake" className="exp-card__btn">Explore <i className="ri-arrow-right-line"></i></a>
-                        </div>
-                    </div>
-                </article>
-
-                
-                <article className="exp-card">
-                    <div className="exp-card__image">
-                        <a href="/expedition-detail?id=nanga-parbat"><img src="/assets/images/deosai-sunrise.png" alt="Nanga Parbat Base Camp" loading="lazy" referrerPolicy="no-referrer" /></a>
-                        <span className="exp-card__badge exp-card__badge--moderate">Moderate</span>
-                    </div>
-                    <div className="exp-card__body">
-                        <h3 className="exp-card__title"><a href="/expedition-detail?id=nanga-parbat">Nanga Parbat Base Camp</a></h3>
-                        <div className="exp-card__stats">
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Duration</span>
-                                <span className="exp-card__stat-value"><i className="ri-time-line"></i>12 Days</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Max Alt.</span>
-                                <span className="exp-card__stat-value"><i className="ri-mountain-line"></i>3,960m</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Group</span>
-                                <span className="exp-card__stat-value"><i className="ri-group-line"></i>Max 12</span>
-                            </div>
-                        </div>
-                        <p className="exp-card__desc">Trek to the base of the Rupal Face — the highest mountain wall on Earth. Lush green valleys lead to an unforgettable view of the world's ninth-highest peak.</p>
-                        <div className="exp-card__footer">
-                            <div>
-                                <div className="exp-card__price-label">Starting from</div>
-                                <div className="exp-card__price-value">$1,450</div>
-                            </div>
-                            <a href="/expedition-detail?id=nanga-parbat" className="exp-card__btn">Explore <i className="ri-arrow-right-line"></i></a>
-                        </div>
-                    </div>
-                </article>
-
-                
-                <article className="exp-card">
-                    <div className="exp-card__image">
-                        <a href="/expedition-detail?id=fairy-meadows"><img src="/assets/images/destination_fairy_meadows_1783185607151.png" alt="Fairy Meadows" loading="lazy" referrerPolicy="no-referrer" /></a>
-                        <span className="exp-card__badge exp-card__badge--easy">Easy</span>
-                    </div>
-                    <div className="exp-card__body">
-                        <h3 className="exp-card__title"><a href="/expedition-detail?id=fairy-meadows">Fairy Meadows</a></h3>
-                        <div className="exp-card__stats">
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Duration</span>
-                                <span className="exp-card__stat-value"><i className="ri-time-line"></i>8 Days</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Max Alt.</span>
-                                <span className="exp-card__stat-value"><i className="ri-mountain-line"></i>3,300m</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Group</span>
-                                <span className="exp-card__stat-value"><i className="ri-group-line"></i>Max 16</span>
-                            </div>
-                        </div>
-                        <p className="exp-card__desc">Lush alpine meadows offer some of the most breathtaking, unobstructed views of Nanga Parbat. Perfect for families and first-time trekkers seeking mountain magic.</p>
-                        <div className="exp-card__footer">
-                            <div>
-                                <div className="exp-card__price-label">Starting from</div>
-                                <div className="exp-card__price-value">$950</div>
-                            </div>
-                            <a href="/expedition-detail?id=fairy-meadows" className="exp-card__btn">Explore <i className="ri-arrow-right-line"></i></a>
-                        </div>
-                    </div>
-                </article>
-
-                
-                <article className="exp-card">
-                    <div className="exp-card__image">
-                        <a href="/expedition-detail?id=hunza"><img src="/assets/images/hunza.png" alt="Hunza Explorer" loading="lazy" referrerPolicy="no-referrer" /></a>
-                        <span className="exp-card__badge exp-card__badge--easy">Easy</span>
-                    </div>
-                    <div className="exp-card__body">
-                        <h3 className="exp-card__title"><a href="/expedition-detail?id=hunza">Hunza Explorer</a></h3>
-                        <div className="exp-card__stats">
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Duration</span>
-                                <span className="exp-card__stat-value"><i className="ri-time-line"></i>10 Days</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Max Alt.</span>
-                                <span className="exp-card__stat-value"><i className="ri-mountain-line"></i>2,500m</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Group</span>
-                                <span className="exp-card__stat-value"><i className="ri-group-line"></i>Max 14</span>
-                            </div>
-                        </div>
-                        <p className="exp-card__desc">A rich cultural immersion through the enchanting Hunza Valley. Visit ancient forts, blossom orchards, traditional villages, and meet the warm-hearted Hunzai people.</p>
-                        <div className="exp-card__footer">
-                            <div>
-                                <div className="exp-card__price-label">Starting from</div>
-                                <div className="exp-card__price-value">$1,150</div>
-                            </div>
-                            <a href="/expedition-detail?id=hunza" className="exp-card__btn">Explore <i className="ri-arrow-right-line"></i></a>
-                        </div>
-                    </div>
-                </article>
-
-                
-                <article className="exp-card">
-                    <div className="exp-card__image">
-                        <a href="/expedition-detail?id=attabad"><img src="/assets/images/attabad-lake.png" alt="Attabad Lake Adventure" loading="lazy" referrerPolicy="no-referrer" /></a>
-                        <span className="exp-card__badge exp-card__badge--easy">Easy</span>
-                    </div>
-                    <div className="exp-card__body">
-                        <h3 className="exp-card__title"><a href="/expedition-detail?id=attabad">Attabad Lake Adventure</a></h3>
-                        <div className="exp-card__stats">
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Duration</span>
-                                <span className="exp-card__stat-value"><i className="ri-time-line"></i>7 Days</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Max Alt.</span>
-                                <span className="exp-card__stat-value"><i className="ri-mountain-line"></i>2,559m</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Group</span>
-                                <span className="exp-card__stat-value"><i className="ri-group-line"></i>Max 16</span>
-                            </div>
-                        </div>
-                        <p className="exp-card__desc">Sail the turquoise waters of Attabad Lake, explore Passu Cones, and cruise along the breathtaking Karakoram Highway—one of the world's most spectacular roads.</p>
-                        <div className="exp-card__footer">
-                            <div>
-                                <div className="exp-card__price-label">Starting from</div>
-                                <div className="exp-card__price-value">$850</div>
-                            </div>
-                            <a href="/expedition-detail?id=attabad" className="exp-card__btn">Explore <i className="ri-arrow-right-line"></i></a>
-                        </div>
-                    </div>
-                </article>
-
-                
-                <article className="exp-card">
-                    <div className="exp-card__image">
-                        <a href="/expedition-detail?id=deosai"><img src="/assets/images/destination_deosai_1783185627767.png" alt="Deosai Experience" loading="lazy" referrerPolicy="no-referrer" /></a>
-                        <span className="exp-card__badge exp-card__badge--moderate">Moderate</span>
-                    </div>
-                    <div className="exp-card__body">
-                        <h3 className="exp-card__title"><a href="/expedition-detail?id=deosai">Deosai Experience</a></h3>
-                        <div className="exp-card__stats">
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Duration</span>
-                                <span className="exp-card__stat-value"><i className="ri-time-line"></i>9 Days</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Max Alt.</span>
-                                <span className="exp-card__stat-value"><i className="ri-mountain-line"></i>4,114m</span>
-                            </div>
-                            <div className="exp-card__stat">
-                                <span className="exp-card__stat-label">Group</span>
-                                <span className="exp-card__stat-value"><i className="ri-group-line"></i>Max 12</span>
-                            </div>
-                        </div>
-                        <p className="exp-card__desc">Camp on the world's second-highest alpine plateau, blanketed in wildflowers and home to Himalayan brown bears, crystal lakes, and 360° panoramic views.</p>
-                        <div className="exp-card__footer">
-                            <div>
-                                <div className="exp-card__price-label">Starting from</div>
-                                <div className="exp-card__price-value">$1,200</div>
-                            </div>
-                            <a href="/expedition-detail?id=deosai" className="exp-card__btn">Explore <i className="ri-arrow-right-line"></i></a>
-                        </div>
-                    </div>
-                </article>
-
+                    </article>
+                ))}
             </div>
         </div>
     </section>
@@ -526,10 +299,10 @@ export default function Expeditions() {
                 <h4>POPULAR EXPEDITIONS</h4>
                 <ul>
                     <li><a href="/expedition-detail?id=k2">K2 Base Camp Trek</a></li>
-                    <li><a href="/expedition-detail?id=concordia">Concordia Trek</a></li>
-                    <li><a href="/expedition-detail?id=fairy-meadows">Fairy Meadows Trek</a></li>
-                    <li><a href="/expedition-detail?id=snow-lake">Snow Lake Trek</a></li>
-                    <li><a href="/expedition-detail?id=nanga-parbat">Nanga Parbat Base Camp</a></li>
+                    <li><a href="/expedition-detail?id=basho-valley">Basho Valley Trek</a></li>
+                    <li><a href="/expedition-detail?id=haramosh-pass">Haramosh Pass Trek</a></li>
+                    <li><a href="/expedition-detail?id=minimarg">Minimarg Valley Escape</a></li>
+                    <li><a href="/expedition-detail?id=hoper-valley">Hoper Valley Explorer</a></li>
                 </ul>
             </div>
 

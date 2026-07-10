@@ -269,10 +269,10 @@ export default function Terms() {
                 <h4>POPULAR EXPEDITIONS</h4>
                 <ul>
                     <li><a href="/expedition-detail?id=k2">K2 Base Camp Trek</a></li>
-                    <li><a href="/expedition-detail?id=concordia">Concordia Trek</a></li>
-                    <li><a href="/expedition-detail?id=fairy-meadows">Fairy Meadows Trek</a></li>
-                    <li><a href="/expedition-detail?id=snow-lake">Snow Lake Trek</a></li>
-                    <li><a href="/expedition-detail?id=nanga-parbat">Nanga Parbat Base Camp</a></li>
+                    <li><a href="/expedition-detail?id=basho-valley">Basho Valley Trek</a></li>
+                    <li><a href="/expedition-detail?id=haramosh-pass">Haramosh Pass Trek</a></li>
+                    <li><a href="/expedition-detail?id=minimarg">Minimarg Valley Escape</a></li>
+                    <li><a href="/expedition-detail?id=hoper-valley">Hoper Valley Explorer</a></li>
                 </ul>
             </div>
 

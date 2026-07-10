@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import '../css/style.css';
 import '../css/responsive.css';
+import { expeditionsData } from '../data/expeditionsData';
 
 export default function Home() {
   useEffect(() => {
@@ -238,480 +239,47 @@ export default function Home() {
 
             <div className="featured-trips__slider">
 
-
-            
-
-            <article className="trip-card">
-
-                <div className="trip-card__image">
-
-                    <img
-                        src="/assets/images/k2.png"
-                        alt="K2 Base Camp Expedition"
-                        referrerPolicy="no-referrer"
-                     />
-
-                    <div className="trip-card__altitude">
-                        <i className="ri-arrow-up-fill"></i>
-                        5,150m
-                    </div>
-
-                </div>
-
-                <div className="trip-card__content">
-
-                    <h3 className="trip-card__title">
-                        K2 Base Camp Expedition
-                    </h3>
-
-                    <div className="trip-card__difficulty">
-
-                        <div className="trip-card__difficulty-label">
-
-                            <span>Difficulty</span>
-
-                            <span>Hard</span>
-
+            {Object.values(expeditionsData).map((exp) => (
+                <article className="trip-card" key={exp.id}>
+                    <div className="trip-card__image">
+                        <img
+                            src={exp.gallery[0] || "/assets/images/k2.png"}
+                            alt={exp.title}
+                            referrerPolicy="no-referrer"
+                         />
+                        <div className="trip-card__altitude">
+                            <i className="ri-arrow-up-fill"></i>
+                            {exp.maxAltitude}
                         </div>
-
-                        <div className="trip-card__difficulty-bar">
-
-                            <div className="trip-card__difficulty-fill trip-card__difficulty-fill--hard"></div>
-
-                        </div>
-
                     </div>
-
-                    <div className="trip-card__footer">
-
-                        <div className="trip-card__days">
-
-                            <strong>21</strong>
-
-                            <span>Days</span>
-
+                    <div className="trip-card__content">
+                        <h3 className="trip-card__title">
+                            {exp.title}
+                        </h3>
+                        <div className="trip-card__difficulty">
+                            <div className="trip-card__difficulty-label">
+                                <span>Difficulty</span>
+                                <span>{exp.difficulty}</span>
+                            </div>
+                            <div className="trip-card__difficulty-bar">
+                                <div className={`trip-card__difficulty-fill trip-card__difficulty-fill--${exp.difficultyClass}`}></div>
+                            </div>
                         </div>
-
-                        <a href="/expedition-detail?id=k2" className="trip-card__button">
-
-                            Book
-
-                            <i className="ri-arrow-right-up-line"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            
-
-            <article className="trip-card">
-
-                <div className="trip-card__image">
-
-                    <img
-                        src="/assets/images/fairy-meadows.png"
-                        alt="Fairy Meadows & Nanga Parbat"
-                        referrerPolicy="no-referrer"
-                     />
-
-                    <div className="trip-card__altitude">
-                        <i className="ri-arrow-up-fill"></i>
-                        3,300m
-                    </div>
-
-                </div>
-
-                <div className="trip-card__content">
-
-                    <h3 className="trip-card__title">
-                        Fairy Meadows & Nanga Parbat
-                    </h3>
-
-                    <div className="trip-card__difficulty">
-
-                        <div className="trip-card__difficulty-label">
-
-                            <span>Difficulty</span>
-
-                            <span>Moderate</span>
-
+                        <div className="trip-card__footer">
+                            <div className="trip-card__days">
+                                <strong>{exp.duration.replace(" Days", "")}</strong>
+                                <span>Days</span>
+                            </div>
+                            <a href={`/expedition-detail?id=${exp.id}`} className="trip-card__button">
+                                Book
+                                <i className="ri-arrow-right-up-line"></i>
+                            </a>
                         </div>
-
-                        <div className="trip-card__difficulty-bar">
-
-                            <div className="trip-card__difficulty-fill trip-card__difficulty-fill--moderate"></div>
-
-                        </div>
-
                     </div>
+                </article>
+            ))}
 
-                    <div className="trip-card__footer">
-
-                        <div className="trip-card__days">
-
-                            <strong>9</strong>
-
-                            <span>Days</span>
-
-                        </div>
-
-                        <a href="/expedition-detail?id=fairy-meadows" className="trip-card__button">
-
-                            Book
-
-                            <i className="ri-arrow-right-up-line"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            
-
-            <article className="trip-card">
-
-                <div className="trip-card__image">
-
-                    <img
-                        src="/assets/images/hunza.png"
-                        alt="Hunza Valley Explorer"
-                        referrerPolicy="no-referrer"
-                     />
-
-                    <div className="trip-card__altitude">
-                        <i className="ri-arrow-up-fill"></i>
-                        2,500m
-                    </div>
-
-                </div>
-
-                <div className="trip-card__content">
-
-                    <h3 className="trip-card__title">
-                        Hunza Valley Explorer
-                    </h3>
-
-                    <div className="trip-card__difficulty">
-
-                        <div className="trip-card__difficulty-label">
-
-                            <span>Difficulty</span>
-
-                            <span>Easy</span>
-
-                        </div>
-
-                        <div className="trip-card__difficulty-bar">
-
-                            <div className="trip-card__difficulty-fill trip-card__difficulty-fill--easy"></div>
-
-                        </div>
-
-                    </div>
-
-                    <div className="trip-card__footer">
-
-                        <div className="trip-card__days">
-
-                            <strong>7</strong>
-
-                            <span>Days</span>
-
-                        </div>
-
-                        <a href="/expedition-detail?id=hunza" className="trip-card__button">
-
-                            Book
-
-                            <i className="ri-arrow-right-up-line"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            
-
-            <article className="trip-card">
-
-                <div className="trip-card__image">
-
-                    <img
-                        src="/assets/images/attabad-lake.png"
-                        alt="Attabad Lake Adventure"
-                        referrerPolicy="no-referrer"
-                     />
-
-                    <div className="trip-card__altitude">
-                        <i className="ri-arrow-up-fill"></i>
-                        2,800m
-                    </div>
-
-                </div>
-
-                <div className="trip-card__content">
-
-                    <h3 className="trip-card__title">
-                        Attabad Lake Adventure
-                    </h3>
-
-                    <div className="trip-card__difficulty">
-
-                        <div className="trip-card__difficulty-label">
-
-                            <span>Difficulty</span>
-
-                            <span>Easy</span>
-
-                        </div>
-
-                        <div className="trip-card__difficulty-bar">
-
-                            <div className="trip-card__difficulty-fill trip-card__difficulty-fill--easy"></div>
-
-                        </div>
-
-                    </div>
-
-                    <div className="trip-card__footer">
-
-                        <div className="trip-card__days">
-
-                            <strong>5</strong>
-
-                            <span>Days</span>
-
-                        </div>
-
-                        <a href="/expedition-detail?id=attabad" className="trip-card__button">
-
-                            Book
-
-                            <i className="ri-arrow-right-up-line"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            
-
-            <article className="trip-card">
-
-                <div className="trip-card__image">
-
-                    <img
-                        src="/assets/images/snow-lake.png"
-                        alt="Snow Lake & Hispar La Trek"
-                        referrerPolicy="no-referrer"
-                     />
-
-                    <div className="trip-card__altitude">
-                        <i className="ri-arrow-up-fill"></i>
-                        5,128m
-                    </div>
-
-                </div>
-
-                <div className="trip-card__content">
-
-                    <h3 className="trip-card__title">
-                        Snow Lake & Hispar La Trek
-                    </h3>
-
-                    <div className="trip-card__difficulty">
-
-                        <div className="trip-card__difficulty-label">
-
-                            <span>Difficulty</span>
-
-                            <span>Hard</span>
-
-                        </div>
-
-                        <div className="trip-card__difficulty-bar">
-
-                            <div className="trip-card__difficulty-fill trip-card__difficulty-fill--hard"></div>
-
-                        </div>
-
-                    </div>
-
-                    <div className="trip-card__footer">
-
-                        <div className="trip-card__days">
-
-                            <strong>24</strong>
-
-                            <span>Days</span>
-
-                        </div>
-
-                        <a href="/expedition-detail?id=snow-lake" className="trip-card__button">
-
-                            Book
-
-                            <i className="ri-arrow-right-up-line"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            
-
-            <article className="trip-card">
-
-                <div className="trip-card__image">
-
-                    <img
-                        src="/assets/images/deosai-sunrise.png"
-                        alt="Deosai Plains Safari"
-                        referrerPolicy="no-referrer"
-                     />
-
-                    <div className="trip-card__altitude">
-                        <i className="ri-arrow-up-fill"></i>
-                        4,114m
-                    </div>
-
-                </div>
-
-                <div className="trip-card__content">
-
-                    <h3 className="trip-card__title">
-                        Deosai Plains Safari
-                    </h3>
-
-                    <div className="trip-card__difficulty">
-
-                        <div className="trip-card__difficulty-label">
-
-                            <span>Difficulty</span>
-
-                            <span>Easy</span>
-
-                        </div>
-
-                        <div className="trip-card__difficulty-bar">
-
-                            <div className="trip-card__difficulty-fill trip-card__difficulty-fill--easy"></div>
-
-                        </div>
-
-                    </div>
-
-                    <div className="trip-card__footer">
-
-                        <div className="trip-card__days">
-
-                            <strong>4</strong>
-
-                            <span>Days</span>
-
-                        </div>
-
-                        <a href="/expedition-detail?id=deosai" className="trip-card__button">
-
-                            Book
-
-                            <i className="ri-arrow-right-up-line"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            
-
-            <article className="trip-card">
-
-                <div className="trip-card__image">
-
-                    <img
-                        src="/assets/images/passu-cones.png"
-                        alt="Passu Cones & Hunza"
-                        referrerPolicy="no-referrer"
-                     />
-
-                    <div className="trip-card__altitude">
-                        <i className="ri-arrow-up-fill"></i>
-                        2,500m
-                    </div>
-
-                </div>
-
-                <div className="trip-card__content">
-
-                    <h3 className="trip-card__title">
-                        Passu Cones & Hunza
-                    </h3>
-
-                    <div className="trip-card__difficulty">
-
-                        <div className="trip-card__difficulty-label">
-
-                            <span>Difficulty</span>
-
-                            <span>Moderate</span>
-
-                        </div>
-
-                        <div className="trip-card__difficulty-bar">
-
-                            <div className="trip-card__difficulty-fill trip-card__difficulty-fill--moderate"></div>
-
-                        </div>
-
-                    </div>
-
-                    <div className="trip-card__footer">
-
-                        <div className="trip-card__days">
-
-                            <strong>8</strong>
-
-                            <span>Days</span>
-
-                        </div>
-
-                        <a href="/expedition-detail?id=hunza" className="trip-card__button">
-
-                            Book
-
-                            <i className="ri-arrow-right-up-line"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-        </div>
+            </div>
         </div>
 
 
@@ -1205,11 +773,11 @@ export default function Home() {
         <div className="footer__col">
             <h4>POPULAR EXPEDITIONS</h4>
             <ul>
-                <li><a href="/expedition-detail">K2 Base Camp Trek</a></li>
-                <li><a href="/expedition-detail">Concordia Trek</a></li>
-                <li><a href="/expedition-detail">Gondogoro La Pass</a></li>
-                <li><a href="/expedition-detail">Snow Lake Trek</a></li>
-                <li><a href="/expedition-detail">Nanga Parbat Base Camp</a></li>
+                <li><a href="/expedition-detail?id=k2">K2 Base Camp Trek</a></li>
+                <li><a href="/expedition-detail?id=basho-valley">Basho Valley Trek</a></li>
+                <li><a href="/expedition-detail?id=haramosh-pass">Haramosh Pass Trek</a></li>
+                <li><a href="/expedition-detail?id=minimarg">Minimarg Valley Escape</a></li>
+                <li><a href="/expedition-detail?id=hoper-valley">Hoper Valley Explorer</a></li>
             </ul>
         </div>
 
