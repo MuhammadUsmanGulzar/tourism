@@ -325,8 +325,8 @@ export default function TravelGuides() {
                     <li><a href="/faq">FAQ</a></li>
                     <li><a href="/privacy">Privacy Policy</a></li>
                     <li><a href="/terms">Terms &amp; Conditions</a></li>
-                    <li><a href="#">Email Us</a></li>
-                    <li><a href="#">WhatsApp Inquiry</a></li>
+                    <li><a href="mailto:info@broadpeakadventures.com">Email Us</a></li>
+                    <li><a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">WhatsApp Inquiry</a></li>
                 </ul>
             </div>
 
