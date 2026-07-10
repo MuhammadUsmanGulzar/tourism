@@ -1,13 +1,11 @@
 import { useEffect, useState, FormEvent } from 'react';
 import '../css/contact.css';
-import { db } from '../firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError(null);
@@ -22,7 +20,9 @@ export default function Contact() {
     const message = (form.querySelector('#message') as HTMLTextAreaElement).value;
 
     const webhookUrl = 'https://n8n.flyinvict.com/webhook-test/68b765b2-3fa4-4aa7-a451-dbae46315db1';
-    const payload = {
+
+    // Trigger n8n webhook asynchronously with no-cors to prevent any CORS block/delay
+    const queryParams = new URLSearchParams({
       fullname,
       email,
       country,
@@ -32,58 +32,16 @@ export default function Contact() {
       message,
       formType: 'contact',
       submittedAt: new Date().toISOString()
-    };
+    }).toString();
 
-    // Trigger n8n webhook asynchronously (fire-and-forget) so it never blocks the user redirection
-    fetch(webhookUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    }).then((response) => {
-      if (response.status === 405 || response.status === 404) {
-        throw new Error('Method not allowed or not found, trying GET fallback');
-      }
-    }).catch((err) => {
-      console.warn('POST to n8n failed or fallback triggered, trying GET...', err);
-      const queryParams = new URLSearchParams({
-        fullname,
-        email,
-        country,
-        interest,
-        month,
-        groupsize,
-        message,
-        formType: 'contact',
-        submittedAt: payload.submittedAt
-      }).toString();
-      fetch(`${webhookUrl}?${queryParams}`, {
-        method: 'GET',
-      }).catch((getErr) => console.error('GET to n8n failed too:', getErr));
-    });
+    fetch(`${webhookUrl}?${queryParams}`, {
+      method: 'GET',
+      mode: 'no-cors'
+    }).catch((err) => console.warn('n8n Webhook Error:', err));
 
-    try {
-      await addDoc(collection(db, 'inquiries'), {
-        fullname,
-        email,
-        country,
-        interest,
-        month,
-        groupsize,
-        message,
-        createdAt: serverTimestamp(),
-      });
-      
-      // Navigate to thank you page
-      window.history.pushState({}, '', '/thank-you');
-      window.dispatchEvent(new Event('pushstate'));
-    } catch (err: any) {
-      console.error('Error saving inquiry:', err);
-      setSubmitError('Failed to send inquiry. Please try again or WhatsApp us.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Immediately redirect to thank you page without blocking
+    window.history.pushState({}, '', '/thank-you');
+    window.dispatchEvent(new Event('pushstate'));
   };
 
   useEffect(() => {
