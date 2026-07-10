@@ -21,6 +21,53 @@ export default function Contact() {
     const groupsize = (form.querySelector('#groupsize') as HTMLSelectElement).value;
     const message = (form.querySelector('#message') as HTMLTextAreaElement).value;
 
+    const webhookUrl = 'https://n8n.flyinvict.com/webhook-test/68b765b2-3fa4-4aa7-a451-dbae46315db1';
+    const payload = {
+      fullname,
+      email,
+      country,
+      interest,
+      month,
+      groupsize,
+      message,
+      formType: 'contact',
+      submittedAt: new Date().toISOString()
+    };
+
+    // Trigger n8n webhook with POST and GET fallback
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+      if (response.status === 405 || response.status === 404) {
+        throw new Error('Method not allowed or not found, falling back to GET');
+      }
+    } catch (err) {
+      console.warn('POST to n8n failed/not allowed, retrying with GET...', err);
+      try {
+        const queryParams = new URLSearchParams({
+          fullname,
+          email,
+          country,
+          interest,
+          month,
+          groupsize,
+          message,
+          formType: 'contact',
+          submittedAt: payload.submittedAt
+        }).toString();
+        await fetch(`${webhookUrl}?${queryParams}`, {
+          method: 'GET',
+        });
+      } catch (getErr) {
+        console.error('GET to n8n failed too:', getErr);
+      }
+    }
+
     try {
       await addDoc(collection(db, 'inquiries'), {
         fullname,

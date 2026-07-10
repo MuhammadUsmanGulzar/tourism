@@ -1,12 +1,16 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { expeditionsData } from '../data/expeditionsData';
 import '../css/expedition-detail.css';
+import { db } from '../firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export default function ExpeditionDetail() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0); // Default first one open
   const [heroLoaded, setHeroLoaded] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Parse the current expedition ID from the query parameter
   const searchParams = new URLSearchParams(window.location.search);
@@ -38,11 +42,88 @@ export default function ExpeditionDetail() {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
-  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Smooth clean SPA transition to thank-you page
-    window.history.pushState({}, '', '/thank-you');
-    window.dispatchEvent(new Event('pushstate'));
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const form = e.currentTarget;
+    const name = (form.querySelector('#name') as HTMLInputElement).value;
+    const email = (form.querySelector('#email') as HTMLInputElement).value;
+    const country = (form.querySelector('#country') as HTMLInputElement).value;
+    const date = (form.querySelector('#date') as HTMLInputElement).value;
+    const size = (form.querySelector('#size') as HTMLSelectElement).value;
+    const message = (form.querySelector('#message') as HTMLTextAreaElement).value;
+
+    const webhookUrl = 'https://n8n.flyinvict.com/webhook-test/68b765b2-3fa4-4aa7-a451-dbae46315db1';
+    const payload = {
+      fullname: name,
+      email,
+      country,
+      date,
+      groupsize: size,
+      message,
+      interest: expedition.title,
+      formType: 'expedition-inquiry',
+      submittedAt: new Date().toISOString()
+    };
+
+    // Trigger n8n webhook with POST and GET fallback
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+      if (response.status === 405 || response.status === 404) {
+        throw new Error('Method not allowed or not found, falling back to GET');
+      }
+    } catch (err) {
+      console.warn('POST to n8n failed/not allowed, retrying with GET...', err);
+      try {
+        const queryParams = new URLSearchParams({
+          fullname: name,
+          email,
+          country,
+          date,
+          groupsize: size,
+          message,
+          interest: expedition.title,
+          formType: 'expedition-inquiry',
+          submittedAt: payload.submittedAt
+        }).toString();
+        await fetch(`${webhookUrl}?${queryParams}`, {
+          method: 'GET',
+        });
+      } catch (getErr) {
+        console.error('GET to n8n failed too:', getErr);
+      }
+    }
+
+    try {
+      await addDoc(collection(db, 'inquiries'), {
+        fullname: name,
+        email,
+        country,
+        date,
+        groupsize: size,
+        message,
+        interest: expedition.title,
+        formType: 'expedition-inquiry',
+        createdAt: serverTimestamp(),
+      });
+
+      // Smooth clean SPA transition to thank-you page
+      window.history.pushState({}, '', '/thank-you');
+      window.dispatchEvent(new Event('pushstate'));
+    } catch (err: any) {
+      console.error('Error saving inquiry:', err);
+      setSubmitError('Failed to send inquiry. Please try again or WhatsApp us.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Get difficulty-specific class for hero tag
@@ -334,25 +415,25 @@ export default function ExpeditionDetail() {
               <form className="expd-inquiry__form" onSubmit={handleFormSubmit}>
                 <div className="expd-inquiry__form-group">
                   <label htmlFor="name">Name</label>
-                  <input type="text" id="name" placeholder="Your full name" required />
+                  <input type="text" id="name" placeholder="Your full name" required disabled={isSubmitting} />
                 </div>
                 <div className="expd-inquiry__form-group">
                   <label htmlFor="email">Email</label>
-                  <input type="email" id="email" placeholder="Your email address" required />
+                  <input type="email" id="email" placeholder="Your email address" required disabled={isSubmitting} />
                 </div>
                 <div className="expd-inquiry__form-row">
                   <div className="expd-inquiry__form-group">
                     <label htmlFor="country">Country</label>
-                    <input type="text" id="country" placeholder="Your country" required />
+                    <input type="text" id="country" placeholder="Your country" required disabled={isSubmitting} />
                   </div>
                   <div className="expd-inquiry__form-group">
                     <label htmlFor="date">Preferred Travel Date</label>
-                    <input type="date" id="date" required />
+                    <input type="date" id="date" required disabled={isSubmitting} />
                   </div>
                 </div>
                 <div className="expd-inquiry__form-group">
                   <label htmlFor="size">Group Size</label>
-                  <select id="size" defaultValue="1" required>
+                  <select id="size" defaultValue="1" required disabled={isSubmitting}>
                     <option value="1">1 Person</option>
                     <option value="2">2 People</option>
                     <option value="3-5">3 - 5 People</option>
@@ -362,10 +443,13 @@ export default function ExpeditionDetail() {
                 </div>
                 <div className="expd-inquiry__form-group">
                   <label htmlFor="message">Message</label>
-                  <textarea id="message" rows={4} placeholder="How can we help you plan your journey?" required></textarea>
+                  <textarea id="message" rows={4} placeholder="How can we help you plan your journey?" required disabled={isSubmitting}></textarea>
                 </div>
+                {submitError && <div className="con-error-message" style={{ color: '#d17a33', marginBottom: '15px', fontSize: '0.9rem' }}>{submitError}</div>}
                 <div className="expd-inquiry__form-buttons">
-                  <button type="submit" className="expd-btn-primary expd-inquiry__submit">SEND INQUIRY</button>
+                  <button type="submit" className="expd-btn-primary expd-inquiry__submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'SENDING...' : 'SEND INQUIRY'}
+                  </button>
                   <a href="https://wa.me/923123456789" target="_blank" rel="noopener noreferrer" className="expd-btn-whatsapp">
                     <i className="ri-whatsapp-line"></i> WHATSAPP US
                   </a>
