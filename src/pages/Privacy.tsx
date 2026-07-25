@@ -59,49 +59,6 @@ export default function Privacy() {
 
   return (
     <div className="page-wrapper animate-fade-in">
-      <header className="header" id="main-header">
-        <nav className="navbar">
-            <div className="navbar__logo">
-                <a href="/">BROAD PEAK</a>
-            </div>
-
-            <ul className="navbar__menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-
-            <div className="navbar__actions">
-                <a href="#" className="navbar__social"><i className="ri-instagram-line"></i></a>
-                <a href="#" className="navbar__social"><i className="ri-facebook-fill"></i></a>
-                <a href="/contact" className="navbar__cta">Book a Trip</a>
-                <button className="navbar__hamburger" id="privacy-hamburger">
-                    <i className="ri-menu-line"></i>
-                </button>
-            </div>
-        </nav>
-
-        
-        <div className="mobile-menu" id="privacy-mobile-menu">
-            <div className="mobile-menu__header">
-                <div className="navbar__logo">
-                    <a href="/">BROAD PEAK</a>
-                </div>
-                <button className="mobile-menu__close" id="privacy-menu-close">
-                    <i className="ri-close-line"></i>
-                </button>
-            </div>
-            <ul className="mobile-menu__links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
-    </header>
 
     
     <section className="privacy-hero" id="privacy-hero">

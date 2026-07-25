@@ -59,49 +59,6 @@ export default function About() {
 
   return (
     <div className="page-wrapper animate-fade-in">
-      <header className="header" id="main-header">
-        <nav className="navbar">
-            <div className="navbar__logo">
-                <a href="/">BROAD PEAK</a>
-            </div>
-
-            <ul className="navbar__menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-
-            <div className="navbar__actions">
-                <a href="#" className="navbar__social"><i className="ri-instagram-line"></i></a>
-                <a href="#" className="navbar__social"><i className="ri-facebook-fill"></i></a>
-                <a href="/contact" className="navbar__cta">Book a Trip</a>
-                <button className="navbar__hamburger" id="abt-hamburger">
-                    <i className="ri-menu-line"></i>
-                </button>
-            </div>
-        </nav>
-
-        
-        <div className="mobile-menu" id="abt-mobile-menu">
-            <div className="mobile-menu__header">
-                <div className="navbar__logo">
-                    <a href="/">BROAD PEAK</a>
-                </div>
-                <button className="mobile-menu__close" id="abt-menu-close">
-                    <i className="ri-close-line"></i>
-                </button>
-            </div>
-            <ul className="mobile-menu__links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
-    </header>
 
     
     <section className="abt-hero" id="abt-hero">
@@ -125,7 +82,7 @@ export default function About() {
                     <p className="abt-who__desc">We believe that travel has the power to bridge worlds. Our goal is to craft itineraries that go beyond simple sightseeing, offering deep physical, emotional, and cultural engagement with these raw and holy mountain peaks.</p>
                 </div>
                 <div className="abt-who__media">
-                    <img src="/assets/images/who-we-are-main.png" alt="Broad Peak guides team" loading="lazy" referrerPolicy="no-referrer" />
+                    <img src="/assets/images/who-we-are-main.webp" alt="Broad Peak guides team" loading="lazy" referrerPolicy="no-referrer" />
                 </div>
             </div>
         </div>
@@ -225,7 +182,7 @@ export default function About() {
         <div className="abt-container">
             <div className="abt-safety__inner">
                 <div className="abt-safety__media">
-                    <img src="/assets/images/travel-tent.png" alt="High-altitude camping setup" loading="lazy" referrerPolicy="no-referrer" />
+                    <img src="/assets/images/travel-tent.webp" alt="High-altitude camping setup" loading="lazy" referrerPolicy="no-referrer" />
                 </div>
                 <div className="abt-safety__text">
                     <span className="abt-section-tag">TRAVEL ETHICS</span>

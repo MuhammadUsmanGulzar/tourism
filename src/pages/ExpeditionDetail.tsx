@@ -105,33 +105,48 @@ export default function ExpeditionDetail() {
       {/* Dynamic Header */}
       <header className={`header ${scrolled ? 'header--scrolled' : ''}`} id="main-header">
         <nav className="navbar">
-          <div className="navbar__logo">
-            <a href="/">BROAD PEAK</a>
-          </div>
+            <div className="navbar__logo">
+                <a href="/">
+                    <span className="navbar__logo-title">BROAD PEAK</span>
+                    <span className="navbar__logo-sub">EXPEDITIONS</span>
+                </a>
+            </div>
 
-          <ul className="navbar__menu">
-            <li><a href="/">Home</a></li>
-            <li><a href="/expeditions" className="active">Expeditions</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
+            <ul className="navbar__menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/expeditions">Expeditions</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
 
-          <div className="navbar__actions">
-            <a href="#" className="navbar__social"><i className="ri-instagram-line"></i></a>
-            <a href="#" className="navbar__social"><i className="ri-facebook-fill"></i></a>
-            <a href="/contact" className="navbar__cta">Book a Trip</a>
-            <button className="navbar__hamburger" id="expd-hamburger" onClick={() => setMobileMenuOpen(true)}>
-              <i className="ri-menu-line"></i>
-            </button>
-          </div>
+            <div className="navbar__actions">
+                <a href="#" className="navbar__social" aria-label="Instagram">
+                    <i className="ri-instagram-line"></i>
+                </a>
+                <a href="#" className="navbar__social" aria-label="Facebook">
+                    <i className="ri-facebook-fill"></i>
+                </a>
+                <a href="/contact" className="navbar__cta">
+                    Book a Trip
+                </a>
+                <button className="navbar__hamburger" id="hamburger-menu" aria-label="Toggle Menu">
+                    <i className="ri-menu-line"></i>
+                </button>
+            </div>
         </nav>
 
         {/* Mobile Menu */}
         <div className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`} id="expd-mobile-menu">
           <div className="mobile-menu__header">
             <div className="navbar__logo">
-              <a href="/">BROAD PEAK</a>
+              <a href="/">
+            <span className="navbar__logo-icon"><i className="ri-landscape-fill"></i></span>
+            <div className="navbar__logo-text-group">
+                <span className="navbar__logo-title">BROAD PEAK</span>
+                <span className="navbar__logo-tag">KARAKORAM • 8051M</span>
+            </div>
+        </a>
             </div>
             <button className="mobile-menu__close" id="expd-menu-close" onClick={() => setMobileMenuOpen(false)}>
               <i className="ri-close-line"></i>
@@ -152,7 +167,7 @@ export default function ExpeditionDetail() {
         <div 
           className={`expd-hero__bg ${heroLoaded ? 'abt-hero__bg--loaded' : ''}`} 
           id="expd-hero-bg"
-          style={{ backgroundImage: `url(${expedition.gallery[0] || '/assets/images/k2.png'})` }}
+          style={{ backgroundImage: `url(${expedition.gallery[0] || '/assets/images/k2.webp'})` }}
         ></div>
         <div className="expd-hero__overlay"></div>
         <div className="expd-hero__container expd-container">
@@ -445,7 +460,13 @@ export default function ExpeditionDetail() {
       <footer className="footer">
         <div className="expd-container footer__container">
           <div className="footer__col footer__col--about">
-            <h3 className="footer__logo"><a href="/">BROAD PEAK</a></h3>
+            <h3 className="footer__logo"><a href="/">
+            <span className="navbar__logo-icon"><i className="ri-landscape-fill"></i></span>
+            <div className="navbar__logo-text-group">
+                <span className="navbar__logo-title">BROAD PEAK</span>
+                <span className="navbar__logo-tag">KARAKORAM • 8051M</span>
+            </div>
+        </a></h3>
             <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
             <div className="footer__socials">
               <a href="#"><i className="ri-instagram-line"></i></a>

@@ -10,6 +10,9 @@ window.initAnimationsJS = function() {
     const magnetics = document.querySelectorAll(".btn, .navbar__social a, .footer__socials a");
     
     magnetics.forEach((btn) => {
+        if (btn.dataset.magneticBound === "true") return;
+        btn.dataset.magneticBound = "true";
+
         btn.addEventListener("mousemove", function(e) {
             const rect = this.getBoundingClientRect();
             const h = rect.width / 2;
@@ -44,8 +47,10 @@ window.initAnimationsJS = function() {
     // Hero Text Reveal
     const heroTitle = document.querySelector(".hero__title");
     if (heroTitle) {
-        // We will split by newlines first to preserve the line breaks
-        const htmlContent = heroTitle.innerHTML;
+        if (!heroTitle.dataset.originalHtml) {
+            heroTitle.dataset.originalHtml = heroTitle.innerHTML;
+        }
+        const htmlContent = heroTitle.dataset.originalHtml;
         heroTitle.innerHTML = "";
         
         // Split by <br> or <br/>

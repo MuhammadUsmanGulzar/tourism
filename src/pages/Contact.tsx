@@ -115,49 +115,6 @@ export default function Contact() {
 
     return (
         <div className="page-wrapper animate-fade-in">
-            <header className="header" id="main-header">
-                <nav className="navbar">
-                    <div className="navbar__logo">
-                        <a href="/">BROAD PEAK</a>
-                    </div>
-
-                    <ul className="navbar__menu">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/expeditions">Expeditions</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                    </ul>
-
-                    <div className="navbar__actions">
-                        <a href="#" className="navbar__social"><i className="ri-instagram-line"></i></a>
-                        <a href="#" className="navbar__social"><i className="ri-facebook-fill"></i></a>
-                        <a href="/contact" className="navbar__cta">Book a Trip</a>
-                        <button className="navbar__hamburger" id="con-hamburger">
-                            <i className="ri-menu-line"></i>
-                        </button>
-                    </div>
-                </nav>
-
-
-                <div className="mobile-menu" id="con-mobile-menu">
-                    <div className="mobile-menu__header">
-                        <div className="navbar__logo">
-                            <a href="/">BROAD PEAK</a>
-                        </div>
-                        <button className="mobile-menu__close" id="con-menu-close">
-                            <i className="ri-close-line"></i>
-                        </button>
-                    </div>
-                    <ul className="mobile-menu__links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/expeditions">Expeditions</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                    </ul>
-                </div>
-            </header>
 
 
             <section className="con-hero" id="con-hero">
@@ -432,7 +389,13 @@ export default function Contact() {
 
 
                     <div className="footer__col footer__col--about">
-                        <h3 className="footer__logo"><a href="/">BROAD PEAK</a></h3>
+                        <h3 className="footer__logo"><a href="/">
+            <span className="navbar__logo-icon"><i className="ri-landscape-fill"></i></span>
+            <div className="navbar__logo-text-group">
+                <span className="navbar__logo-title">BROAD PEAK</span>
+                <span className="navbar__logo-tag">KARAKORAM • 8051M</span>
+            </div>
+        </a></h3>
                         <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
                         <div className="footer__socials">
                             <a href="#"><i className="ri-instagram-line"></i></a>

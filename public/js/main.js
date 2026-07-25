@@ -119,7 +119,7 @@ const paginationContainer = document.querySelector('.featured-trips__pagination'
 const tripCards = document.querySelectorAll('.trip-card');
 let paginationItems = [];
 
-if (slider && progressBar && paginationContainer && tripCards.length > 0) {
+if (false) { // Disabled: now managed by React state in Home.tsx
     // Generate pagination dots dynamically based on number of trip cards
     tripCards.forEach((_, index) => {
         const dot = document.createElement('span');
@@ -217,25 +217,7 @@ if (slider && progressBar && paginationContainer && tripCards.length > 0) {
         });
     }
 
-    // --- 3. Nav Buttons ---
-    const prevBtn = document.getElementById('featuredTripsPrev');
-    const nextBtn = document.getElementById('featuredTripsNext');
-
-    if (prevBtn && nextBtn) {
-        const scrollAmount = 340; // Approx 1 card + gap
-
-        prevBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        });
-
-        nextBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        });
-    }
-
-
+    // --- 3. Nav Buttons handled cleanly by React ---
 }
 
 /* ==========================================

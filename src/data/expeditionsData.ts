@@ -54,7 +54,7 @@ export const expeditionsData: Record<string, Expedition> = {
       "As you traverse the lateral moraine of the Baltoro Glacier, towering towers of granite like the Trango Towers and Cathedral Peak rise dramatically on either side. You will march up to Concordia, the famous glacial confluence dubbed the 'Throne Room of the Mountain Gods', which offers an unmatched 360-degree amphitheater of snow-capped peaks, including Broad Peak, Gasherbrum, and K2 itself.",
       "This expedition is more than a physical challenge; it is a deep immersion into the unique mountain culture of Baltistan. Supported by the legendary Balti porters and guides, you will experience authentic mountain hospitality, shared stories around campsites, and the raw, spiritual power of the Karakoram Range."
     ],
-    overviewImage: "/assets/images/who-we-are-main.png",
+    overviewImage: "/assets/images/who-we-are-main.webp",
     itinerary: [
       {
         day: "Day 1",
@@ -121,10 +121,10 @@ export const expeditionsData: Record<string, Expedition> = {
       "Additional hotel nights outside the group itinerary"
     ],
     gallery: [
-      "/assets/images/k2.png",
-      "/assets/images/passu-cones.png",
-      "/assets/images/snow-lake.png",
-      "/assets/images/deosai-sunrise.png"
+      "/assets/images/k2.webp",
+      "/assets/images/passu-cones.webp",
+      "/assets/images/snow-lake.webp",
+      "/assets/images/deosai-sunrise.webp"
     ],
     faqs: [
       {
@@ -161,7 +161,7 @@ export const expeditionsData: Record<string, Expedition> = {
       "The trek in Basho leads you through local stone villages, grazing pastures, and beautiful forests, culminating in scenic viewpoints where you can gaze upon the roaring Indus River and surrounding peaks.",
       "With gentle elevations, warm local hospitality, and basic eco-lodges, Basho is the perfect adventure for nature lovers, families, and anyone seeking a peaceful mountain sanctuary."
     ],
-    overviewImage: "/assets/images/deosai-sunrise.png",
+    overviewImage: "/assets/images/deosai-sunrise.webp",
     itinerary: [
       {
         day: "Day 1",
@@ -213,9 +213,9 @@ export const expeditionsData: Record<string, Expedition> = {
       "Tips for guides and porters"
     ],
     gallery: [
-      "/assets/images/deosai-sunrise.png",
-      "/assets/images/passu-cones.png",
-      "/assets/images/snow-lake.png"
+      "/assets/images/deosai-sunrise.webp",
+      "/assets/images/passu-cones.webp",
+      "/assets/images/snow-lake.webp"
     ],
     faqs: [
       {
@@ -248,7 +248,7 @@ export const expeditionsData: Record<string, Expedition> = {
       "The trek in Tormik takes you along historical trails used by shepherds for centuries, crossing cold glacial rivers and climbing to panoramic viewpoints looking out to rugged Karakoram peaks.",
       "This journey is designed for cultural adventurers who want to experience true Balti mountain life, pristine wilderness, and complete solitude far from common tourist trails."
     ],
-    overviewImage: "/assets/images/passu-cones.png",
+    overviewImage: "/assets/images/passu-cones.webp",
     itinerary: [
       {
         day: "Day 1",
@@ -299,9 +299,9 @@ export const expeditionsData: Record<string, Expedition> = {
       "Tips for guiding and support staff"
     ],
     gallery: [
-      "/assets/images/passu-cones.png",
-      "/assets/images/k2.png",
-      "/assets/images/snow-lake.png"
+      "/assets/images/passu-cones.webp",
+      "/assets/images/k2.webp",
+      "/assets/images/snow-lake.webp"
     ],
     faqs: [
       {
@@ -330,7 +330,7 @@ export const expeditionsData: Record<string, Expedition> = {
       "The trail leads past sparkling mountain creeks and through dense woods, eventually opening up to expansive valleys with dramatic granite rock walls rising above.",
       "For hikers looking to disconnect from the modern world and sleep under unpolluted, star-studded skies, the Bilamik Valley Sanctuary is an unparalleled, quiet journey."
     ],
-    overviewImage: "/assets/images/snow-lake.png",
+    overviewImage: "/assets/images/snow-lake.webp",
     itinerary: [
       {
         day: "Day 1",
@@ -375,9 +375,9 @@ export const expeditionsData: Record<string, Expedition> = {
       "Tips and optional snacks"
     ],
     gallery: [
-      "/assets/images/snow-lake.png",
-      "/assets/images/deosai-sunrise.png",
-      "/assets/images/k2.png"
+      "/assets/images/snow-lake.webp",
+      "/assets/images/deosai-sunrise.webp",
+      "/assets/images/k2.webp"
     ],
     faqs: [
       {
@@ -406,7 +406,7 @@ export const expeditionsData: Record<string, Expedition> = {
       "Standing at the pass (4,800m), you are rewarded with unparalleled views of Haramosh Peak (7,409m), Laila Peak, and Spantik. Navigating the crevassed glacier fields requires roping up and utilizing mountaineering safety protocols.",
       "This trip is strictly suited for experienced hikers who possess excellent physical fitness and are comfortable in harsh alpine wilderness settings."
     ],
-    overviewImage: "/assets/images/k2.png",
+    overviewImage: "/assets/images/k2.webp",
     itinerary: [
       {
         day: "Day 1",
@@ -456,9 +456,9 @@ export const expeditionsData: Record<string, Expedition> = {
       "Travel/rescue insurance (evacuation cover mandatory)"
     ],
     gallery: [
-      "/assets/images/k2.png",
-      "/assets/images/snow-lake.png",
-      "/assets/images/passu-cones.png"
+      "/assets/images/k2.webp",
+      "/assets/images/snow-lake.webp",
+      "/assets/images/passu-cones.webp"
     ],
     faqs: [
       {
@@ -487,7 +487,7 @@ export const expeditionsData: Record<string, Expedition> = {
       "The trek starts from Sassi and follows a gorge trail, passing beautiful forests and traditional mud-brick settlements of the Haramosh people.",
       "With high glaciers, active wildlife, and beautiful green meadows, Kutwal Lake represents the classic Himalayan wilderness experience."
     ],
-    overviewImage: "/assets/images/destination_deosai_1783185627767.png",
+    overviewImage: "/assets/images/destination_deosai_1783185627767.webp",
     itinerary: [
       {
         day: "Day 1",
@@ -527,9 +527,9 @@ export const expeditionsData: Record<string, Expedition> = {
       "Tips for guides and porters"
     ],
     gallery: [
-      "/assets/images/deosai-sunrise.png",
-      "/assets/images/k2.png",
-      "/assets/images/passu-cones.png"
+      "/assets/images/deosai-sunrise.webp",
+      "/assets/images/k2.webp",
+      "/assets/images/passu-cones.webp"
     ],
     faqs: [
       {
@@ -558,7 +558,7 @@ export const expeditionsData: Record<string, Expedition> = {
       "The valley remains untouched by mass commercialism, preserving a clean, peaceful lifestyle with crystal streams and wild blossoms blooming in abundance.",
       "Our package combines light nature walks, traditional organic meals, and stays in beautiful wooden cottages, offering a peaceful retreat in one of the most stunning valleys in Asia."
     ],
-    overviewImage: "/assets/images/destination_fairy_meadows_1783185607151.png",
+    overviewImage: "/assets/images/destination_fairy_meadows_1783185607151.webp",
     itinerary: [
       {
         day: "Day 1",
@@ -603,9 +603,9 @@ export const expeditionsData: Record<string, Expedition> = {
       "Personal items"
     ],
     gallery: [
-      "/assets/images/destination_fairy_meadows_1783185607151.png",
-      "/assets/images/deosai-sunrise.png",
-      "/assets/images/attabad-lake.png"
+      "/assets/images/destination_fairy_meadows_1783185607151.webp",
+      "/assets/images/deosai-sunrise.webp",
+      "/assets/images/attabad-lake.webp"
     ],
     faqs: [
       {
@@ -634,7 +634,7 @@ export const expeditionsData: Record<string, Expedition> = {
       "The valley is a natural spectacle of green hills, winding streams, and snow-dusted peaks, providing an idyllic setting for glamping and photography.",
       "We set up premium camps right on the banks of Rainbow Lake, allowing you to wake up to misty mountains reflecting on the emerald water."
     ],
-    overviewImage: "/assets/images/destination_attabad_lake_1783185617186.png",
+    overviewImage: "/assets/images/destination_attabad_lake_1783185617186.webp",
     itinerary: [
       {
         day: "Day 1",
@@ -673,9 +673,9 @@ export const expeditionsData: Record<string, Expedition> = {
       "Tips and personal expenses"
     ],
     gallery: [
-      "/assets/images/attabad-lake.png",
-      "/assets/images/deosai-sunrise.png",
-      "/assets/images/k2.png"
+      "/assets/images/attabad-lake.webp",
+      "/assets/images/deosai-sunrise.webp",
+      "/assets/images/k2.webp"
     ],
     faqs: [
       {
@@ -704,7 +704,7 @@ export const expeditionsData: Record<string, Expedition> = {
       "Trek down onto the glacier moraine, meet the welcoming Nagar community, and look up to Golden Peak (Spantik) and Bawalter Peak rising in the background.",
       "With fruit blossoms in spring, rich golden foliage in autumn, and active glacier routes, Hoper Valley represents one of the most accessible and culturally rich adventures in Nagar."
     ],
-    overviewImage: "/assets/images/hunza.png",
+    overviewImage: "/assets/images/hunza.webp",
     itinerary: [
       {
         day: "Day 1",
@@ -738,9 +738,9 @@ export const expeditionsData: Record<string, Expedition> = {
       "Tips and personal incidentals"
     ],
     gallery: [
-      "/assets/images/hunza.png",
-      "/assets/images/passu-cones.png",
-      "/assets/images/deosai-sunrise.png"
+      "/assets/images/hunza.webp",
+      "/assets/images/passu-cones.webp",
+      "/assets/images/deosai-sunrise.webp"
     ],
     faqs: [
       {
