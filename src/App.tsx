@@ -1,4 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -244,6 +245,7 @@ export default function App() {
       <Suspense fallback={null}>
         {renderRoute()}
       </Suspense>
+      <SpeedInsights />
     </div>
   );
 }
