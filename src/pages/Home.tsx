@@ -203,23 +203,36 @@ export default function Home() {
 
 <section className="featured-trips" id="expeditions">
     <div className="container">
-                </h2>
-
+        
+        <div className="featured-trips__top">
+            <div className="featured-trips__title-area">
+                <span className="section-tag">POPULAR JOURNEYS</span>
+                <h2 className="section-title">FEATURED EXPEDITIONS</h2>
             </div>
 
             <a href="/expeditions" className="featured-trips__view-all">
                 Explore All Expeditions
                 <i className="ri-arrow-right-line"></i>
             </a>
-
         </div>
 
-
-        
-
         <div className="featured-trips__slider-wrapper">
-            <button className="slider-btn slider-btn--absolute slider-btn--prev" id="featuredTripsPrev" aria-label="Previous featured expedition"><i className="ri-arrow-left-line"></i></button>
-            <button className="slider-btn slider-btn--absolute slider-btn--next" id="featuredTripsNext" aria-label="Next featured expedition"><i className="ri-arrow-right-line"></i></button>
+            <button
+              className="slider-btn slider-btn--absolute slider-btn--prev"
+              id="featuredTripsPrev"
+              aria-label="Previous featured expedition"
+              onClick={() => scrollFeaturedTrips('left')}
+            >
+              <i className="ri-arrow-left-line"></i>
+            </button>
+            <button
+              className="slider-btn slider-btn--absolute slider-btn--next"
+              id="featuredTripsNext"
+              aria-label="Next featured expedition"
+              onClick={() => scrollFeaturedTrips('right')}
+            >
+              <i className="ri-arrow-right-line"></i>
+            </button>
 
             <div className="featured-trips__slider">
 
