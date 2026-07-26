@@ -168,7 +168,8 @@ ul{
 
 .hero{
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     overflow: hidden;
     background: url('/assets/images/k2.webp') center center / cover no-repeat;
 }
@@ -202,13 +203,14 @@ ul{
     position: relative;
     z-index: 2;
 
-    height: 100%;
+    min-height: 100vh;
+    height: auto;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    padding: 140px 100px 40px;
+    padding: 140px 100px 160px;
 }
 
 .hero__content{

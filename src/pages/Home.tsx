@@ -166,7 +166,7 @@ export default function Home() {
                     </a>
 
                     <a 
-                        className="hero__btn hero__btn--outline"
+                        className="hero__btn hero__btn--secondary"
                         href="/contact">
                         Plan Your Journey
                     </a>
