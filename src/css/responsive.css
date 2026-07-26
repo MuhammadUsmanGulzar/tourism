@@ -165,7 +165,7 @@ a,
         align-items: center;
         gap: 20px;
         padding: 16px 24px;
-        margin: 35px auto auto;
+        margin: 45px auto auto;
         max-width: 700px;
         width: 100%;
         background: rgba(0, 0, 0, 0.55);
@@ -333,7 +333,7 @@ a,
 
     .hero__stats {
         position: relative !important;
-        margin: 15px auto 0 !important;
+        margin: 45px auto 0 !important;
         max-width: 100% !important;
         width: 100% !important;
         padding: 14px 10px !important;
@@ -393,10 +393,11 @@ a,
         right: -8px !important;
     }
 
-    .featured-trips__top {
+    .featured-trips__header {
+        display: flex !important;
         flex-direction: column !important;
         align-items: flex-start !important;
-        gap: 15px !important;
+        gap: 20px !important;
     }
 
     .trip-card {

@@ -204,7 +204,7 @@ export default function Home() {
 <section className="featured-trips" id="expeditions">
     <div className="container">
         
-        <div className="featured-trips__top">
+        <div className="featured-trips__header">
             <div className="featured-trips__title-area">
                 <span className="section-tag">POPULAR JOURNEYS</span>
                 <h2 className="section-title">FEATURED EXPEDITIONS</h2>
