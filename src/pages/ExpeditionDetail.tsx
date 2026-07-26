@@ -22,14 +22,21 @@ export default function ExpeditionDetail() {
     setHeroLoaded(true);
     
     // Navbar scroll behavior
+    let ticking = false;
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (window.scrollY > 50) {
+            setScrolled(true);
+          } else {
+            setScrolled(false);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', handleScroll);

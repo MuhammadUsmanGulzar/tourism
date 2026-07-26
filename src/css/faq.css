@@ -11,7 +11,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --primary-color: #c77838;
+    --primary-color: #92440c;
     --white: #ffffff;
 }
 
@@ -349,7 +349,8 @@ ul { list-style: none; }
     color: #111;
 }
 
-.faq-item__question h3 {
+.faq-item__question h3,
+.faq-item__question span {
     font-size: 1.1rem;
     font-weight: 600;
     padding-right: 20px;

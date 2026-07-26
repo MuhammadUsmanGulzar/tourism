@@ -41,7 +41,7 @@ ul{
 }
 
 :root{
-    --primary-color: #a85312;
+    --primary-color: #92440c;
     --white: #ffffff;
 }
 
@@ -446,7 +446,7 @@ ul{
     align-items: center;
     gap: 15px;
 
-    color: #a85312;
+    color: var(--primary-color);
 
     text-transform: uppercase;
 
@@ -463,7 +463,7 @@ ul{
     display: block;
     width: 40px;
     height: 1px;
-    background-color: #d17a33;
+    background-color: var(--primary-color);
 }
 
 

@@ -127,7 +127,7 @@ export default function Faq() {
                 <div className="faq-list">
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>What is the best time to visit Northern Pakistan?</h3>
+                            <span>What is the best time to visit Northern Pakistan?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -136,7 +136,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>Do I need a visa to visit Pakistan?</h3>
+                            <span>Do I need a visa to visit Pakistan?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -145,7 +145,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>How many days should I plan for my trip?</h3>
+                            <span>How many days should I plan for my trip?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -154,7 +154,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>Can I customize my itinerary?</h3>
+                            <span>Can I customize my itinerary?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -173,7 +173,7 @@ export default function Faq() {
                 <div className="faq-list">
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>How physically demanding are your expeditions?</h3>
+                            <span>How physically demanding are your expeditions?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -182,7 +182,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>Do I need previous trekking experience?</h3>
+                            <span>Do I need previous trekking experience?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -191,7 +191,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>What equipment should I bring?</h3>
+                            <span>What equipment should I bring?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -200,7 +200,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>Are permits included in the packages?</h3>
+                            <span>Are permits included in the packages?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -219,7 +219,7 @@ export default function Faq() {
                 <div className="faq-list">
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>How safe is travel in Gilgit-Baltistan?</h3>
+                            <span>How safe is travel in Gilgit-Baltistan?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -228,7 +228,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>Do you provide emergency support?</h3>
+                            <span>Do you provide emergency support?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -237,7 +237,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>Is travel insurance required?</h3>
+                            <span>Is travel insurance required?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -246,7 +246,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>Who leads the expeditions?</h3>
+                            <span>Who leads the expeditions?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -265,7 +265,7 @@ export default function Faq() {
                 <div className="faq-list">
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>How do I reserve a trip?</h3>
+                            <span>How do I reserve a trip?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -274,7 +274,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>What payment methods do you accept?</h3>
+                            <span>What payment methods do you accept?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -283,7 +283,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>What is your cancellation policy?</h3>
+                            <span>What is your cancellation policy?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -292,7 +292,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>Do you offer group discounts?</h3>
+                            <span>Do you offer group discounts?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -311,7 +311,7 @@ export default function Faq() {
                 <div className="faq-list">
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>Can families book private tours?</h3>
+                            <span>Can families book private tours?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -320,7 +320,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>Do you organize photography expeditions?</h3>
+                            <span>Do you organize photography expeditions?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -329,7 +329,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>Can luxury itineraries be arranged?</h3>
+                            <span>Can luxury itineraries be arranged?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">
@@ -338,7 +338,7 @@ export default function Faq() {
                     </div>
                     <div className="faq-item">
                         <button className="faq-item__question">
-                            <h3>Are cultural experiences available?</h3>
+                            <span>Are cultural experiences available?</span>
                             <i className="ri-arrow-down-s-line"></i>
                         </button>
                         <div className="faq-item__answer">

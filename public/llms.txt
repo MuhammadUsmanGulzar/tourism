@@ -2,20 +2,26 @@
 
 > Broad Peak Adventures is a premier, 100% locally-owned mountaineering agency and tour operator based in Skardu, Gilgit-Baltistan, Pakistan. We specialize in high-altitude Karakoram expeditions, K2 Base Camp trekking, cultural tours, and custom private travel.
 
-## Core Expeditions & Treks
+## Key Pages & Documentation
 
-- **K2 Base Camp Trek**: 21 Days, Extreme (5,585m max altitude). Concordia, Baltoro Glacier, K2 Base Camp, Broad Peak Base Camp. Starting at $2,850.
-- **Attabad Lake & Hunza Explorer**: 7 Days, Moderate (2,500m max altitude). Attabad Lake, Baltit Fort, Passu Cones, Rakaposhi Viewpoint. Starting at $1,200.
-- **Fairy Meadows & Nanga Parbat Base Camp**: 8 Days, Moderate-Hard (3,300m max altitude). Fairy Meadows, Raikot Glacier, Nanga Parbat View. Starting at $1,150.
-- **Deosai Plains & Skardu Valley**: 6 Days, Easy-Moderate (4,114m max altitude). Deosai National Park, Sheosar Lake, Shangrila Resort, Shigar Fort. Starting at $980.
+- [Home](https://tourism-eight-pearl-vercel-app.vercel.app/): Overview of Broad Peak Adventures, featured expeditions, and safety standards.
+- [Expeditions](https://tourism-eight-pearl-vercel-app.vercel.app/expeditions): Full catalog of high-altitude treks, peak climbing expeditions, and cultural tours.
+- [K2 Base Camp Trek](https://tourism-eight-pearl-vercel-app.vercel.app/expedition-detail?id=k2): 21-day extreme Karakoram trek to Concordia and K2 Base Camp.
+- [Travel Guides](https://tourism-eight-pearl-vercel-app.vercel.app/travel-guides): Expert advice, logistics, gear lists, and visa guidance for Northern Pakistan.
+- [Blog & Articles](https://tourism-eight-pearl-vercel-app.vercel.app/blog): Trekking journals, expedition stories, and seasonal travel advice.
+- [About Us](https://tourism-eight-pearl-vercel-app.vercel.app/about): Company history, local guide expertise, sustainability principles, and safety protocols.
+- [Contact & Inquiries](https://tourism-eight-pearl-vercel-app.vercel.app/contact): Custom trip planning form and instant WhatsApp booking options.
+- [FAQ](https://tourism-eight-pearl-vercel-app.vercel.app/faq): Answers regarding visas, NOC permits, fitness requirements, and payment policies.
 
-## Travel Information & Permits
-- **Visas**: E-Visa required for international tourists. LOI (Letter of Invitation) provided for all confirmed bookings.
-- **Permits**: NOCs, National Park fees, and trekking royalties handled 100% by Broad Peak Adventures.
-- **Safety**: Licensed local mountain guides, satellite phone support on remote routes, and Askari Aviation helicopter evacuation clearance.
+## Core Expeditions
 
-## Contact & Inquiries
-- **Official Website**: https://tourism-eight-pearl-vercel-app.vercel.app
-- **WhatsApp**: +92 300 1234567
-- **Email**: info@broadpeakadventures.com
-- **Office**: Skardu, Gilgit-Baltistan, Pakistan
+- [K2 Base Camp Trek](https://tourism-eight-pearl-vercel-app.vercel.app/expedition-detail?id=k2): 21 Days | 5,585m Max Alt | Extreme | $2,850
+- [Attabad Lake & Hunza Explorer](https://tourism-eight-pearl-vercel-app.vercel.app/expedition-detail?id=attabad-lake): 7 Days | 2,500m Max Alt | Moderate | $1,200
+- [Fairy Meadows & Nanga Parbat](https://tourism-eight-pearl-vercel-app.vercel.app/expedition-detail?id=fairy-meadows): 8 Days | 3,300m Max Alt | Moderate-Hard | $1,150
+- [Deosai Plains & Skardu](https://tourism-eight-pearl-vercel-app.vercel.app/expedition-detail?id=deosai-sunrise): 6 Days | 4,114m Max Alt | Easy-Moderate | $980
+
+## Optional
+
+- [Full Documentation](https://tourism-eight-pearl-vercel-app.vercel.app/llms-full.txt): Extended technical details, full expedition lists, and API specs.
+- [Privacy Policy](https://tourism-eight-pearl-vercel-app.vercel.app/privacy): Data safety and privacy commitments.
+- [Terms & Conditions](https://tourism-eight-pearl-vercel-app.vercel.app/terms): Terms of booking and cancellation policies.

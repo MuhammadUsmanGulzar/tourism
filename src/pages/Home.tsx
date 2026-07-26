@@ -14,17 +14,24 @@ export default function Home() {
     window.scrollTo(0, 0);
     
     // --- Navbar scroll behavior ---
+    let ticking = false;
     const handleScroll = () => {
-      const header = document.querySelector('.header');
-      if (header) {
-        if (window.scrollY > 50) {
-          header.classList.add('header--scrolled');
-        } else {
-          header.classList.remove('header--scrolled');
-        }
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const header = document.querySelector('.header');
+          if (header) {
+            if (window.scrollY > 50) {
+              header.classList.add('header--scrolled');
+            } else {
+              header.classList.remove('header--scrolled');
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     // --- Mobile menu ---
     const hamburger = document.querySelector('#hamburger-menu, .navbar__hamburger');
@@ -332,25 +339,25 @@ export default function Home() {
                 
                 <div className="who-we-are__feature">
                     <i className="ri-compass-3-line feature-icon"></i>
-                    <h4>LOCAL EXPERTISE</h4>
+                    <h3>LOCAL EXPERTISE</h3>
                     <p>Deep roots and unmatched local knowledge across Gilgit-Baltistan.</p>
                 </div>
 
                 <div className="who-we-are__feature">
                     <i className="ri-user-star-line feature-icon"></i>
-                    <h4>EXPERIENCED GUIDES</h4>
+                    <h3>EXPERIENCED GUIDES</h3>
                     <p>Decades of high-altitude mountain and trekking experience.</p>
                 </div>
 
                 <div className="who-we-are__feature">
                     <i className="ri-fire-line feature-icon"></i>
-                    <h4>AUTHENTIC EXPERIENCES</h4>
+                    <h3>AUTHENTIC EXPERIENCES</h3>
                     <p>Genuine cultural immersion and deep local connections.</p>
                 </div>
 
                 <div className="who-we-are__feature">
                     <i className="ri-shield-check-line feature-icon"></i>
-                    <h4>SAFETY FIRST</h4>
+                    <h3>SAFETY FIRST</h3>
                     <p>Meticulous logistics with full contingency planning and emergency protocols.</p>
                 </div>
 

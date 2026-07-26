@@ -1,50 +1,32 @@
-# Broad Peak Adventures - Full Documentation for AI Agents
+# Broad Peak Adventures - Full Documentation
 
-## Overview
+> Complete guide, technical architecture, expedition index, and travel specifications for Broad Peak Adventures.
+
+## Company Overview
+
 Broad Peak Adventures is a fully registered, licensed mountaineering and trekking organization operating out of Skardu, Gilgit-Baltistan, Pakistan. The organization provides complete logistical, permit, and guide support for mountaineering expeditions across the Karakoram, Himalaya, and Hindu Kush ranges.
 
-## Expeditions & Pricing
-1. K2 Base Camp & Concordia Trek (ID: `k2`)
-   - Duration: 21 Days
-   - Difficulty: Extreme
-   - Altitude: 5,585m (Gondogoro La optional)
-   - Season: June to August
-   - Price: $2,850 per person
+## Expeditions & Pricing Index
 
-2. Attabad Lake & Hunza Explorer (ID: `attabad-lake`)
-   - Duration: 7 Days
-   - Difficulty: Moderate
-   - Altitude: 2,500m
-   - Season: April to October
-   - Price: $1,200 per person
-
-3. Fairy Meadows & Nanga Parbat Base Camp (ID: `fairy-meadows`)
-   - Duration: 8 Days
-   - Difficulty: Moderate-Hard
-   - Altitude: 3,300m
-   - Season: May to September
-   - Price: $1,150 per person
-
-4. Deosai Plains & Skardu Valley (ID: `deosai-sunrise`)
-   - Duration: 6 Days
-   - Difficulty: Easy-Moderate
-   - Altitude: 4,114m
-   - Season: June to September
-   - Price: $980 per person
+- [K2 Base Camp & Concordia Trek](https://tourism-eight-pearl-vercel-app.vercel.app/expedition-detail?id=k2): 21 Days | Extreme | 5,585m Max Alt | June - August | $2,850/person
+- [Attabad Lake & Hunza Explorer](https://tourism-eight-pearl-vercel-app.vercel.app/expedition-detail?id=attabad-lake): 7 Days | Moderate | 2,500m Max Alt | April - October | $1,200/person
+- [Fairy Meadows & Nanga Parbat](https://tourism-eight-pearl-vercel-app.vercel.app/expedition-detail?id=fairy-meadows): 8 Days | Moderate-Hard | 3,300m Max Alt | May - September | $1,150/person
+- [Deosai Plains & Skardu Valley](https://tourism-eight-pearl-vercel-app.vercel.app/expedition-detail?id=deosai-sunrise): 6 Days | Easy-Moderate | 4,114m Max Alt | June - September | $980/person
 
 ## Web Application Navigation & Endpoints
-- `/` - Home Page & Featured Expeditions
-- `/expeditions` - Full List of Available Expeditions
-- `/expedition-detail?id={id}` - Detailed Itinerary, Inclusions, and Booking
-- `/blog` - Mountain Travel Insights & Packing Guides
-- `/travel-guides` - In-Depth Region Guides (Hunza, Skardu, Fairy Meadows)
-- `/about` - Agency History, Safety Commitment, and Team Info
-- `/contact` - Booking Inquiry Form with n8n Webhook Integration
-- `/faq` - Frequently Asked Questions
-- `/privacy` - Data Privacy Policy
-- `/terms` - Terms & Conditions
+
+- [Home](https://tourism-eight-pearl-vercel-app.vercel.app/): Home Page & Featured Expeditions
+- [Expeditions Catalog](https://tourism-eight-pearl-vercel-app.vercel.app/expeditions): Full List of Available Expeditions
+- [Blog & Articles](https://tourism-eight-pearl-vercel-app.vercel.app/blog): Mountain Travel Insights & Packing Guides
+- [Travel Guides](https://tourism-eight-pearl-vercel-app.vercel.app/travel-guides): In-Depth Region Guides (Hunza, Skardu, Fairy Meadows)
+- [About Us](https://tourism-eight-pearl-vercel-app.vercel.app/about): Agency History, Safety Commitment, and Team Info
+- [Contact Form](https://tourism-eight-pearl-vercel-app.vercel.app/contact): Booking Inquiry Form with n8n Webhook Integration
+- [FAQ](https://tourism-eight-pearl-vercel-app.vercel.app/faq): Frequently Asked Questions
+- [Privacy Policy](https://tourism-eight-pearl-vercel-app.vercel.app/privacy): Data Privacy Policy
+- [Terms & Conditions](https://tourism-eight-pearl-vercel-app.vercel.app/terms): Terms & Conditions
 
 ## Technical Architecture
-- SPA Built with React 19, Vite, TypeScript, Vanilla CSS.
-- Non-blocking asynchronous n8n webhook API endpoints for inquiries and newsletter subscriptions.
-- 100% Core Web Vitals optimized, zero render-blocking CSS, pre-compressed WebP media assets.
+
+- SPA built with React 19, Vite, TypeScript, and modular Vanilla CSS.
+- Asynchronous non-blocking n8n webhook API endpoints for inquiry dispatch and newsletter processing.
+- Core Web Vitals optimized, zero render-blocking CSS, pre-compressed WebP media assets.
