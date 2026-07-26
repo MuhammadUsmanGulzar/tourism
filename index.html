@@ -13,12 +13,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Remix Icons (Async load to prevent render-blocking) -->
-    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" onload="this.onload=null;this.rel='stylesheet'" />
+    <!-- Remix Icons (Non-render-blocking async load) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"></noscript>
 
-    <!-- Google Fonts (Combined async load with display=swap) -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <!-- Google Fonts (Non-render-blocking async load with display=swap) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet"></noscript>
   </head>
   <body>
