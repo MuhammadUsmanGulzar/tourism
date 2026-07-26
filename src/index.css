@@ -1,3 +1,20 @@
 @import "tailwindcss";
 @import "./css/animations.css";
 @import "./css/responsive.css";
+
+/* Ensure text remains visible during webfont load (font-display: swap) */
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/bebasneue/v14/5JS9ZUtLxyb0xNi4TDU_a5Kc.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/inter/v18/UcbC4F4l4232U34U0t4.woff2') format('woff2');
+}
