@@ -127,26 +127,6 @@ export default function Home() {
     
 
     <section className="hero" id="home">
-
-        {!isMobile && (
-          <video
-              className="hero__video"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="/assets/images/k2.webp"
-              preload="metadata"
-          >
-              <source
-                  src="/assets/videos/k2-cinematic.mp4"
-                  type="video/mp4"
-               />
-          </video>
-        )}
-
-   
-
         <div className="hero__overlay"></div>
 
 
