@@ -125,7 +125,7 @@ export default function About() {
                     <p className="abt-who__desc">We believe that travel has the power to bridge worlds. Our goal is to craft itineraries that go beyond simple sightseeing, offering deep physical, emotional, and cultural engagement with these raw and holy mountain peaks.</p>
                 </div>
                 <div className="abt-who__media">
-                    <img src="/assets/images/who-we-are-main.webp" alt="Broad Peak guides team" loading="lazy" referrerPolicy="no-referrer" />
+                    <img src="/assets/images/who-we-are-main.webp" alt="Broad Peak guides team" width="600" height="400" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                 </div>
             </div>
         </div>
@@ -225,7 +225,7 @@ export default function About() {
         <div className="abt-container">
             <div className="abt-safety__inner">
                 <div className="abt-safety__media">
-                    <img src="/assets/images/travel-tent.webp" alt="High-altitude camping setup" loading="lazy" referrerPolicy="no-referrer" />
+                    <img src="/assets/images/travel-tent.webp" alt="High-altitude camping setup" width="600" height="400" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                 </div>
                 <div className="abt-safety__text">
                     <span className="abt-section-tag">TRAVEL ETHICS</span>

@@ -4,31 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Broad Peak Adventures</title>
+    <!-- Preload Hero Image for instant FCP / LCP -->
+    <link rel="preload" as="image" href="/assets/images/k2.webp" type="image/webp" fetchpriority="high" />
+
     <!-- DNS Prefetch & Preconnect for CDNs -->
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Remix Icons -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
-        rel="stylesheet"
-    >
+    <!-- Remix Icons (Async load to prevent render-blocking) -->
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"></noscript>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts (Combined async load with display=swap) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet"></noscript>
   </head>
   <body>
     <div id="root"></div>
 
-    <!-- GSAP & Animation Libraries (deferred to prevent render-blocking) -->
-    <script src="/libraries/gsap.min.js" defer></script>
-    <script src="/libraries/ScrollTrigger.min.js" defer></script>
-    <script src="/js/main.js" defer></script>
-    <script src="/js/animations.js" defer></script>
-
     <!-- Main React Entry Point -->
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Lightweight UI scripts -->
+    <script src="/js/main.js" defer></script>
+    <script src="/js/animations.js" defer></script>
   </body>
 </html>

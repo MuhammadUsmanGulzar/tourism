@@ -191,7 +191,7 @@ export default function TravelGuides() {
                 <div className="tg-featured__inner">
                     <div className="tg-featured__image">
                         <a href={`/blog-post?id=${featuredPost.id}`}>
-                            <img src={featuredPost.bgImage} alt={featuredPost.title} loading="lazy" referrerPolicy="no-referrer" />
+                            <img src={featuredPost.bgImage} alt={featuredPost.title} width="600" height="400" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                         </a>
                     </div>
                     <div className="tg-featured__content">
@@ -226,7 +226,7 @@ export default function TravelGuides() {
                         <article className="tg-card" key={post.id}>
                             <div className="tg-card__image">
                                 <a href={`/blog-post?id=${post.id}`}>
-                                    <img src={post.bgImage} alt={post.title} loading="lazy" referrerPolicy="no-referrer" />
+                                    <img src={post.bgImage} alt={post.title} width="400" height="260" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                                 </a>
                             </div>
                             <div className="tg-card__body">
@@ -307,7 +307,7 @@ export default function TravelGuides() {
                     <p className="tg-insights__desc">We are committed to sharing this local wisdom. Through our editorial team of guides, cooks, and porters, we catalog ancestral weather tracking styles, historical routes, balti culinary choices, and local traditions to prepare you mentally and physically for the Karakoram.</p>
                 </div>
                 <div className="tg-insights__media">
-                    <img src="/assets/images/who-we-are-small.webp" alt="Balti guide standing in mountains" loading="lazy" referrerPolicy="no-referrer" />
+                    <img src="/assets/images/who-we-are-small.webp" alt="Balti guide standing in mountains" width="300" height="250" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                 </div>
             </div>
         </div>

@@ -171,7 +171,7 @@ export default function BlogPost() {
 
                 {section.image && (
                   <div className="post-image-break" style={{ marginTop: '35px', marginBottom: '35px' }}>
-                    <img src={section.image} alt={section.imageCaption || "Expedition visual"} loading="lazy" referrerPolicy="no-referrer" />
+                    <img src={section.image} alt={section.imageCaption || "Expedition visual"} width="700" height="450" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                     {section.imageCaption && <span className="image-caption">{section.imageCaption}</span>}
                   </div>
                 )}
@@ -181,7 +181,7 @@ export default function BlogPost() {
             
             <div className="author-box">
                 <div className="author-box__image">
-                    <img src="/assets/images/who-we-are-small.webp" alt="Broad Peak Team" loading="lazy" referrerPolicy="no-referrer" />
+                    <img src="/assets/images/who-we-are-small.webp" alt="Broad Peak Team" width="100" height="100" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                 </div>
                 <div className="author-box__content">
                     <h3>Broad Peak Expedition Team</h3>
@@ -202,7 +202,7 @@ export default function BlogPost() {
                   <article className="related-card" key={rel.id}>
                       <div className="related-card__image">
                           <a href={`/blog-post?id=${rel.id}`}>
-                              <img src={rel.bgImage} alt={rel.title} loading="lazy" referrerPolicy="no-referrer" />
+                              <img src={rel.bgImage} alt={rel.title} width="350" height="230" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                           </a>
                       </div>
                       <div className="related-card__body">

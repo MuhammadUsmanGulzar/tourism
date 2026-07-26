@@ -1,7 +1,7 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
@@ -14,8 +14,12 @@ export default defineConfig(() => {
     build: {
       target: 'es2020',
       cssCodeSplit: true,
-      minify: 'esbuild' as const,
-
+      cssMinify: true,
+      assetsInlineLimit: 4096,
+      minify: 'esbuild',
+      esbuild: {
+        drop: ['console', 'debugger'],
+      },
       rollupOptions: {
         output: {
           manualChunks: {

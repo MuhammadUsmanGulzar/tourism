@@ -189,7 +189,7 @@ export default function Blog() {
                         <div className="blog-featured__inner">
                             <div className="blog-featured__image">
                                 <a href={`/blog-post?id=${featuredPost.id}`}>
-                                    <img src={featuredPost.bgImage} alt={featuredPost.title} loading="lazy" referrerPolicy="no-referrer" />
+                                    <img src={featuredPost.bgImage} alt={featuredPost.title} width="600" height="400" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                                 </a>
                             </div>
                             <div className="blog-featured__content">
@@ -224,7 +224,7 @@ export default function Blog() {
                         <article className="blog-card" key={post.id}>
                             <div className="blog-card__image">
                                 <a href={`/blog-post?id=${post.id}`}>
-                                    <img src={post.bgImage} alt={post.title} loading="lazy" referrerPolicy="no-referrer" />
+                                    <img src={post.bgImage} alt={post.title} width="400" height="260" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                                 </a>
                             </div>
                             <div className="blog-card__body">

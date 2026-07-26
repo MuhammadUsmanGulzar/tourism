@@ -143,7 +143,7 @@ export default function Expeditions() {
                     <article className="exp-card" key={exp.id}>
                         <div className="exp-card__image">
                             <a href={`/expedition-detail?id=${exp.id}`}>
-                                <img src={exp.gallery[0] || "/assets/images/k2.webp"} alt={exp.title} loading="lazy" referrerPolicy="no-referrer" />
+                                <img src={exp.gallery[0] || "/assets/images/k2.webp"} alt={exp.title} width="340" height="220" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                             </a>
                             <span className={`exp-card__badge exp-card__badge--${exp.difficultyClass}`}>{exp.difficulty}</span>
                         </div>

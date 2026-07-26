@@ -1,10 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import '../css/style.css';
 import '../css/responsive.css';
 import { expeditionsData } from '../data/expeditionsData';
 
 export default function Home() {
+  const [isMobile, setIsMobile] = useState<boolean>(() => typeof window !== 'undefined' && window.innerWidth <= 768);
+
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener('resize', handleResize);
     window.scrollTo(0, 0);
     
     // --- Navbar scroll behavior ---
@@ -49,6 +55,7 @@ export default function Home() {
     }
 
     return () => {
+      window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
       hamburger?.removeEventListener('click', openMenu);
       menuClose?.removeEventListener('click', closeMenu);
@@ -82,7 +89,7 @@ export default function Home() {
                 <a href="/contact" className="navbar__cta">Book a Trip</a>
 
                 
-                <button className="navbar__hamburger" id="hamburger-menu">
+                <button className="navbar__hamburger" id="hamburger-menu" aria-label="Open navigation menu">
                     <i className="ri-menu-line"></i>
                 </button>
             </div>
@@ -95,7 +102,7 @@ export default function Home() {
                 <div className="navbar__logo">
                     <a href="/">BROAD PEAK</a>
                 </div>
-                <button className="mobile-menu__close" id="mobile-menu-close">
+                <button className="mobile-menu__close" id="mobile-menu-close" aria-label="Close navigation menu">
                     <i className="ri-close-line"></i>
                 </button>
             </div>
@@ -114,19 +121,22 @@ export default function Home() {
 
     <section className="hero" id="home">
 
-        <video
-            className="hero__video"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster="/assets/images/k2.webp"
-        >
-            <source
-                src="/assets/videos/k2-cinematic.mp4"
-                type="video/mp4"
-             />
-        </video>
+        {!isMobile && (
+          <video
+              className="hero__video"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/assets/images/k2.webp"
+              preload="metadata"
+          >
+              <source
+                  src="/assets/videos/k2-cinematic.mp4"
+                  type="video/mp4"
+               />
+          </video>
+        )}
 
    
 
@@ -240,6 +250,10 @@ export default function Home() {
                         <img
                             src={exp.gallery[0] || "/assets/images/k2.webp"}
                             alt={exp.title}
+                            width="310"
+                            height="210"
+                            loading="lazy"
+                            decoding="async"
                             referrerPolicy="no-referrer"
                          />
                         <div className="trip-card__altitude">
@@ -301,8 +315,8 @@ export default function Home() {
         
         <div className="who-we-are__images">
             <div className="who-we-are__badge"><span>2021</span><span>EST</span></div>
-            <img src="/assets/images/who-we-are-main.webp" alt="Hunza Valley Morning" className="who-we-are__img-main" loading="lazy" referrerPolicy="no-referrer" />
-            <img src="/assets/images/who-we-are-small.webp" alt="Mountain Tea" className="who-we-are__img-small" loading="lazy" referrerPolicy="no-referrer" />
+            <img src="/assets/images/who-we-are-main.webp" alt="Hunza Valley Morning" className="who-we-are__img-main" width="600" height="400" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
+            <img src="/assets/images/who-we-are-small.webp" alt="Mountain Tea" className="who-we-are__img-small" width="300" height="250" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
         </div>
 
         
@@ -565,7 +579,7 @@ export default function Home() {
             
             
             <a href="/travel-guides" className="insight-card insight-card--large">
-                <img src="/assets/images/article_k2_guide_1783186031585.webp" alt="K2 Base Camp Guide" className="insight-card__image" referrerPolicy="no-referrer" />
+                <img src="/assets/images/article_k2_guide_1783186031585.webp" alt="K2 Base Camp Guide" className="insight-card__image" width="600" height="400" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                 <div className="insight-card__overlay"></div>
                 <div className="insight-card__content">
                     <span className="insight-card__category">TRAVEL GUIDE</span>
@@ -582,7 +596,7 @@ export default function Home() {
             <div className="travel-insights__stack">
                 
                 <a href="/blog-post?id=visa-logistics" className="insight-card insight-card--small">
-                    <img src="/assets/images/article_visa_logistics_1783186040279.webp" alt="Visa Logistics" className="insight-card__image" referrerPolicy="no-referrer" />
+                    <img src="/assets/images/article_visa_logistics_1783186040279.webp" alt="Visa Logistics" className="insight-card__image" width="400" height="250" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                     <div className="insight-card__overlay"></div>
                     <div className="insight-card__content">
                         <span className="insight-card__category">TRAVEL LOGISTICS</span>
@@ -596,7 +610,7 @@ export default function Home() {
                 </a>
 
                 <a href="/blog-post?id=snow-lake" className="insight-card insight-card--small">
-                    <img src="/assets/images/article_snow_lake_1783186049575.webp" alt="Snow Lake Trek" className="insight-card__image" referrerPolicy="no-referrer" />
+                    <img src="/assets/images/article_snow_lake_1783186049575.webp" alt="Snow Lake Trek" className="insight-card__image" width="400" height="250" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                     <div className="insight-card__overlay"></div>
                     <div className="insight-card__content">
                         <span className="insight-card__category">TREKKING & EXPEDITIONS</span>
