@@ -77,8 +77,6 @@ export default function TravelGuides() {
             </ul>
 
             <div className="navbar__actions">
-                <a href="#" className="navbar__social"><i className="ri-instagram-line"></i></a>
-                <a href="#" className="navbar__social"><i className="ri-facebook-fill"></i></a>
                 <a href="/contact" className="navbar__cta">Book a Trip</a>
                 <button className="navbar__hamburger" id="tg-hamburger">
                     <i className="ri-menu-line"></i>
@@ -240,7 +238,7 @@ export default function TravelGuides() {
                     <p className="tg-insights__desc">We are committed to sharing this local wisdom. Through our editorial team of guides, cooks, and porters, we catalog ancestral weather tracking styles, historical routes, balti culinary choices, and local traditions to prepare you mentally and physically for the Karakoram.</p>
                 </div>
                 <div className="tg-insights__media">
-                    <img src="/assets/images/who-we-are-small.png" alt="Balti guide standing in mountains" loading="lazy" referrerPolicy="no-referrer" />
+                    <img src="/assets/images/who-we-are-small.webp" alt="Balti guide standing in mountains" loading="lazy" referrerPolicy="no-referrer" />
                 </div>
             </div>
         </div>
@@ -253,7 +251,7 @@ export default function TravelGuides() {
                 <h2 className="tg-newsletter__title">GET EXPEDITION INSIGHTS</h2>
                 <p className="tg-newsletter__desc">Receive trekking guides, seasonal advice, route updates, and travel inspiration.</p>
                 
-                <form className="tg-newsletter__form" onsubmit="event.preventDefault(); alert('Successfully subscribed to insights!');">
+                <form className="tg-newsletter__form" onSubmit={(e) => { e.preventDefault(); alert('Successfully subscribed to insights!'); }}>
                     <input type="email" placeholder="Your email address" required />
                     <button type="submit">SUBSCRIBE</button>
                 </form>
@@ -288,9 +286,7 @@ export default function TravelGuides() {
                 <h3 className="footer__logo">BROAD PEAK</h3>
                 <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
                 <div className="footer__socials">
-                    <a href="#"><i className="ri-instagram-line"></i></a>
-                    <a href="#"><i className="ri-facebook-fill"></i></a>
-                    <a href="#"><i className="ri-whatsapp-line"></i></a>
+                    <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer"><i className="ri-whatsapp-line"></i></a>
                 </div>
             </div>
 

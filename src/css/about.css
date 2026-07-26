@@ -207,7 +207,7 @@ ul { list-style: none; }
 .abt-hero__bg {
     position: absolute;
     inset: 0;
-    background-image: url('/assets/images/activity-culture.png');
+    background-image: url('/assets/images/activity-culture.webp');
     background-size: cover;
     background-position: center;
     transform: scale(1.05);
@@ -465,7 +465,7 @@ ul { list-style: none; }
 .abt-region__bg {
     position: absolute;
     inset: 0;
-    background-image: url('/assets/images/hunza.png');
+    background-image: url('/assets/images/hunza.webp');
     background-size: cover;
     background-position: center;
     z-index: 0;
@@ -565,7 +565,7 @@ ul { list-style: none; }
 .abt-cta__overlay {
     position: absolute;
     inset: 0;
-    background: url('/assets/images/cta_bg_k2_1783186976668.png') center center / cover no-repeat;
+    background: url('/assets/images/cta_bg_k2_1783186976668.webp') center center / cover no-repeat;
     opacity: 0.12;
     mix-blend-mode: multiply;
     z-index: 1;

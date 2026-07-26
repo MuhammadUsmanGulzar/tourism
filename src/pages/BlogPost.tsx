@@ -84,8 +84,6 @@ export default function BlogPost() {
             </ul>
 
             <div className="navbar__actions">
-                <a href="#" className="navbar__social"><i className="ri-instagram-line"></i></a>
-                <a href="#" className="navbar__social"><i className="ri-facebook-fill"></i></a>
                 <a href="/contact" className="navbar__cta">Book a Trip</a>
                 <button className="navbar__hamburger" id="post-hamburger">
                     <i className="ri-menu-line"></i>
@@ -181,7 +179,7 @@ export default function BlogPost() {
             
             <div className="author-box">
                 <div className="author-box__image">
-                    <img src="/assets/images/who-we-are-small.png" alt="Broad Peak Team" referrerPolicy="no-referrer" />
+                    <img src="/assets/images/who-we-are-small.webp" alt="Broad Peak Team" loading="lazy" referrerPolicy="no-referrer" />
                 </div>
                 <div className="author-box__content">
                     <h3>Broad Peak Expedition Team</h3>
@@ -247,9 +245,7 @@ export default function BlogPost() {
                 <h3 className="footer__logo"><a href="/">BROAD PEAK</a></h3>
                 <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
                 <div className="footer__socials">
-                    <a href="#"><i className="ri-instagram-line"></i></a>
-                    <a href="#"><i className="ri-facebook-fill"></i></a>
-                    <a href="#"><i className="ri-whatsapp-line"></i></a>
+                    <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer"><i className="ri-whatsapp-line"></i></a>
                 </div>
             </div>
 

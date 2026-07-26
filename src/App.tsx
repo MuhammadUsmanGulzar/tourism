@@ -34,7 +34,14 @@ export default function App() {
       if (anchor) {
         const href = anchor.getAttribute('href');
         
-        // If it starts with "#" (hash link) or is an external link, let it be
+        // Handle scroll-to-top buttons smoothly
+        if (anchor.classList.contains('scroll-to-top') || href === '#') {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+
+        // If it starts with "#" (other hash link) or is an external link, let it be
         if (!href || href.startsWith('#') || href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:') || href.startsWith('tel:')) {
           return;
         }

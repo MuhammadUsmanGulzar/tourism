@@ -164,7 +164,7 @@ ul{
     position: relative;
     height: 100vh;
     overflow: hidden;
-    background: url('/assets/images/k2.png') center center / cover no-repeat;
+    background: url('/assets/images/k2.webp') center center / cover no-repeat;
 }
 
 .hero__video{
@@ -1548,7 +1548,7 @@ ul{
 .cta-section__overlay {
     position: absolute;
     inset: 0;
-    background: url('/assets/images/cta_bg_k2_1783186976668.png') center center / cover no-repeat;
+    background: url('/assets/images/cta_bg_k2_1783186976668.webp') center center / cover no-repeat;
     opacity: 0.15;
     mix-blend-mode: multiply;
     z-index: 1;

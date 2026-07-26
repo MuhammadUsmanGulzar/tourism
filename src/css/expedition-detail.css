@@ -207,7 +207,7 @@ ul { list-style: none; }
 .expd-hero__bg {
     position: absolute;
     inset: 0;
-    background-image: url('/assets/images/k2.png');
+    background-image: url('/assets/images/k2.webp');
     background-size: cover;
     background-position: center;
     transform: scale(1.05);
@@ -867,7 +867,7 @@ ul { list-style: none; }
 .expd-cta__overlay {
     position: absolute;
     inset: 0;
-    background: url('/assets/images/cta_bg_k2_1783186976668.png') center center / cover no-repeat;
+    background: url('/assets/images/cta_bg_k2_1783186976668.webp') center center / cover no-repeat;
     opacity: 0.12;
     mix-blend-mode: multiply;
     z-index: 1;

@@ -25,7 +25,7 @@ export const blogsData: Record<string, BlogPostType> = {
     id: "k2-guide",
     category: "Expedition Planning",
     title: "K2 BASE CAMP TREK 2026: THE COMPLETE PLANNING GUIDE",
-    bgImage: "/assets/images/article_k2_guide_1783186031585.png",
+    bgImage: "/assets/images/article_k2_guide_1783186031585.webp",
     date: "17 January 2026",
     readTime: "12 min read",
     author: "Broad Peak Team",
@@ -47,7 +47,7 @@ export const blogsData: Record<string, BlogPostType> = {
           "Your training should begin at least 4 to 6 months before your departure date. Focus on cardiovascular endurance (running, cycling, or swimming for 45-60 minutes, 3-4 times a week) and strength training focused on your core, legs, and lower back.",
           "Nothing prepares you for trekking like trekking. Do long hikes (10-15km) carrying a weighted backpack (8-10kg) to simulate expedition conditions."
         ],
-        image: "/assets/images/k2.png",
+        image: "/assets/images/k2.webp",
         imageCaption: "The imposing pyramid of K2 (8,611m) viewed from Concordia."
       },
       {
@@ -90,7 +90,7 @@ export const blogsData: Record<string, BlogPostType> = {
     id: "visa-logistics",
     category: "Travel Logistics",
     title: "PAKISTAN VISA & PERMIT REQUIREMENTS: THE ULTIMATE GUIDE",
-    bgImage: "/assets/images/article_visa_logistics_1783186040279.png",
+    bgImage: "/assets/images/article_visa_logistics_1783186040279.webp",
     date: "10 July 2026",
     readTime: "5 min read",
     author: "Broad Peak Team",
@@ -125,7 +125,7 @@ export const blogsData: Record<string, BlogPostType> = {
           "The No Objection Certificate is a vital document issued by the Ministry of Interior in Islamabad. It acts as military clearance allowing foreigners to travel into areas like Baltistan and the upper Hunza Valley.",
           "Obtaining an NOC can take anywhere from 4 to 6 weeks. It is physically impossible for an independent traveler to acquire this alone. Our operations team works directly with local authorities in Skardu and Islamabad to submit your passport copies, process the application, and have the physical permit ready before you land."
         ],
-        image: "/assets/images/travel-tent.png",
+        image: "/assets/images/travel-tent.webp",
         imageCaption: "A high-altitude base camp setup, legally cleared and authorized with valid NOC documentation."
       },
       {
@@ -147,7 +147,7 @@ export const blogsData: Record<string, BlogPostType> = {
     id: "snow-lake-guide",
     category: "Expedition Planning",
     title: "SNOW LAKE TREK PREPARATION GUIDE: ACROSS THE ICE HIGHWAYS",
-    bgImage: "/assets/images/article_snow_lake_1783186049575.png",
+    bgImage: "/assets/images/article_snow_lake_1783186049575.webp",
     date: "28 June 2026",
     readTime: "8 min read",
     author: "Broad Peak Team",
@@ -179,7 +179,7 @@ export const blogsData: Record<string, BlogPostType> = {
           "The elevation gain on this trek is relentless. Starting from Skardu, we drive to Askole (3,000m) and begin a gradual, multi-day climb across the moraine.",
           "Acclimatization is built directly into our schedule with a rest day at Baintha (4,000m). From Baintha, the trail transitions from rocky moraine to flat white glacier ice, leading to the breathtaking Snow Lake base camp."
         ],
-        image: "/assets/images/snow-lake.png",
+        image: "/assets/images/snow-lake.webp",
         imageCaption: "Looking across the vast, pristine snowy expanse of Snow Lake at sunrise."
       },
       {
@@ -195,7 +195,7 @@ export const blogsData: Record<string, BlogPostType> = {
     id: "best-time-hunza",
     category: "Destinations",
     title: "BEST TIME TO VISIT HUNZA VALLEY: A SEASONAL GUIDE",
-    bgImage: "/assets/images/destination_hunza_1783185596174.png",
+    bgImage: "/assets/images/destination_hunza_1783185596174.webp",
     date: "15 June 2026",
     readTime: "6 min read",
     author: "Broad Peak Team",
@@ -215,7 +215,7 @@ export const blogsData: Record<string, BlogPostType> = {
           "Summer is the peak travel season for adventurers and trekkers. All the high mountain passes, including the Khunjerab Pass (the border with China) and the Babusar Pass, are open and free of snow.",
           "Temperatures in the valley are pleasantly warm, ranging from 20°C to 30°C, while the nights remain cool. This is the only season suitable for high-altitude trekking, climbing Ultar meadows, or taking a boat ride on the turquoise waters of Attabad Lake."
         ],
-        image: "/assets/images/hunza.png",
+        image: "/assets/images/hunza.webp",
         imageCaption: "The pristine Hunza River winding through the valley, overlooked by Rakaposhi."
       },
       {
@@ -243,7 +243,7 @@ export const blogsData: Record<string, BlogPostType> = {
     id: "deosai-guide",
     category: "Photography",
     title: "DEOSAI WILDLIFE & PHOTOGRAPHY: LAND OF THE GIANTS",
-    bgImage: "/assets/images/destination_deosai_1783185627767.png",
+    bgImage: "/assets/images/destination_deosai_1783185627767.webp",
     date: "02 June 2026",
     readTime: "7 min read",
     author: "Broad Peak Team",
@@ -263,7 +263,7 @@ export const blogsData: Record<string, BlogPostType> = {
           "For most of the year, Deosai is locked under meters of snow. However, from mid-July to August, the plateau experiences a dramatic super-bloom.",
           "Millions of wildflowers carpet the hills in dazzling hues of purple, yellow, blue, and deep pink. The fragrance of alpine flora fills the air, and crystal-clear streams wind through the landscape, making it a paradise for nature photographers."
         ],
-        image: "/assets/images/deosai-sunrise.png",
+        image: "/assets/images/deosai-sunrise.webp",
         imageCaption: "Golden morning rays hitting the high alpine wetlands of Deosai."
       },
       {
@@ -283,7 +283,7 @@ export const blogsData: Record<string, BlogPostType> = {
     id: "altitude-sickness",
     category: "Health & Safety",
     title: "ALTITUDE SICKNESS PREVENTION: SAFELY CLIMBING HIGH",
-    bgImage: "/assets/images/travel-boots.png",
+    bgImage: "/assets/images/travel-boots.webp",
     date: "20 May 2026",
     readTime: "10 min read",
     author: "Broad Peak Team",
@@ -317,7 +317,7 @@ export const blogsData: Record<string, BlogPostType> = {
           "HAPE involves fluid accumulation in the lungs, characterized by extreme breathlessness even while resting, a persistent wet cough, and blue lips. HACE is fluid on the brain, presenting as severe confusion, slurred speech, and an inability to walk in a straight line.",
           "The only cure for HAPE and HACE is immediate descent. Our guides are trained to monitor oxygen saturation levels daily using pulse oximeters and carry emergency portable oxygen and hyperbaric bags on all high-risk expeditions."
         ],
-        image: "/assets/images/activity-trekking.png",
+        image: "/assets/images/activity-trekking.webp",
         imageCaption: "Trekkers maintaining a steady, slow pace on a high-altitude moraine trail to allow optimal acclimatization."
       }
     ]
@@ -326,7 +326,7 @@ export const blogsData: Record<string, BlogPostType> = {
     id: "baltistan-culture",
     category: "Culture",
     title: "LOCAL CULTURE & TRADITIONS OF BALTISTAN",
-    bgImage: "/assets/images/activity-culture.png",
+    bgImage: "/assets/images/activity-culture.webp",
     date: "05 May 2026",
     readTime: "7 min read",
     author: "Broad Peak Team",
@@ -346,7 +346,7 @@ export const blogsData: Record<string, BlogPostType> = {
           "The mountain environment of the Karakoram is harsh, and survival has historically depended on mutual support, trust, and community. This has bred a culture of hospitality that is incredibly moving to outsiders.",
           "As a guest in a Balti home, you will instantly be served 'Paucha'—traditional salty butter tea whisked in wooden churns, served alongside fresh hot 'Khambir' (local sourdough bread) and home-ground apricot paste."
         ],
-        image: "/assets/images/activity-culture.png",
+        image: "/assets/images/activity-culture.webp",
         imageCaption: "Local Balti elder carrying forward ancient agricultural and cultural traditions in the Shigar Valley."
       },
       {

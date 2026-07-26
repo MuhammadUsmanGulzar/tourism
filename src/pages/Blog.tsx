@@ -77,8 +77,6 @@ export default function Blog() {
             </ul>
 
             <div className="navbar__actions">
-                <a href="#" className="navbar__social"><i className="ri-instagram-line"></i></a>
-                <a href="#" className="navbar__social"><i className="ri-facebook-fill"></i></a>
                 <a href="/contact" className="navbar__cta">Book a Trip</a>
                 <button className="navbar__hamburger" id="blog-hamburger">
                     <i className="ri-menu-line"></i>
@@ -186,7 +184,7 @@ export default function Blog() {
                 <h2 className="blog-newsletter__title">NEVER MISS AN ADVENTURE</h2>
                 <p className="blog-newsletter__desc">Sign up to receive our latest expedition journals, travel guides, and exclusive updates directly in your inbox.</p>
                 
-                <form className="blog-newsletter__form" action="thank-you.html">
+                <form className="blog-newsletter__form" onSubmit={(e) => { e.preventDefault(); window.history.pushState({}, '', '/thank-you'); window.dispatchEvent(new Event('pushstate')); }}>
                     <input type="email" placeholder="Your email address" required />
                     <button type="submit">SUBSCRIBE</button>
                 </form>
@@ -221,9 +219,7 @@ export default function Blog() {
                 <h3 className="footer__logo"><a href="/">BROAD PEAK</a></h3>
                 <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
                 <div className="footer__socials">
-                    <a href="#"><i className="ri-instagram-line"></i></a>
-                    <a href="#"><i className="ri-facebook-fill"></i></a>
-                    <a href="#"><i className="ri-whatsapp-line"></i></a>
+                    <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer"><i className="ri-whatsapp-line"></i></a>
                 </div>
             </div>
 

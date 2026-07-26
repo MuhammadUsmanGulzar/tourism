@@ -77,13 +77,6 @@ export default function Home() {
                 <li><a href="/contact">Contact</a></li>
             </ul>
             <div className="navbar__actions">
-                <a href="#" className="navbar__social">
-                    <i className="ri-instagram-line"></i>
-                </a>
-                <a href="#" className="navbar__social">
-                    <i className="ri-facebook-fill"></i>
-                </a>
-
                 <a href="/contact" className="navbar__cta">Book a Trip</a>
 
                 
@@ -125,7 +118,7 @@ export default function Home() {
             muted
             loop
             playsInline
-            poster="/assets/images/k2.png"
+            poster="/assets/images/k2.webp"
         >
             <source
                 src="/assets/videos/k2-cinematic.mp4"
@@ -243,7 +236,7 @@ export default function Home() {
                 <article className="trip-card" key={exp.id}>
                     <div className="trip-card__image">
                         <img
-                            src={exp.gallery[0] || "/assets/images/k2.png"}
+                            src={exp.gallery[0] || "/assets/images/k2.webp"}
                             alt={exp.title}
                             referrerPolicy="no-referrer"
                          />
@@ -306,8 +299,8 @@ export default function Home() {
         
         <div className="who-we-are__images">
             <div className="who-we-are__badge"><span>2021</span><span>EST</span></div>
-            <img src="/assets/images/who-we-are-main.png" alt="Hunza Valley Morning" className="who-we-are__img-main" referrerPolicy="no-referrer" />
-            <img src="/assets/images/who-we-are-small.png" alt="Mountain Tea" className="who-we-are__img-small" referrerPolicy="no-referrer" />
+            <img src="/assets/images/who-we-are-main.webp" alt="Hunza Valley Morning" className="who-we-are__img-main" loading="lazy" referrerPolicy="no-referrer" />
+            <img src="/assets/images/who-we-are-small.webp" alt="Mountain Tea" className="who-we-are__img-small" loading="lazy" referrerPolicy="no-referrer" />
         </div>
 
         
@@ -570,7 +563,7 @@ export default function Home() {
             
             
             <a href="/travel-guides" className="insight-card insight-card--large">
-                <img src="/assets/images/article_k2_guide_1783186031585.png" alt="K2 Base Camp Guide" className="insight-card__image" referrerPolicy="no-referrer" />
+                <img src="/assets/images/article_k2_guide_1783186031585.webp" alt="K2 Base Camp Guide" className="insight-card__image" referrerPolicy="no-referrer" />
                 <div className="insight-card__overlay"></div>
                 <div className="insight-card__content">
                     <span className="insight-card__category">TRAVEL GUIDE</span>
@@ -586,8 +579,8 @@ export default function Home() {
             
             <div className="travel-insights__stack">
                 
-                <a href="#" className="insight-card insight-card--small">
-                    <img src="/assets/images/article_visa_logistics_1783186040279.png" alt="Visa Logistics" className="insight-card__image" referrerPolicy="no-referrer" />
+                <a href="/blog-post?id=visa-logistics" className="insight-card insight-card--small">
+                    <img src="/assets/images/article_visa_logistics_1783186040279.webp" alt="Visa Logistics" className="insight-card__image" referrerPolicy="no-referrer" />
                     <div className="insight-card__overlay"></div>
                     <div className="insight-card__content">
                         <span className="insight-card__category">TRAVEL LOGISTICS</span>
@@ -600,8 +593,8 @@ export default function Home() {
                     </div>
                 </a>
 
-                <a href="#" className="insight-card insight-card--small">
-                    <img src="/assets/images/article_snow_lake_1783186049575.png" alt="Snow Lake Trek" className="insight-card__image" referrerPolicy="no-referrer" />
+                <a href="/blog-post?id=snow-lake" className="insight-card insight-card--small">
+                    <img src="/assets/images/article_snow_lake_1783186049575.webp" alt="Snow Lake Trek" className="insight-card__image" referrerPolicy="no-referrer" />
                     <div className="insight-card__overlay"></div>
                     <div className="insight-card__content">
                         <span className="insight-card__category">TREKKING & EXPEDITIONS</span>
@@ -751,9 +744,7 @@ export default function Home() {
             <h3 className="footer__logo">BROAD PEAK</h3>
             <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
             <div className="footer__socials">
-                <a href="#"><i className="ri-instagram-line"></i></a>
-                <a href="#"><i className="ri-facebook-fill"></i></a>
-                <a href="#"><i className="ri-whatsapp-line"></i></a>
+                <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer"><i className="ri-whatsapp-line"></i></a>
             </div>
         </div>
 

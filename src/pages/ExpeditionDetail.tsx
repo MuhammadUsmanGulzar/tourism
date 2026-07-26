@@ -118,8 +118,6 @@ export default function ExpeditionDetail() {
           </ul>
 
           <div className="navbar__actions">
-            <a href="#" className="navbar__social"><i className="ri-instagram-line"></i></a>
-            <a href="#" className="navbar__social"><i className="ri-facebook-fill"></i></a>
             <a href="/contact" className="navbar__cta">Book a Trip</a>
             <button className="navbar__hamburger" id="expd-hamburger" onClick={() => setMobileMenuOpen(true)}>
               <i className="ri-menu-line"></i>
@@ -152,7 +150,7 @@ export default function ExpeditionDetail() {
         <div 
           className={`expd-hero__bg ${heroLoaded ? 'abt-hero__bg--loaded' : ''}`} 
           id="expd-hero-bg"
-          style={{ backgroundImage: `url(${expedition.gallery[0] || '/assets/images/k2.png'})` }}
+          style={{ backgroundImage: `url(${expedition.gallery[0] || '/assets/images/k2.webp'})` }}
         ></div>
         <div className="expd-hero__overlay"></div>
         <div className="expd-hero__container expd-container">
@@ -448,9 +446,7 @@ export default function ExpeditionDetail() {
             <h3 className="footer__logo"><a href="/">BROAD PEAK</a></h3>
             <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
             <div className="footer__socials">
-              <a href="#"><i className="ri-instagram-line"></i></a>
-              <a href="#"><i className="ri-facebook-fill"></i></a>
-              <a href="#"><i className="ri-whatsapp-line"></i></a>
+              <a href="https://wa.me/923123456789" target="_blank" rel="noopener noreferrer"><i className="ri-whatsapp-line"></i></a>
             </div>
           </div>
 

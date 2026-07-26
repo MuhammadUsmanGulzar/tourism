@@ -74,8 +74,6 @@ export default function About() {
             </ul>
 
             <div className="navbar__actions">
-                <a href="#" className="navbar__social"><i className="ri-instagram-line"></i></a>
-                <a href="#" className="navbar__social"><i className="ri-facebook-fill"></i></a>
                 <a href="/contact" className="navbar__cta">Book a Trip</a>
                 <button className="navbar__hamburger" id="abt-hamburger">
                     <i className="ri-menu-line"></i>
@@ -125,7 +123,7 @@ export default function About() {
                     <p className="abt-who__desc">We believe that travel has the power to bridge worlds. Our goal is to craft itineraries that go beyond simple sightseeing, offering deep physical, emotional, and cultural engagement with these raw and holy mountain peaks.</p>
                 </div>
                 <div className="abt-who__media">
-                    <img src="/assets/images/who-we-are-main.png" alt="Broad Peak guides team" loading="lazy" referrerPolicy="no-referrer" />
+                    <img src="/assets/images/who-we-are-main.webp" alt="Broad Peak guides team" loading="lazy" referrerPolicy="no-referrer" />
                 </div>
             </div>
         </div>
@@ -225,7 +223,7 @@ export default function About() {
         <div className="abt-container">
             <div className="abt-safety__inner">
                 <div className="abt-safety__media">
-                    <img src="/assets/images/travel-tent.png" alt="High-altitude camping setup" loading="lazy" referrerPolicy="no-referrer" />
+                    <img src="/assets/images/travel-tent.webp" alt="High-altitude camping setup" loading="lazy" referrerPolicy="no-referrer" />
                 </div>
                 <div className="abt-safety__text">
                     <span className="abt-section-tag">TRAVEL ETHICS</span>
@@ -264,9 +262,7 @@ export default function About() {
                 <h3 className="footer__logo">BROAD PEAK</h3>
                 <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
                 <div className="footer__socials">
-                    <a href="#"><i className="ri-instagram-line"></i></a>
-                    <a href="#"><i className="ri-facebook-fill"></i></a>
-                    <a href="#"><i className="ri-whatsapp-line"></i></a>
+                    <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer"><i className="ri-whatsapp-line"></i></a>
                 </div>
             </div>
 
