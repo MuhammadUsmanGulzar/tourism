@@ -14,8 +14,6 @@ export default function TravelGuides() {
     setLoading(true);
     setFeedback(null);
 
-    // Webhook disabled/commented out for offline & max performance
-    /*
     const webhookUrl = import.meta.env.VITE_N8N_NEWSLETTER_WEBHOOK_URL;
 
     try {
@@ -70,14 +68,6 @@ export default function TravelGuides() {
     } finally {
       setLoading(false);
     }
-    */
-
-    setFeedback({
-      type: 'success',
-      text: "Thank you for subscribing! Check your inbox for updates."
-    });
-    setEmail('');
-    setLoading(false);
   };
 
   useEffect(() => {

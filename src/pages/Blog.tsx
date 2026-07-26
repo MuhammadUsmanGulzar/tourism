@@ -14,8 +14,6 @@ export default function Blog() {
     setLoading(true);
     setFeedback(null);
 
-    // Webhook commented out for performance
-    /*
     const webhookUrl = import.meta.env.VITE_N8N_NEWSLETTER_WEBHOOK_URL;
 
     try {
@@ -70,13 +68,6 @@ export default function Blog() {
     } finally {
       setLoading(false);
     }
-    */
-    setFeedback({
-      type: 'success',
-      text: "Thank you for subscribing! Check your inbox for updates."
-    });
-    setEmail('');
-    setLoading(false);
   };
 
   useEffect(() => {

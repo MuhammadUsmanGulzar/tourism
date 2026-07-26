@@ -13,17 +13,60 @@ export default function ThankYou() {
     setLoading(true);
     setFeedback(null);
 
-    // Webhook commented out for performance
-    /*
     const webhookUrl = import.meta.env.VITE_N8N_NEWSLETTER_WEBHOOK_URL;
-    ...
-    */
-    setFeedback({
-      type: 'success',
-      text: "Thank you for subscribing! Check your inbox for updates."
-    });
-    setEmail('');
-    setLoading(false);
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'thank_you_page', timestamp: new Date().toISOString() }),
+      });
+
+      let data: any = {};
+      try {
+        data = await response.json();
+      } catch {
+        // Handle non-JSON or plain text responses
+      }
+
+      if (response.ok) {
+        const item = Array.isArray(data) ? data[0] : data;
+
+        if (item?.isEmpty === true) {
+          // User not in database -> New Subscriber
+          setFeedback({
+            type: 'success',
+            text: item?.message || "Thank you for subscribing! Check your inbox for updates."
+          });
+          setEmail('');
+        } else if (item?.isEmpty === false || item?.status === 'already_subscribed' || item?.alreadySubscribed || item?.exists) {
+          // User already exists in database
+          setFeedback({
+            type: 'info',
+            text: item?.message || "You are already subscribed! We'll keep sending you updates on this email."
+          });
+        } else {
+          // Default fallback response
+          setFeedback({
+            type: 'success',
+            text: item?.message || "Thank you for subscribing! Check your inbox for updates."
+          });
+          setEmail('');
+        }
+      } else {
+        setFeedback({
+          type: 'error',
+          text: data.message || 'Subscription service temporarily unavailable. Please try again.'
+        });
+      }
+    } catch {
+      setFeedback({
+        type: 'error',
+        text: 'Network error. Please check your connection and try again.'
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
