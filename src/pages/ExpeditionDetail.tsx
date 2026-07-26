@@ -82,7 +82,8 @@ export default function ExpeditionDetail() {
       submittedAt: new Date().toISOString()
     };
 
-    // Trigger n8n webhook asynchronously with JSON POST
+    // Trigger n8n webhook commented out for performance
+    /*
     fetch(webhookUrl, {
       method: 'POST',
       headers: {
@@ -90,6 +91,7 @@ export default function ExpeditionDetail() {
       },
       body: JSON.stringify(payload),
     }).catch((err) => console.warn('n8n Webhook Error:', err));
+    */
 
     // Immediately redirect to thank you page without blocking
     window.history.pushState({}, '', '/thank-you');
