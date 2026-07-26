@@ -495,13 +495,28 @@ a,
     }
 
     .travel-insights__grid {
-        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
         height: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .travel-insights__stack {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        height: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
     }
 
     .insight-card {
         height: 260px !important;
-        width: 100 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .accordion-container {
