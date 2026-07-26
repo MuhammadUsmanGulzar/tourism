@@ -41,42 +41,50 @@ if (soundBtn && video && icon) {
 }
 
 const header = document.querySelector('.header');
+let ticking = false;
 addGlobalListener(window, 'scroll', () => {
-    if (video && !document.body.contains(video)) {
-        return;
-    }
-    // Only toggle the navbar state when scrolling past the hero section
-    if (window.scrollY > window.innerHeight - 100) {
-        if (header) header.classList.add('header--scrolled');
-        
-        // Pause and mute video when exiting hero section
-        if (video) {
-            if (!video.paused) {
-                try {
-                    video.pause();
-                } catch(e) {
-                    // Ignore interruption errors
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            if (video && !document.body.contains(video)) {
+                ticking = false;
+                return;
+            }
+            // Only toggle the navbar state when scrolling past the hero section
+            if (window.scrollY > window.innerHeight - 100) {
+                if (header) header.classList.add('header--scrolled');
+                
+                // Pause and mute video when exiting hero section
+                if (video) {
+                    if (!video.paused) {
+                        try {
+                            video.pause();
+                        } catch(e) {
+                            // Ignore interruption errors
+                        }
+                    }
+                    if (!video.muted) {
+                        video.muted = true;
+                        if (icon) icon.className = "ri-volume-mute-line";
+                    }
+                }
+            } else {
+                if (header) header.classList.remove('header--scrolled');
+                
+                // Resume video playback when in hero section
+                if (video && video.paused) {
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(() => {
+                            // Ignore autoplay or play interruption errors safely
+                        });
+                    }
                 }
             }
-            if (!video.muted) {
-                video.muted = true;
-                if (icon) icon.className = "ri-volume-mute-line";
-            }
-        }
-    } else {
-        if (header) header.classList.remove('header--scrolled');
-        
-        // Resume video playback when in hero section
-        if (video && video.paused) {
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(() => {
-                    // Ignore autoplay or play interruption errors safely
-                });
-            }
-        }
+            ticking = false;
+        });
+        ticking = true;
     }
-});
+}, { passive: true });
 
 /* ==========================================
    MOBILE MENU LOGIC

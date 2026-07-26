@@ -6,9 +6,8 @@
 ============================================================ */
 
 /* =========================
-   FONTS & VARIABLES (copied from homepage)
+   FONTS & VARIABLES (loaded via index.html)
 ========================= */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Lora:ital@0;1&display=swap');
 
 :root {
     --primary-color: #92440c;
