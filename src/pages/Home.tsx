@@ -73,6 +73,13 @@ export default function Home() {
     };
   
   }, []);
+  
+  const scrollFeaturedTrips = (dir: 'left' | 'right') => {
+    const slider = document.querySelector('.featured-trips__slider');
+    if (slider) {
+      slider.scrollBy({ left: dir === 'left' ? -320 : 320, behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="page-wrapper animate-fade-in">
@@ -159,7 +166,7 @@ export default function Home() {
                     </a>
 
                     <a 
-                        className="hero__btn hero__btn--secondary"
+                        className="hero__btn hero__btn--outline"
                         href="/contact">
                         Plan Your Journey
                     </a>
@@ -170,22 +177,20 @@ export default function Home() {
 
 
             <div className="hero__stats">
-
                 <div className="hero__stat">
-                    <span className="hero__stat-number">5,585m</span>
-                    <p>Highest Trek Point</p>
+                    <h3>5,585m</h3>
+                    <p>HIGHEST TREK POINT</p>
                 </div>
 
                 <div className="hero__stat">
-                    <span className="hero__stat-number">20+</span>
-                    <p>Guided Adventures</p>
+                    <h3>20+</h3>
+                    <p>GUIDED ADVENTURES</p>
                 </div>
 
                 <div className="hero__stat">
-                    <span className="hero__stat-number">500+</span>
-                    <p>Happy Travelers</p>
+                    <h3>500+</h3>
+                    <p>HAPPY TRAVELERS</p>
                 </div>
-
             </div>
 
         </div>
@@ -196,22 +201,8 @@ export default function Home() {
 
 
 
-<section className="featured-trips" id="featured-trips">
-
+<section className="featured-trips" id="expeditions">
     <div className="container">
-
-        
-
-        <div className="featured-trips__header">
-
-            <div className="featured-trips__title-group">
-
-                <span className="section-tag">
-                    Handpicked Adventures
-                </span>
-
-                <h2 className="section-title">
-                    Featured Expeditions
                 </h2>
 
             </div>

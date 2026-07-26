@@ -246,175 +246,274 @@ a,
 }
 
 /* ==========================================
-   MOBILE LANDSCAPE (Max Width: 768px)
+   MOBILE LANDSCAPE & PORTRAIT (Max Width: 768px)
 ========================================== */
 @media screen and (max-width: 768px) {
-    .header {
-        padding: 12px 16px;
-    }
-
+    /* 1. Navbar Compact Size */
+    .header,
     .header--scrolled {
-        padding: 10px 16px;
+        padding: 8px 12px !important;
     }
 
-    /* Hero */
+    .navbar {
+        padding: 6px 14px !important;
+        min-height: 48px !important;
+        border-radius: 40px !important;
+    }
+
+    .navbar__logo a {
+        font-size: 1.15rem !important;
+        letter-spacing: 1.5px !important;
+    }
+
+    .navbar__hamburger {
+        font-size: 1.4rem !important;
+        padding: 4px 8px !important;
+        margin-left: 0 !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+    }
+
+    /* 2. Hero & Section Spacing - Prevent Overlapping */
+    .hero {
+        height: auto !important;
+        min-height: auto !important;
+        padding-bottom: 25px !important;
+    }
+
     .hero__container {
-        padding: 110px 16px 80px;
+        height: auto !important;
+        min-height: auto !important;
+        padding: 75px 16px 20px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
     }
 
-    .hero__title {
-        font-size: 3rem;
-        line-height: 0.95;
-    }
-
-    .hero__description {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        margin-bottom: 24px;
-    }
-
-    .hero__stats {
-        gap: 20px;
-        padding: 14px;
-        margin: 30px auto auto;
-        max-width: 100%;
-        border-radius: 12px;
-    }
-
-    .hero__sound-toggle {
-        bottom: 16px;
-        left: 16px;
-        width: 48px;
-        height: 48px;
-        font-size: 1.2rem;
-    }
-
-    .hero__stat h3 {
-        font-size: 1.35rem;
-    }
-
-    .hero__stat p {
-        font-size: 0.75rem;
-    }
-
-    /* About Section */
-    .who-we-are__grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Travel Guides */
-    .travel-insights__grid {
-        grid-template-columns: 1fr;
-        height: auto;
-    }
-
-    .insight-card {
-        height: 260px;
-        width: 100%;
-    }
-
-    /* Destinations Accordion */
-    .accordion-container {
-        height: 700px;
-    }
-
-    /* Sliders */
-    .featured-trips__top {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-    }
-
-    .trip-card,
-    .testimonial-card {
-        min-width: 280px;
-    }
-
-    /* FAQ */
-    .faq-preview-section {
-        padding: 50px 16px !important;
-    }
-
-    .faq-accordion__header {
-        font-size: 1.1rem;
-        padding: 16px 0;
-    }
-
-    /* CTA */
-    .cta-section {
-        padding: 60px 16px;
-    }
-
-    .cta-section__title {
-        font-size: 2.4rem;
-    }
-
-    .cta-section__buttons {
-        flex-direction: column;
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto;
-    }
-}
-
-/* ==========================================
-   MOBILE PORTRAIT (Max Width: 480px)
-========================================== */
-@media screen and (max-width: 480px) {
-    .hero__title {
-        font-size: 2.5rem;
+    .hero__content {
+        margin-top: 0 !important;
+        margin-bottom: 20px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
     }
 
     .hero__tagline {
-        font-size: 0.8rem;
-        letter-spacing: 2px;
+        font-size: 0.75rem !important;
+        letter-spacing: 1.5px !important;
+        margin-bottom: 10px !important;
     }
 
-    .hero__stats {
-        flex-direction: row;
-        justify-content: space-around;
-        gap: 10px;
-        padding: 12px 10px;
+    .hero__title {
+        font-size: 2.5rem !important;
+        line-height: 1.05 !important;
+        margin-bottom: 14px !important;
     }
 
-    .hero__stat h3 {
-        font-size: 1.2rem;
-    }
-
-    .hero__stat p {
-        font-size: 0.7rem;
+    .hero__description {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 20px !important;
+        max-width: 100% !important;
     }
 
     .hero__buttons {
-        flex-direction: column;
-        width: 100%;
-        gap: 12px;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 300px !important;
+        gap: 12px !important;
     }
 
     .hero__btn {
-        width: 100%;
-        text-align: center;
-        padding: 14px 20px;
-        min-height: 48px;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 14px 20px !important;
+        min-height: 48px !important;
+    }
+
+    .hero__stats {
+        position: relative !important;
+        margin: 15px auto 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 14px 10px !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        justify-content: space-around !important;
+    }
+
+    .hero__stat h3 {
+        font-size: 1.2rem !important;
+    }
+
+    .hero__stat p {
+        font-size: 0.7rem !important;
+    }
+
+    /* Section padding separation */
+    .who-we-are,
+    .featured-trips,
+    .destinations,
+    .travel-insights,
+    .testimonials,
+    .faq-preview-section,
+    .cta-section {
+        padding-top: 45px !important;
+        padding-bottom: 45px !important;
+        clear: both !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 3. Slider Buttons Optimization */
+    .featured-trips__slider-wrapper {
+        position: relative !important;
+    }
+
+    .slider-btn--absolute {
+        z-index: 10 !important;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 42px !important;
+        height: 42px !important;
+        border-radius: 50% !important;
+        background: #ffffff !important;
+        color: #111111 !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .slider-btn--prev {
+        left: -8px !important;
+    }
+
+    .slider-btn--next {
+        right: -8px !important;
+    }
+
+    .featured-trips__top {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 15px !important;
     }
 
     .trip-card {
-        min-width: 82vw;
+        min-width: calc(100vw - 48px) !important;
+        max-width: calc(100vw - 48px) !important;
+        width: calc(100vw - 48px) !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 4. Testimonials Overflow & Mobile Layout */
+    .testimonials__slider {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        padding: 10px 0 !important;
+        display: flex !important;
+        gap: 16px !important;
+        margin: 0 !important;
     }
 
     .testimonial-card {
-        min-width: 82vw;
+        min-width: calc(100vw - 48px) !important;
+        max-width: calc(100vw - 48px) !important;
+        width: calc(100vw - 48px) !important;
+        box-sizing: border-box !important;
+        scroll-snap-align: center !important;
+        flex-shrink: 0 !important;
+        margin-right: 0 !important;
+        white-space: normal !important;
+        word-break: break-word !important;
     }
 
-    .activity-grid {
-        grid-template-columns: 1fr;
+    /* 5. CTA Section Visibility ("READY FOR YOUR NEXT ADVENTURE?") */
+    .cta-section {
+        padding: 55px 16px !important;
+        min-height: auto !important;
+        background: linear-gradient(135deg, var(--primary-color) 0%, #a65c24 100%) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 
-    .section-title {
-        font-size: 2rem;
+    .cta-section__content {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 24px !important;
+        width: 100% !important;
+        position: relative !important;
+        z-index: 5 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 
-    .who-we-are__images {
-        height: 280px;
+    .cta-section__text {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
     }
-}
+
+    .cta-section__title {
+        font-family: 'Bebas Neue', sans-serif !important;
+        font-size: 2.3rem !important;
+        color: #ffffff !important;
+        margin-bottom: 12px !important;
+        line-height: 1.1 !important;
+        letter-spacing: 1.5px !important;
+        opacity: 1 !important;
+    }
+
+    .cta-section__desc {
+        font-size: 0.95rem !important;
+        color: rgba(255, 255, 255, 0.95) !important;
+        line-height: 1.5 !important;
+        opacity: 1 !important;
+    }
+
+    .cta-section__buttons {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 280px !important;
+        margin: 0 auto !important;
+        gap: 12px !important;
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
+
+    .who-we-are__grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .travel-insights__grid {
+        grid-template-columns: 1fr !important;
+        height: auto !important;
+    }
+
+    .insight-card {
+        height: 260px !important;
+        width: 100 !important;
+    }
+
+    .accordion-container {
+        height: 650px !important;
+    }
+
+    .faq-preview-section {
+        padding: 45px 16px !important;
+    }
+
+    .faq-accordion__header {
+        font-size: 1.1rem !important;
+        padding: 16px 0 !important;
+    }
+}

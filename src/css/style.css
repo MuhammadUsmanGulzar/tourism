@@ -9,14 +9,14 @@
 }
 
 /* Native hardware-accelerated scroll reveals */
-.value-item, .cta-section__text, .cta-section__buttons {
+.value-item {
     opacity: 0;
     transform: translate3d(0, 24px, 0);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     will-change: opacity, transform;
 }
 
-.value-item.in-view, .cta-section__text.in-view, .cta-section__buttons.in-view {
+.value-item.in-view, .cta-section__text, .cta-section__buttons {
     opacity: 1;
     transform: translate3d(0, 0, 0);
 }
