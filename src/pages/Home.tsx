@@ -184,17 +184,17 @@ export default function Home() {
             <div className="hero__stats">
 
                 <div className="hero__stat">
-                    <h3>5,585m</h3>
+                    <span className="hero__stat-number">5,585m</span>
                     <p>Highest Trek Point</p>
                 </div>
 
                 <div className="hero__stat">
-                    <h3>20+</h3>
+                    <span className="hero__stat-number">20+</span>
                     <p>Guided Adventures</p>
                 </div>
 
                 <div className="hero__stat">
-                    <h3>500+</h3>
+                    <span className="hero__stat-number">500+</span>
                     <p>Happy Travelers</p>
                 </div>
 
@@ -239,8 +239,8 @@ export default function Home() {
         
 
         <div className="featured-trips__slider-wrapper">
-            <button className="slider-btn slider-btn--absolute slider-btn--prev" id="featuredTripsPrev"><i className="ri-arrow-left-line"></i></button>
-            <button className="slider-btn slider-btn--absolute slider-btn--next" id="featuredTripsNext"><i className="ri-arrow-right-line"></i></button>
+            <button className="slider-btn slider-btn--absolute slider-btn--prev" id="featuredTripsPrev" aria-label="Previous featured expedition"><i className="ri-arrow-left-line"></i></button>
+            <button className="slider-btn slider-btn--absolute slider-btn--next" id="featuredTripsNext" aria-label="Next featured expedition"><i className="ri-arrow-right-line"></i></button>
 
             <div className="featured-trips__slider">
 
@@ -810,7 +810,7 @@ export default function Home() {
 </footer>
 
     
-    <a href="#" className="scroll-to-top">
+    <a href="#" className="scroll-to-top" aria-label="Scroll to top">
         <i className="ri-arrow-up-line"></i>
     </a>
     </div>

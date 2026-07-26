@@ -485,7 +485,7 @@ export default function Contact() {
             </footer>
 
 
-            <a href="#" className="scroll-to-top">
+            <a href="#" className="scroll-to-top" aria-label="Scroll to top">
                 <i className="ri-arrow-up-line"></i>
             </a>
         </div>

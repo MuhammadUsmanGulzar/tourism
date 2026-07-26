@@ -494,7 +494,7 @@ export default function ExpeditionDetail() {
       </footer>
 
       {/* Scroll to Top */}
-      <a href="#" className="scroll-to-top">
+      <a href="#" className="scroll-to-top" aria-label="Scroll to top">
         <i className="ri-arrow-up-line"></i>
       </a>
     </div>

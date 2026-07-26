@@ -41,7 +41,7 @@ ul{
 }
 
 :root{
-    --primary-color: #c77838;
+    --primary-color: #a85312;
     --white: #ffffff;
 }
 
@@ -348,7 +348,8 @@ ul{
     z-index: 5;
 }
 
-.hero__stat h3{
+.hero__stat h3, .hero__stat-number{
+    display: block;
     color: var(--white);
     font-size: 1.75rem;
     font-weight: 700;
@@ -445,7 +446,7 @@ ul{
     align-items: center;
     gap: 15px;
 
-    color: #d17a33;
+    color: #a85312;
 
     text-transform: uppercase;
 
@@ -814,7 +815,7 @@ ul{
 
 .trip-card__button{
 
-    background: #d17a33;
+    background: #a85312;
 
     color: white;
 

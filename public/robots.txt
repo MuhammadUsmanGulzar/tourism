@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tourism-eight-pearl-vercel-app.vercel.app/sitemap.xml
