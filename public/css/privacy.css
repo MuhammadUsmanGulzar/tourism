@@ -221,7 +221,7 @@ ul { list-style: none; }
 .privacy-hero__bg {
     position: absolute;
     inset: 0;
-    background-image: url('../assets/images/soothing-clouds.webp');
+    background-image: url('../assets/images/soothing-clouds.png');
     background-size: cover;
     background-position: center;
     transform: scale(1.05);
@@ -449,7 +449,7 @@ ul { list-style: none; }
     position: absolute;
     inset: 0;
     opacity: 0.12;
-    background: url('../assets/images/soothing-valley.webp') center center / cover no-repeat;
+    background: url('../assets/images/soothing-valley.png') center center / cover no-repeat;
     mix-blend-mode: multiply;
     z-index: 1;
 }

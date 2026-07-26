@@ -212,7 +212,7 @@ ul { list-style: none; }
 .faq-hero__bg {
     position: absolute;
     inset: 0;
-    background-image: url('../assets/images/soothing-valley.webp');
+    background-image: url('../assets/images/soothing-valley.png');
     background-size: cover;
     background-position: center;
     transform: scale(1.05);
@@ -403,7 +403,7 @@ ul { list-style: none; }
 .faq-cta__overlay {
     position: absolute;
     inset: 0;
-    background: url('../assets/images/k2.webp') center center / cover no-repeat;
+    background: url('../assets/images/k2.png') center center / cover no-repeat;
     opacity: 0.12;
     mix-blend-mode: multiply;
     z-index: 1;

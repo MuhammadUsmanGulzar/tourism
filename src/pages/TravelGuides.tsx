@@ -1,32 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import '../css/travel-guides.css';
 import { blogsData } from '../data/blogsData';
 
 export default function TravelGuides() {
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
-
-  const categoryMapping: Record<string, string> = {
-    'Trekking': 'Expedition Planning',
-    'Culture': 'Culture',
-    'Photography': 'Photography',
-    'Logistics': 'Travel Logistics',
-    'Safety': 'Health & Safety',
-    'Seasonal Travel': 'Destinations'
-  };
-
-  const handleCategoryClick = (categoryName: string) => {
-    setActiveCategory(prev => {
-      const nextCategory = prev === categoryName ? null : categoryName;
-      setTimeout(() => {
-        const gridSection = document.getElementById('essential-guides-section');
-        if (gridSection) {
-          gridSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 50);
-      return nextCategory;
-    });
-  };
-
   useEffect(() => {
     window.scrollTo(0, 0);
     
@@ -86,6 +62,49 @@ export default function TravelGuides() {
 
   return (
     <div className="page-wrapper animate-fade-in">
+      <header className="header" id="main-header">
+        <nav className="navbar">
+            <div className="navbar__logo">
+                <a href="/">BROAD PEAK</a>
+            </div>
+
+            <ul className="navbar__menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/expeditions">Expeditions</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+
+            <div className="navbar__actions">
+                <a href="#" className="navbar__social"><i className="ri-instagram-line"></i></a>
+                <a href="#" className="navbar__social"><i className="ri-facebook-fill"></i></a>
+                <a href="/contact" className="navbar__cta">Book a Trip</a>
+                <button className="navbar__hamburger" id="tg-hamburger">
+                    <i className="ri-menu-line"></i>
+                </button>
+            </div>
+        </nav>
+
+        
+        <div className="mobile-menu" id="tg-mobile-menu">
+            <div className="mobile-menu__header">
+                <div className="navbar__logo">
+                    <a href="/">BROAD PEAK</a>
+                </div>
+                <button className="mobile-menu__close" id="tg-menu-close">
+                    <i className="ri-close-line"></i>
+                </button>
+            </div>
+            <ul className="mobile-menu__links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/expeditions">Expeditions</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
 
     
     <section className="tg-hero" id="tg-hero">
@@ -126,44 +145,16 @@ export default function TravelGuides() {
     </section>
 
     
-    <section className="tg-grid-section" id="essential-guides-section">
+    <section className="tg-grid-section">
         <div className="tg-container">
             <div className="tg-grid-section__header">
-                <span className="tg-section-tag">
-                    {activeCategory ? `LATEST INSIGHTS • ${activeCategory.toUpperCase()}` : 'LATEST INSIGHTS'}
-                </span>
-                <h2 className="tg-section-title">
-                    {activeCategory ? `${activeCategory} Guides` : 'ESSENTIAL GUIDES'}
-                </h2>
-                {activeCategory && (
-                    <button 
-                        onClick={() => setActiveCategory(null)} 
-                        style={{
-                            marginTop: '15px',
-                            background: 'transparent',
-                            border: '1px solid var(--primary-color)',
-                            color: 'var(--primary-color)',
-                            padding: '6px 16px',
-                            borderRadius: '30px',
-                            cursor: 'pointer',
-                            fontSize: '0.8rem',
-                            fontWeight: '600',
-                            transition: 'all 0.3s ease'
-                        }}
-                    >
-                        Clear Filter <i className="ri-close-line" style={{ verticalAlign: 'middle', marginLeft: '4px' }}></i>
-                    </button>
-                )}
+                <span className="tg-section-tag">LATEST INSIGHTS</span>
+                <h2 className="tg-section-title">ESSENTIAL GUIDES</h2>
             </div>
 
             <div className="tg-grid">
                 {Object.values(blogsData)
                     .filter(post => post.id !== 'k2-guide')
-                    .filter(post => {
-                        if (!activeCategory) return true;
-                        const targetCategory = categoryMapping[activeCategory];
-                        return post.category === targetCategory;
-                    })
                     .map((post) => (
                         <article className="tg-card" key={post.id}>
                             <div className="tg-card__image">
@@ -198,55 +189,37 @@ export default function TravelGuides() {
 
             <div className="tg-cats__grid">
                 
-                <div 
-                    className={`tg-cat-card ${activeCategory === 'Trekking' ? 'active' : ''}`}
-                    onClick={() => handleCategoryClick('Trekking')}
-                >
+                <div className="tg-cat-card">
                     <div className="tg-cat-card__icon"><i className="ri-compass-3-line"></i></div>
                     <h3 className="tg-cat-card__title">Trekking</h3>
                     <p className="tg-cat-card__desc">Detailed route maps, elevation coordinates, and altitude preparation tips.</p>
                 </div>
 
-                <div 
-                    className={`tg-cat-card ${activeCategory === 'Culture' ? 'active' : ''}`}
-                    onClick={() => handleCategoryClick('Culture')}
-                >
+                <div className="tg-cat-card">
                     <div className="tg-cat-card__icon"><i className="ri-palette-line"></i></div>
                     <h3 className="tg-cat-card__title">Culture</h3>
                     <p className="tg-cat-card__desc">Local language lists, historical castle tours, and village custom guidelines.</p>
                 </div>
 
-                <div 
-                    className={`tg-cat-card ${activeCategory === 'Photography' ? 'active' : ''}`}
-                    onClick={() => handleCategoryClick('Photography')}
-                >
+                <div className="tg-cat-card">
                     <div className="tg-cat-card__icon"><i className="ri-camera-lens-line"></i></div>
                     <h3 className="tg-cat-card__title">Photography</h3>
                     <p className="tg-cat-card__desc">Best scenic spots, camera gear recommendations, and winter battery management.</p>
                 </div>
 
-                <div 
-                    className={`tg-cat-card ${activeCategory === 'Logistics' ? 'active' : ''}`}
-                    onClick={() => handleCategoryClick('Logistics')}
-                >
+                <div className="tg-cat-card">
                     <div className="tg-cat-card__icon"><i className="ri-plane-line"></i></div>
                     <h3 className="tg-cat-card__title">Logistics</h3>
                     <p className="tg-cat-card__desc">Visa processing timelines, government NOC regulations, and internal flight schedules.</p>
                 </div>
 
-                <div 
-                    className={`tg-cat-card ${activeCategory === 'Safety' ? 'active' : ''}`}
-                    onClick={() => handleCategoryClick('Safety')}
-                >
+                <div className="tg-cat-card">
                     <div className="tg-cat-card__icon"><i className="ri-heart-pulse-line"></i></div>
                     <h3 className="tg-cat-card__title">Safety</h3>
                     <p className="tg-cat-card__desc">AMS symptoms checklist, water purification rules, and high-altitude emergency plans.</p>
                 </div>
 
-                <div 
-                    className={`tg-cat-card ${activeCategory === 'Seasonal Travel' ? 'active' : ''}`}
-                    onClick={() => handleCategoryClick('Seasonal Travel')}
-                >
+                <div className="tg-cat-card">
                     <div className="tg-cat-card__icon"><i className="ri-calendar-event-line"></i></div>
                     <h3 className="tg-cat-card__title">Seasonal Travel</h3>
                     <p className="tg-cat-card__desc">Timing your visit for blossom spring blooms, summer peaks, or fiery autumn colors.</p>
@@ -267,7 +240,7 @@ export default function TravelGuides() {
                     <p className="tg-insights__desc">We are committed to sharing this local wisdom. Through our editorial team of guides, cooks, and porters, we catalog ancestral weather tracking styles, historical routes, balti culinary choices, and local traditions to prepare you mentally and physically for the Karakoram.</p>
                 </div>
                 <div className="tg-insights__media">
-                    <img src="/assets/images/who-we-are-small.webp" alt="Balti guide standing in mountains" loading="lazy" referrerPolicy="no-referrer" />
+                    <img src="/assets/images/who-we-are-small.png" alt="Balti guide standing in mountains" loading="lazy" referrerPolicy="no-referrer" />
                 </div>
             </div>
         </div>

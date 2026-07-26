@@ -208,7 +208,7 @@ ul { list-style: none; }
 .exp-hero__bg {
     position: absolute;
     inset: 0;
-    background-image: url('/assets/images/expeditions_hero.webp');
+    background-image: url('/assets/images/expeditions_hero.png');
     background-size: cover;
     background-position: center;
     transform: scale(1.05);
@@ -528,7 +528,7 @@ ul { list-style: none; }
 .exp-private__bg {
     position: absolute;
     inset: 0;
-    background-image: url('/assets/images/travel-tent.webp');
+    background-image: url('/assets/images/travel-tent.png');
     background-size: cover;
     background-position: center;
     z-index: 0;
@@ -762,7 +762,7 @@ ul { list-style: none; }
 .exp-cta__overlay {
     position: absolute;
     inset: 0;
-    background: url('/assets/images/cta_bg_k2_1783186976668.webp') center center / cover no-repeat;
+    background: url('/assets/images/cta_bg_k2_1783186976668.png') center center / cover no-repeat;
     opacity: 0.12;
     mix-blend-mode: multiply;
     z-index: 1;

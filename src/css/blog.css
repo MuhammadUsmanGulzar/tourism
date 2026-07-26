@@ -208,7 +208,7 @@ ul { list-style: none; }
 .blog-hero__bg {
     position: absolute;
     inset: 0;
-    background-image: url('/assets/images/passu-cones.webp');
+    background-image: url('/assets/images/passu-cones.png');
     background-size: cover;
     background-position: center;
     transform: scale(1.05);
@@ -591,7 +591,7 @@ ul { list-style: none; }
 .blog-cta__overlay {
     position: absolute;
     inset: 0;
-    background: url('/assets/images/k2.webp') center center / cover no-repeat;
+    background: url('/assets/images/k2.png') center center / cover no-repeat;
     opacity: 0.12;
     mix-blend-mode: multiply;
     z-index: 1;

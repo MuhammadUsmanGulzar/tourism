@@ -221,7 +221,7 @@ ul { list-style: none; }
 .terms-hero__bg {
     position: absolute;
     inset: 0;
-    background-image: url('../assets/images/soothing-lake.webp');
+    background-image: url('../assets/images/soothing-lake.png');
     background-size: cover;
     background-position: center;
     transform: scale(1.05);
@@ -458,7 +458,7 @@ ul { list-style: none; }
     position: absolute;
     inset: 0;
     opacity: 0.12;
-    background: url('../assets/images/k2.webp') center center / cover no-repeat;
+    background: url('../assets/images/k2.png') center center / cover no-repeat;
     mix-blend-mode: multiply;
     z-index: 1;
 }
