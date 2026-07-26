@@ -1,0 +1,50 @@
+# Broad Peak Adventures - Full Documentation for AI Agents
+
+## Overview
+Broad Peak Adventures is a fully registered, licensed mountaineering and trekking organization operating out of Skardu, Gilgit-Baltistan, Pakistan. The organization provides complete logistical, permit, and guide support for mountaineering expeditions across the Karakoram, Himalaya, and Hindu Kush ranges.
+
+## Expeditions & Pricing
+1. K2 Base Camp & Concordia Trek (ID: `k2`)
+   - Duration: 21 Days
+   - Difficulty: Extreme
+   - Altitude: 5,585m (Gondogoro La optional)
+   - Season: June to August
+   - Price: $2,850 per person
+
+2. Attabad Lake & Hunza Explorer (ID: `attabad-lake`)
+   - Duration: 7 Days
+   - Difficulty: Moderate
+   - Altitude: 2,500m
+   - Season: April to October
+   - Price: $1,200 per person
+
+3. Fairy Meadows & Nanga Parbat Base Camp (ID: `fairy-meadows`)
+   - Duration: 8 Days
+   - Difficulty: Moderate-Hard
+   - Altitude: 3,300m
+   - Season: May to September
+   - Price: $1,150 per person
+
+4. Deosai Plains & Skardu Valley (ID: `deosai-sunrise`)
+   - Duration: 6 Days
+   - Difficulty: Easy-Moderate
+   - Altitude: 4,114m
+   - Season: June to September
+   - Price: $980 per person
+
+## Web Application Navigation & Endpoints
+- `/` - Home Page & Featured Expeditions
+- `/expeditions` - Full List of Available Expeditions
+- `/expedition-detail?id={id}` - Detailed Itinerary, Inclusions, and Booking
+- `/blog` - Mountain Travel Insights & Packing Guides
+- `/travel-guides` - In-Depth Region Guides (Hunza, Skardu, Fairy Meadows)
+- `/about` - Agency History, Safety Commitment, and Team Info
+- `/contact` - Booking Inquiry Form with n8n Webhook Integration
+- `/faq` - Frequently Asked Questions
+- `/privacy` - Data Privacy Policy
+- `/terms` - Terms & Conditions
+
+## Technical Architecture
+- SPA Built with React 19, Vite, TypeScript, Vanilla CSS.
+- Non-blocking asynchronous n8n webhook API endpoints for inquiries and newsletter subscriptions.
+- 100% Core Web Vitals optimized, zero render-blocking CSS, pre-compressed WebP media assets.
