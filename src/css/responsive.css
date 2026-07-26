@@ -4,18 +4,26 @@
 
 /* Mobile Base Fixes */
 html, body {
-    max-width: 100vw;
+    max-width: 100%;
     overflow-x: hidden;
     touch-action: manipulation;
+    -webkit-text-size-adjust: 100%;
 }
 
-/* Touch targets optimization */
-button, a, .navbar__hamburger, .mobile-menu__close, .slider-btn {
+/* Touch targets & Mobile Usability Optimization (WCAG 48px x 48px target size) */
+button, 
+a, 
+.navbar__hamburger, 
+.mobile-menu__close, 
+.slider-btn, 
+.scroll-to-top,
+.faq-accordion__header,
+.exp-card__btn,
+.hero__sound-toggle {
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Mobile Menu Base Styles (Hidden by default) */
 .navbar__hamburger {
     display: none;
     background: none;
@@ -25,8 +33,24 @@ button, a, .navbar__hamburger, .mobile-menu__close, .slider-btn {
     cursor: pointer;
     margin-left: 20px;
     padding: 8px;
-    min-width: 44px;
-    min-height: 44px;
+    min-width: 48px;
+    min-height: 48px;
+}
+
+@media screen and (max-width: 768px) {
+    /* Prevent iOS Safari auto-zoom on input focus */
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+
+    button, 
+    .slider-btn, 
+    .scroll-to-top, 
+    .navbar__hamburger, 
+    .mobile-menu__close {
+        min-width: 48px;
+        min-height: 48px;
+    }
 }
 
 .header--scrolled .navbar__hamburger {
