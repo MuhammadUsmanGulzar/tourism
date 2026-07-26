@@ -1,8 +1,75 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/blog.css';
 import { blogsData } from '../data/blogsData';
 
 export default function Blog() {
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [feedback, setFeedback] = useState<{ type: 'success' | 'info' | 'error'; text: string } | null>(null);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setLoading(true);
+    setFeedback(null);
+
+    const webhookUrl = import.meta.env.VITE_N8N_NEWSLETTER_WEBHOOK_URL;
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'blog_page', timestamp: new Date().toISOString() }),
+      });
+
+      let data: any = {};
+      try {
+        data = await response.json();
+      } catch {
+        // Handle cases where n8n returns plain text or non-json
+      }
+
+      if (response.ok) {
+        const item = Array.isArray(data) ? data[0] : data;
+
+        if (item?.isEmpty === true) {
+          // User not in database -> New Subscriber
+          setFeedback({
+            type: 'success',
+            text: item?.message || "Thank you for subscribing! Check your inbox for updates."
+          });
+          setEmail('');
+        } else if (item?.isEmpty === false || item?.status === 'already_subscribed' || item?.alreadySubscribed || item?.exists) {
+          // User already exists in database
+          setFeedback({
+            type: 'info',
+            text: item?.message || "You are already subscribed! We'll keep sending you updates on this email."
+          });
+        } else {
+          // Default fallback response
+          setFeedback({
+            type: 'success',
+            text: item?.message || "Thank you for subscribing! Check your inbox for updates."
+          });
+          setEmail('');
+        }
+      } else {
+        setFeedback({
+          type: 'error',
+          text: data.message || 'Subscription service temporarily unavailable. Please try again.'
+        });
+      }
+    } catch {
+      setFeedback({
+        type: 'error',
+        text: 'Network error. Please check your connection and try again.'
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
     
@@ -186,10 +253,30 @@ export default function Blog() {
                 <h2 className="blog-newsletter__title">NEVER MISS AN ADVENTURE</h2>
                 <p className="blog-newsletter__desc">Sign up to receive our latest expedition journals, travel guides, and exclusive updates directly in your inbox.</p>
                 
-                <form className="blog-newsletter__form" onSubmit={(e) => { e.preventDefault(); window.history.pushState({}, '', '/thank-you'); window.dispatchEvent(new Event('pushstate')); }}>
-                    <input type="email" placeholder="Your email address" required />
-                    <button type="submit">SUBSCRIBE</button>
+                <form className="blog-newsletter__form" onSubmit={handleSubscribe}>
+                    <input
+                      type="email"
+                      placeholder="Your email address"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      disabled={loading}
+                    />
+                    <button type="submit" disabled={loading}>
+                      {loading ? 'CHECKING...' : 'SUBSCRIBE'}
+                    </button>
                 </form>
+                {feedback && (
+                  <p style={{
+                    marginTop: '16px',
+                    fontSize: '0.95rem',
+                    fontWeight: 500,
+                    textAlign: 'center',
+                    color: feedback.type === 'error' ? '#ef4444' : feedback.type === 'info' ? '#f59e0b' : '#10b981'
+                  }}>
+                    {feedback.text}
+                  </p>
+                )}
             </div>
         </div>
     </section>
