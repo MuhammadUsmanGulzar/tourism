@@ -1,5 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-
+import Header from './components/Header';
+import Footer from './components/Footer';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Expeditions = lazy(() => import('./pages/Expeditions'));
@@ -241,9 +242,11 @@ export default function App() {
 
   return (
     <div className="app-container">
+      <Header />
       <Suspense fallback={null}>
         {renderRoute()}
       </Suspense>
+      <Footer />
     </div>
   );
 }

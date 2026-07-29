@@ -129,49 +129,7 @@ export default function Blog() {
 
   return (
     <div className="page-wrapper animate-fade-in">
-      <header className="header" id="main-header">
-        <nav className="navbar">
-            <div className="navbar__logo">
-                <a href="/">BROAD PEAK</a>
-            </div>
 
-            <ul className="navbar__menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-
-            <div className="navbar__actions">
-                <a href="#" className="navbar__social" aria-label="Instagram"><i className="ri-instagram-line"></i></a>
-                <a href="#" className="navbar__social" aria-label="Facebook"><i className="ri-facebook-fill"></i></a>
-                <a href="/contact" className="navbar__cta">Book a Trip</a>
-                <button className="navbar__hamburger" id="blog-hamburger">
-                    <i className="ri-menu-line"></i>
-                </button>
-            </div>
-        </nav>
-
-        
-        <div className="mobile-menu" id="blog-mobile-menu">
-            <div className="mobile-menu__header">
-                <div className="navbar__logo">
-                    <a href="/">BROAD PEAK</a>
-                </div>
-                <button className="mobile-menu__close" id="blog-menu-close">
-                    <i className="ri-close-line"></i>
-                </button>
-            </div>
-            <ul className="mobile-menu__links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
-    </header>
 
     
     <section className="blog-hero" id="blog-hero">
@@ -247,120 +205,61 @@ export default function Blog() {
     </section>
 
     
-    <section className="blog-newsletter" id="blog-newsletter">
-        <div className="blog-container">
-            <div className="blog-newsletter__inner">
-                <h2 className="blog-newsletter__title">NEVER MISS AN ADVENTURE</h2>
-                <p className="blog-newsletter__desc">Sign up to receive our latest expedition journals, travel guides, and exclusive updates directly in your inbox.</p>
-                
-                <form className="blog-newsletter__form" onSubmit={handleSubscribe}>
-                    <input
-                      type="email"
-                      placeholder="Your email address"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      disabled={loading}
-                    />
-                    <button type="submit" disabled={loading}>
-                      {loading ? 'CHECKING...' : 'SUBSCRIBE'}
-                    </button>
-                </form>
-                {feedback && (
-                  <p style={{
-                    marginTop: '16px',
-                    fontSize: '0.95rem',
-                    fontWeight: 500,
-                    textAlign: 'center',
-                    color: feedback.type === 'error' ? '#ef4444' : feedback.type === 'info' ? '#f59e0b' : '#10b981'
-                  }}>
-                    {feedback.text}
-                  </p>
-                )}
+    <section className="editorial-cta-section" style={{ padding: '80px 0', borderTop: '1px solid var(--hairline)', background: 'var(--bg-dark-alt)' }}>
+        <div className="container" style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
+            <span className="section-tag" style={{ marginBottom: '16px', display: 'block' }}>THE JOURNEY BEGINS</span>
+            <h2 className="section-title" style={{ fontSize: '2.4rem', marginBottom: '16px' }}>NEVER MISS AN ADVENTURE</h2>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', lineHeight: '1.6' }}>Sign up to receive our latest expedition journals, travel guides, and exclusive updates directly in your inbox.</p>
+            
+            <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: '16px', flexDirection: 'column' }}>
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  disabled={loading}
+                  style={{ 
+                    padding: '16px 20px', 
+                    background: 'transparent', 
+                    border: '1px solid var(--hairline)', 
+                    color: 'var(--white)',
+                    fontFamily: 'var(--font-body)',
+                    outline: 'none',
+                    textAlign: 'center'
+                  }}
+                />
+                <button type="submit" disabled={loading} className="btn-editorial" style={{ width: '100%', justifyContent: 'center' }}>
+                  {loading ? 'CHECKING...' : 'SUBSCRIBE'} <i className="ri-arrow-right-line"></i>
+                </button>
+            </form>
+            {feedback && (
+              <p style={{
+                marginTop: '16px',
+                fontSize: '0.9rem',
+                letterSpacing: '1px',
+                textTransform: 'uppercase',
+                color: feedback.type === 'error' ? '#ef4444' : feedback.type === 'info' ? 'var(--gold)' : '#10b981'
+              }}>
+                {feedback.text}
+              </p>
+            )}
+
+            <div style={{ marginTop: '60px', paddingTop: '40px', borderTop: '1px solid var(--hairline)' }}>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', marginBottom: '24px' }}>READY TO EXPERIENCE THESE STORIES YOURSELF?</h3>
+              <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <a href="/expeditions" className="btn-editorial">EXPLORE EXPEDITIONS</a>
+                  <a href="/contact" className="btn-editorial-outline">CONTACT OUR TEAM</a>
+              </div>
             </div>
         </div>
     </section>
 
     
-    <section className="blog-cta">
-        <div className="blog-cta__overlay"></div>
-        <div className="blog-container">
-            <div className="blog-cta__content">
-                <div className="blog-cta__text">
-                    <span className="blog-cta__tag">THE JOURNEY BEGINS</span>
-                    <h2 className="blog-cta__title">READY TO EXPERIENCE THESE STORIES YOURSELF?</h2>
-                    <p className="blog-cta__desc">Join our team of local guides and discover the mountains, valleys, and lakes of Gilgit-Baltistan.</p>
-                </div>
-                <div className="blog-cta__buttons">
-                    <a href="/expeditions" className="blog-btn-white">EXPLORE EXPEDITIONS</a>
-                    <a href="/contact" className="blog-btn-outline-light">CONTACT OUR TEAM</a>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     
-    <footer className="footer">
-        <div className="blog-container footer__container">
-
-            
-            <div className="footer__col footer__col--about">
-                <h3 className="footer__logo"><a href="/">BROAD PEAK</a></h3>
-                <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
-                <div className="footer__socials">
-                <a href="#" aria-label="Instagram"><i className="ri-instagram-line"></i></a>
-                <a href="#" aria-label="Facebook"><i className="ri-facebook-fill"></i></a>
-                <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i className="ri-whatsapp-line"></i></a>
-            </div>
-            </div>
-
-            
-            <div className="footer__col">
-                <h4>QUICK LINKS</h4>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/expeditions">Expeditions</a></li>
-                    <li><a href="/travel-guides">Travel Guides</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-            </div>
-
-            
-            <div className="footer__col">
-                <h4>POPULAR EXPEDITIONS</h4>
-                <ul>
-                    <li><a href="/expedition-detail?id=k2">K2 Base Camp Trek</a></li>
-                    <li><a href="/expedition-detail?id=basho-valley">Basho Valley Trek</a></li>
-                    <li><a href="/expedition-detail?id=haramosh-pass">Haramosh Pass Trek</a></li>
-                    <li><a href="/expedition-detail?id=minimarg">Minimarg Valley Escape</a></li>
-                    <li><a href="/expedition-detail?id=hoper-valley">Hoper Valley Explorer</a></li>
-                </ul>
-            </div>
-
-            
-            <div className="footer__col">
-                <h4>SUPPORT</h4>
-                <ul>
-                    <li><a href="/faq">FAQ</a></li>
-                    <li><a href="/privacy">Privacy Policy</a></li>
-                    <li><a href="/terms">Terms &amp; Conditions</a></li>
-                    <li><a href="mailto:info@broadpeakadventures.com">Email Us</a></li>
-                    <li><a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">WhatsApp Inquiry</a></li>
-                </ul>
-            </div>
-
-        </div>
-
-        <div className="blog-container footer__bottom">
-            <p>&copy; 2026 Broad Peak Adventures. All Rights Reserved.</p>
-        </div>
-    </footer>
-
     
-    <a href="#" className="scroll-to-top" aria-label="Scroll to top">
-        <i className="ri-arrow-up-line"></i>
-    </a>
     </div>
   );
 }

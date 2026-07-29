@@ -129,49 +129,7 @@ export default function TravelGuides() {
 
   return (
     <div className="page-wrapper animate-fade-in">
-      <header className="header" id="main-header">
-        <nav className="navbar">
-            <div className="navbar__logo">
-                <a href="/">BROAD PEAK</a>
-            </div>
-
-            <ul className="navbar__menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-
-            <div className="navbar__actions">
-                <a href="#" className="navbar__social" aria-label="Instagram"><i className="ri-instagram-line"></i></a>
-                <a href="#" className="navbar__social" aria-label="Facebook"><i className="ri-facebook-fill"></i></a>
-                <a href="/contact" className="navbar__cta">Book a Trip</a>
-                <button className="navbar__hamburger" id="tg-hamburger">
-                    <i className="ri-menu-line"></i>
-                </button>
-            </div>
-        </nav>
-
-        
-        <div className="mobile-menu" id="tg-mobile-menu">
-            <div className="mobile-menu__header">
-                <div className="navbar__logo">
-                    <a href="/">BROAD PEAK</a>
-                </div>
-                <button className="mobile-menu__close" id="tg-menu-close">
-                    <i className="ri-close-line"></i>
-                </button>
-            </div>
-            <ul className="mobile-menu__links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
-    </header>
+      
 
     
     <section className="tg-hero" id="tg-hero">
@@ -297,137 +255,79 @@ export default function TravelGuides() {
     </section>
 
     
-    <section className="tg-insights">
-        <div className="tg-container">
-            <div className="tg-insights__inner">
-                <div className="tg-insights__text">
-                    <span className="tg-section-tag">MOUNTAIN WISDOM</span>
-                    <h2 className="tg-section-title">KNOWLEDGE FROM THE MOUNTAINS</h2>
-                    <p className="tg-insights__desc">At Broad Peak Adventures, we believe that the best guides are those who have lived in the valleys for their entire life. High-altitude environments can change within minutes, and local intuition is often the most valuable safety asset during an expedition.</p>
-                    <p className="tg-insights__desc">We are committed to sharing this local wisdom. Through our editorial team of guides, cooks, and porters, we catalog ancestral weather tracking styles, historical routes, balti culinary choices, and local traditions to prepare you mentally and physically for the Karakoram.</p>
+    <section className="editorial-content-section" style={{ padding: '80px 0', borderTop: '1px solid var(--hairline)' }}>
+        <div className="container">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
+                <div>
+                    <span className="section-tag" style={{ marginBottom: '16px', display: 'block' }}>MOUNTAIN WISDOM</span>
+                    <h2 className="section-title" style={{ fontSize: '2.4rem', marginBottom: '24px' }}>KNOWLEDGE FROM THE MOUNTAINS</h2>
+                    <p style={{ color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: '1.6' }}>At Broad Peak Adventures, we believe that the best guides are those who have lived in the valleys for their entire life. High-altitude environments can change within minutes, and local intuition is often the most valuable safety asset during an expedition.</p>
+                    <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>We are committed to sharing this local wisdom. Through our editorial team of guides, cooks, and porters, we catalog ancestral weather tracking styles, historical routes, balti culinary choices, and local traditions to prepare you mentally and physically for the Karakoram.</p>
                 </div>
-                <div className="tg-insights__media">
-                    <img src="/assets/images/who-we-are-small.webp" alt="Balti guide standing in mountains" width="300" height="250" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    
-    <section className="tg-newsletter" id="tg-newsletter">
-        <div className="tg-container">
-            <div className="tg-newsletter__inner">
-                <h2 className="tg-newsletter__title">GET EXPEDITION INSIGHTS</h2>
-                <p className="tg-newsletter__desc">Receive trekking guides, seasonal advice, route updates, and travel inspiration.</p>
-                
-                <form className="tg-newsletter__form" onSubmit={handleSubscribe}>
-                    <input
-                      type="email"
-                      placeholder="Your email address"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      disabled={loading}
-                    />
-                    <button type="submit" disabled={loading}>
-                      {loading ? 'CHECKING...' : 'SUBSCRIBE'}
-                    </button>
-                </form>
-                {feedback && (
-                  <p style={{
-                    marginTop: '16px',
-                    fontSize: '0.95rem',
-                    fontWeight: 500,
-                    textAlign: 'center',
-                    color: feedback.type === 'error' ? '#ef4444' : feedback.type === 'info' ? '#f59e0b' : '#10b981'
-                  }}>
-                    {feedback.text}
-                  </p>
-                )}
-            </div>
-        </div>
-    </section>
-
-    
-    <section className="tg-cta">
-        <div className="tg-cta__overlay"></div>
-        <div className="tg-container">
-            <div className="tg-cta__content">
-                <div className="tg-cta__text">
-                    <span className="tg-cta__tag">THE KARAKORAM IS CALLING</span>
-                    <h2 className="tg-cta__title">READY TO EXPERIENCE THE KARAKORAM?</h2>
-                    <p className="tg-cta__desc">Join our team of local guides and discover the mountains, valleys, and lakes of Gilgit-Baltistan.</p>
-                </div>
-                <div className="tg-cta__buttons">
-                    <a href="/expeditions" className="tg-btn-white">VIEW EXPEDITIONS</a>
-                    <a href="/contact" className="tg-btn-outline-light">CONTACT OUR TEAM</a>
+                <div>
+                    <img src="/assets/images/who-we-are-small.webp" alt="Balti guide standing in mountains" width="600" height="400" loading="lazy" decoding="async" referrerPolicy="no-referrer" style={{ width: '100%', height: 'auto', borderRadius: '4px' }} />
                 </div>
             </div>
         </div>
     </section>
 
     
-    <footer className="footer">
-        <div className="tg-container footer__container">
-
+    <section className="editorial-cta-section" style={{ padding: '80px 0', borderTop: '1px solid var(--hairline)', background: 'var(--bg-dark-alt)' }}>
+        <div className="container" style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
+            <span className="section-tag" style={{ marginBottom: '16px', display: 'block' }}>GET EXPEDITION INSIGHTS</span>
+            <h2 className="section-title" style={{ fontSize: '2.4rem', marginBottom: '16px' }}>GET EXPEDITION INSIGHTS</h2>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', lineHeight: '1.6' }}>Receive trekking guides, seasonal advice, route updates, and travel inspiration.</p>
             
-            <div className="footer__col footer__col--about">
-                <h3 className="footer__logo">BROAD PEAK</h3>
-                <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
-                <div className="footer__socials">
-                <a href="#" aria-label="Instagram"><i className="ri-instagram-line"></i></a>
-                <a href="#" aria-label="Facebook"><i className="ri-facebook-fill"></i></a>
-                <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i className="ri-whatsapp-line"></i></a>
-            </div>
-            </div>
+            <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: '16px', flexDirection: 'column' }}>
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  disabled={loading}
+                  style={{ 
+                    padding: '16px 20px', 
+                    background: 'transparent', 
+                    border: '1px solid var(--hairline)', 
+                    color: 'var(--white)',
+                    fontFamily: 'var(--font-body)',
+                    outline: 'none',
+                    textAlign: 'center'
+                  }}
+                />
+                <button type="submit" disabled={loading} className="btn-editorial" style={{ width: '100%', justifyContent: 'center' }}>
+                  {loading ? 'CHECKING...' : 'SUBSCRIBE'} <i className="ri-arrow-right-line"></i>
+                </button>
+            </form>
+            {feedback && (
+              <p style={{
+                marginTop: '16px',
+                fontSize: '0.9rem',
+                letterSpacing: '1px',
+                textTransform: 'uppercase',
+                color: feedback.type === 'error' ? '#ef4444' : feedback.type === 'info' ? 'var(--gold)' : '#10b981'
+              }}>
+                {feedback.text}
+              </p>
+            )}
 
-            
-            <div className="footer__col">
-                <h4>QUICK LINKS</h4>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/expeditions">Expeditions</a></li>
-                    <li><a href="/travel-guides">Travel Guides</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
+            <div style={{ marginTop: '60px', paddingTop: '40px', borderTop: '1px solid var(--hairline)' }}>
+              <span className="section-tag" style={{ marginBottom: '16px', display: 'block' }}>THE KARAKORAM IS CALLING</span>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', marginBottom: '24px' }}>READY TO EXPERIENCE THE KARAKORAM?</h3>
+              <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <a href="/expeditions" className="btn-editorial">VIEW EXPEDITIONS</a>
+                  <a href="/contact" className="btn-editorial-outline">CONTACT OUR TEAM</a>
+              </div>
             </div>
-
-            
-            <div className="footer__col">
-                <h4>POPULAR EXPEDITIONS</h4>
-                <ul>
-                    <li><a href="/expedition-detail?id=k2">K2 Base Camp Trek</a></li>
-                    <li><a href="/expedition-detail?id=basho-valley">Basho Valley Trek</a></li>
-                    <li><a href="/expedition-detail?id=haramosh-pass">Haramosh Pass Trek</a></li>
-                    <li><a href="/expedition-detail?id=minimarg">Minimarg Valley Escape</a></li>
-                    <li><a href="/expedition-detail?id=hoper-valley">Hoper Valley Explorer</a></li>
-                </ul>
-            </div>
-
-            
-            <div className="footer__col">
-                <h4>SUPPORT</h4>
-                <ul>
-                    <li><a href="/faq">FAQ</a></li>
-                    <li><a href="/privacy">Privacy Policy</a></li>
-                    <li><a href="/terms">Terms &amp; Conditions</a></li>
-                    <li><a href="mailto:info@broadpeakadventures.com">Email Us</a></li>
-                    <li><a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">WhatsApp Inquiry</a></li>
-                </ul>
-            </div>
-
         </div>
-
-        <div className="tg-container footer__bottom">
-            <p>&copy; 2026 Broad Peak Adventures. All Rights Reserved.</p>
-        </div>
-    </footer>
+    </section>
 
     
-    <a href="#" className="scroll-to-top" aria-label="Scroll to top">
-        <i className="ri-arrow-up-line"></i>
-    </a>
+    
+
+    
+    
     </div>
   );
 }

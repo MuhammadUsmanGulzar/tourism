@@ -59,49 +59,7 @@ export default function Privacy() {
 
   return (
     <div className="page-wrapper animate-fade-in">
-      <header className="header" id="main-header">
-        <nav className="navbar">
-            <div className="navbar__logo">
-                <a href="/">BROAD PEAK</a>
-            </div>
-
-            <ul className="navbar__menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-
-            <div className="navbar__actions">
-                <a href="#" className="navbar__social" aria-label="Instagram"><i className="ri-instagram-line"></i></a>
-                <a href="#" className="navbar__social" aria-label="Facebook"><i className="ri-facebook-fill"></i></a>
-                <a href="/contact" className="navbar__cta">Book a Trip</a>
-                <button className="navbar__hamburger" id="privacy-hamburger">
-                    <i className="ri-menu-line"></i>
-                </button>
-            </div>
-        </nav>
-
-        
-        <div className="mobile-menu" id="privacy-mobile-menu">
-            <div className="mobile-menu__header">
-                <div className="navbar__logo">
-                    <a href="/">BROAD PEAK</a>
-                </div>
-                <button className="mobile-menu__close" id="privacy-menu-close">
-                    <i className="ri-close-line"></i>
-                </button>
-            </div>
-            <ul className="mobile-menu__links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
-    </header>
+      
 
     
     <section className="privacy-hero" id="privacy-hero">
@@ -232,67 +190,10 @@ export default function Privacy() {
     </section>
 
     
-    <footer className="footer">
-        <div className="privacy-container footer__container">
-
-            
-            <div className="footer__col footer__col--about">
-                <h3 className="footer__logo">BROAD PEAK</h3>
-                <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
-                <div className="footer__socials">
-                <a href="#" aria-label="Instagram"><i className="ri-instagram-line"></i></a>
-                <a href="#" aria-label="Facebook"><i className="ri-facebook-fill"></i></a>
-                <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i className="ri-whatsapp-line"></i></a>
-            </div>
-            </div>
-
-            
-            <div className="footer__col">
-                <h4>QUICK LINKS</h4>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/expeditions">Expeditions</a></li>
-                    <li><a href="/travel-guides">Travel Guides</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-            </div>
-
-            
-            <div className="footer__col">
-                <h4>POPULAR EXPEDITIONS</h4>
-                <ul>
-                    <li><a href="/expedition-detail?id=k2">K2 Base Camp Trek</a></li>
-                    <li><a href="/expedition-detail?id=basho-valley">Basho Valley Trek</a></li>
-                    <li><a href="/expedition-detail?id=haramosh-pass">Haramosh Pass Trek</a></li>
-                    <li><a href="/expedition-detail?id=minimarg">Minimarg Valley Escape</a></li>
-                    <li><a href="/expedition-detail?id=hoper-valley">Hoper Valley Explorer</a></li>
-                </ul>
-            </div>
-
-            
-            <div className="footer__col">
-                <h4>SUPPORT</h4>
-                <ul>
-                    <li><a href="/faq">FAQ</a></li>
-                    <li><a href="/privacy">Privacy Policy</a></li>
-                    <li><a href="/terms">Terms &amp; Conditions</a></li>
-                    <li><a href="mailto:info@broadpeakadventures.com">Email Us</a></li>
-                    <li><a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">WhatsApp Inquiry</a></li>
-                </ul>
-            </div>
-
-        </div>
-
-        <div className="privacy-container footer__bottom">
-            <p>&copy; 2026 Broad Peak Adventures. All Rights Reserved.</p>
-        </div>
-    </footer>
+    
 
     
-    <a href="#" className="scroll-to-top" aria-label="Scroll to top">
-        <i className="ri-arrow-up-line"></i>
-    </a>
+    
     </div>
   );
 }

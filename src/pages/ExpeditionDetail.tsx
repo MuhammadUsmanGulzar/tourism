@@ -110,49 +110,7 @@ export default function ExpeditionDetail() {
   return (
     <div className="page-wrapper animate-fade-in">
       {/* Dynamic Header */}
-      <header className={`header ${scrolled ? 'header--scrolled' : ''}`} id="main-header">
-        <nav className="navbar">
-          <div className="navbar__logo">
-            <a href="/">BROAD PEAK</a>
-          </div>
-
-          <ul className="navbar__menu">
-            <li><a href="/">Home</a></li>
-            <li><a href="/expeditions" className="active">Expeditions</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-
-          <div className="navbar__actions">
-            <a href="#" className="navbar__social" aria-label="Instagram"><i className="ri-instagram-line"></i></a>
-                <a href="#" className="navbar__social" aria-label="Facebook"><i className="ri-facebook-fill"></i></a>
-                <a href="/contact" className="navbar__cta">Book a Trip</a>
-            <button className="navbar__hamburger" id="expd-hamburger" onClick={() => setMobileMenuOpen(true)}>
-              <i className="ri-menu-line"></i>
-            </button>
-          </div>
-        </nav>
-
-        {/* Mobile Menu */}
-        <div className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`} id="expd-mobile-menu">
-          <div className="mobile-menu__header">
-            <div className="navbar__logo">
-              <a href="/">BROAD PEAK</a>
-            </div>
-            <button className="mobile-menu__close" id="expd-menu-close" onClick={() => setMobileMenuOpen(false)}>
-              <i className="ri-close-line"></i>
-            </button>
-          </div>
-          <ul className="mobile-menu__links">
-            <li><a href="/" onClick={() => setMobileMenuOpen(false)}>Home</a></li>
-            <li><a href="/expeditions" onClick={() => setMobileMenuOpen(false)}>Expeditions</a></li>
-            <li><a href="/blog" onClick={() => setMobileMenuOpen(false)}>Blog</a></li>
-            <li><a href="/about" onClick={() => setMobileMenuOpen(false)}>About Us</a></li>
-            <li><a href="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</a></li>
-          </ul>
-        </div>
-      </header>
+      
 
       {/* Hero Section */}
       <section className="expd-hero">
@@ -332,27 +290,29 @@ export default function ExpeditionDetail() {
         </div>
       </section>
 
-      {/* FAQs */}
-      <section className="expd-faq">
-        <div className="expd-container">
-          <div className="expd-faq__header">
-            <span className="expd-faq__subtitle">FAQ</span>
-            <h2 className="expd-faq__title">PLAN WITH CONFIDENCE</h2>
-            <p className="expd-faq__desc">Essential details to prepare you for the challenge ahead.</p>
+      {/* EDITORIAL FAQ MATRIX */}
+      <section className="faq-section" style={{ padding: '80px 0', borderTop: '1px solid var(--hairline)' }}>
+        <div className="container">
+          <div className="section-header" style={{ textAlign: "center" }}>
+            <span className="section-tag">FAQ</span>
+            <h2 className="section-title">PLAN WITH CONFIDENCE</h2>
+            <p style={{ color: 'var(--text-secondary)', marginTop: '8px' }}>Essential details to prepare you for the challenge ahead.</p>
           </div>
 
-          <div className="expd-faq__accordion" id="expd-faq-accordion">
+          <div className="faq-matrix">
             {expedition.faqs.map((faq, index) => {
               const isOpen = openFaqIndex === index;
               return (
-                <div key={index} className={`expd-faq__item ${isOpen ? 'active' : ''}`}>
-                  <button className="expd-faq__header-btn" onClick={() => toggleFaq(index)}>
+                <div key={index} className="faq-item">
+                  <button type="button" className="faq-header" onClick={() => toggleFaq(index)}>
                     <span>{faq.question}</span>
-                    <i className={`expd-faq__icon ${isOpen ? 'ri-subtract-line' : 'ri-add-line'}`}></i>
+                    <i className={isOpen ? "ri-subtract-line" : "ri-add-line"}></i>
                   </button>
-                  <div className="expd-faq__body" style={{ display: isOpen ? 'block' : 'none' }}>
-                    <p className="expd-faq__answer">{faq.answer}</p>
-                  </div>
+                  {isOpen && (
+                    <div className="faq-content">
+                      {faq.answer}
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -361,49 +321,54 @@ export default function ExpeditionDetail() {
       </section>
 
       {/* Booking / Inquiry Form */}
-      <section className="expd-inquiry" id="expd-inquiry">
-        <div className="expd-container">
-          <div className="expd-inquiry__grid">
-            <div className="expd-inquiry__text">
-              <span className="expd-section-tag">BOOKING &amp; PLANNING</span>
-              <h2 className="expd-section-title">PLAN YOUR {expedition.title}</h2>
-              <p className="expd-inquiry__desc">Have questions about dates, custom requirements, or gear? Submit a quick inquiry below or reach out directly to our team via WhatsApp to get real-time advice from local guides.</p>
+      <section className="editorial-content-section" id="expd-inquiry" style={{ padding: '80px 0', borderTop: '1px solid var(--hairline)', background: 'var(--bg-dark-alt)' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px' }}>
+            
+            <div style={{ paddingRight: '40px' }}>
+              <span className="section-tag" style={{ marginBottom: '16px', display: 'block' }}>BOOKING &amp; PLANNING</span>
+              <h2 className="section-title" style={{ fontSize: '2.4rem', marginBottom: '24px' }}>PLAN YOUR {expedition.title}</h2>
+              <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', lineHeight: '1.6' }}>Have questions about dates, custom requirements, or gear? Submit a quick inquiry below or reach out directly to our team via WhatsApp to get real-time advice from local guides.</p>
               
-              <div className="expd-inquiry__contacts">
-                <div className="expd-inquiry__contact-item">
-                  <i className="ri-mail-line"></i>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--white)', fontSize: '1.1rem' }}>
+                  <i className="ri-mail-line" style={{ color: 'var(--gold)' }}></i>
                   <span>info@broadpeakadventures.com</span>
                 </div>
-                <div className="expd-inquiry__contact-item">
-                  <i className="ri-phone-line"></i>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--white)', fontSize: '1.1rem' }}>
+                  <i className="ri-phone-line" style={{ color: 'var(--gold)' }}></i>
                   <span>+92 312 3456789</span>
                 </div>
               </div>
             </div>
 
-            <div className="expd-inquiry__form-wrapper">
-              <form className="expd-inquiry__form" onSubmit={handleFormSubmit}>
-                <div className="expd-inquiry__form-group">
-                  <label htmlFor="name">Name</label>
-                  <input type="text" id="name" placeholder="Your full name" required disabled={isSubmitting} />
+            <div style={{ background: 'var(--bg-dark)', padding: '40px', borderRadius: '4px', border: '1px solid var(--hairline)' }}>
+              <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label htmlFor="name" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Name</label>
+                  <input type="text" id="name" placeholder="Your full name" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'transparent', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }} />
                 </div>
-                <div className="expd-inquiry__form-group">
-                  <label htmlFor="email">Email</label>
-                  <input type="email" id="email" placeholder="Your email address" required disabled={isSubmitting} />
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label htmlFor="email" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Email</label>
+                  <input type="email" id="email" placeholder="Your email address" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'transparent', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }} />
                 </div>
-                <div className="expd-inquiry__form-row">
-                  <div className="expd-inquiry__form-group">
-                    <label htmlFor="country">Country</label>
-                    <input type="text" id="country" placeholder="Your country" required disabled={isSubmitting} />
+                
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <label htmlFor="country" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Country</label>
+                    <input type="text" id="country" placeholder="Your country" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'transparent', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }} />
                   </div>
-                  <div className="expd-inquiry__form-group">
-                    <label htmlFor="date">Preferred Travel Date</label>
-                    <input type="date" id="date" required disabled={isSubmitting} />
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <label htmlFor="date" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Preferred Date</label>
+                    <input type="date" id="date" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'transparent', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%', colorScheme: 'dark' }} />
                   </div>
                 </div>
-                <div className="expd-inquiry__form-group">
-                  <label htmlFor="size">Group Size</label>
-                  <select id="size" defaultValue="1" required disabled={isSubmitting}>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label htmlFor="size" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Group Size</label>
+                  <select id="size" defaultValue="1" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'var(--bg-dark)', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }}>
                     <option value="1">1 Person</option>
                     <option value="2">2 People</option>
                     <option value="3-5">3 - 5 People</option>
@@ -411,19 +376,23 @@ export default function ExpeditionDetail() {
                     <option value="11+">11+ People</option>
                   </select>
                 </div>
-                <div className="expd-inquiry__form-group">
-                  <label htmlFor="message">Message</label>
-                  <textarea id="message" rows={4} placeholder="How can we help you plan your journey?" required disabled={isSubmitting}></textarea>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <label htmlFor="message" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Message</label>
+                  <textarea id="message" rows={4} placeholder="How can we help you plan your journey?" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'transparent', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%', resize: 'vertical' }}></textarea>
                 </div>
-                {submitError && <div className="con-error-message" style={{ color: '#d17a33', marginBottom: '15px', fontSize: '0.9rem' }}>{submitError}</div>}
-                <div className="expd-inquiry__form-buttons">
-                  <button type="submit" className="expd-btn-primary expd-inquiry__submit" disabled={isSubmitting}>
-                    {isSubmitting ? 'SENDING...' : 'SEND INQUIRY'}
+                
+                {submitError && <div style={{ color: '#ef4444', fontSize: '0.9rem' }}>{submitError}</div>}
+                
+                <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginTop: '10px' }}>
+                  <button type="submit" className="btn-editorial" disabled={isSubmitting} style={{ flex: 1, justifyContent: 'center' }}>
+                    {isSubmitting ? 'SENDING...' : 'SEND INQUIRY'} <i className="ri-arrow-right-line"></i>
                   </button>
-                  <a href="https://wa.me/923123456789" target="_blank" rel="noopener noreferrer" className="expd-btn-whatsapp">
+                  <a href="https://wa.me/923123456789" target="_blank" rel="noopener noreferrer" className="btn-editorial-outline" style={{ flex: 1, justifyContent: 'center' }}>
                     <i className="ri-whatsapp-line"></i> WHATSAPP US
                   </a>
                 </div>
+                
               </form>
             </div>
           </div>
@@ -431,79 +400,24 @@ export default function ExpeditionDetail() {
       </section>
 
       {/* Footer CTA */}
-      <section className="expd-cta">
-        <div className="expd-cta__overlay"></div>
-        <div className="expd-container">
-          <div className="expd-cta__content">
-            <div className="expd-cta__text">
-              <span className="expd-cta__tag">THE KARAKORAM CALLS</span>
-              <h2 className="expd-cta__title">READY FOR THE JOURNEY OF A LIFETIME?</h2>
-              <p className="expd-cta__desc">Join one of the world's greatest adventure experiences with experienced local guides and authentic mountain hospitality.</p>
+      <section className="editorial-cta-section" style={{ padding: '80px 0', borderTop: '1px solid var(--hairline)' }}>
+        <div className="container" style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
+            <span className="section-tag" style={{ marginBottom: '16px', display: 'block' }}>THE KARAKORAM CALLS</span>
+            <h2 className="section-title" style={{ fontSize: '2.4rem', marginBottom: '24px' }}>READY FOR THE JOURNEY OF A LIFETIME?</h2>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '40px', lineHeight: '1.6' }}>Join one of the world's greatest adventure experiences with experienced local guides and authentic mountain hospitality.</p>
+            
+            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <a href="/contact" className="btn-editorial">CONTACT OUR TEAM</a>
+                <a href="/expeditions" className="btn-editorial-outline">EXPLORE MORE EXPEDITIONS</a>
             </div>
-            <div className="expd-cta__buttons">
-              <a href="/contact" className="expd-btn-white">CONTACT OUR TEAM</a>
-              <a href="/expeditions" className="expd-btn-outline-light">EXPLORE MORE EXPEDITIONS</a>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="footer">
-        <div className="expd-container footer__container">
-          <div className="footer__col footer__col--about">
-            <h3 className="footer__logo"><a href="/">BROAD PEAK</a></h3>
-            <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
-            <div className="footer__socials">
-                <a href="#" aria-label="Instagram"><i className="ri-instagram-line"></i></a>
-                <a href="#" aria-label="Facebook"><i className="ri-facebook-fill"></i></a>
-                <a href="https://wa.me/923123456789" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i className="ri-whatsapp-line"></i></a>
-            </div>
-          </div>
-
-          <div className="footer__col">
-            <h4>QUICK LINKS</h4>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/expeditions">Expeditions</a></li>
-              <li><a href="/travel-guides">Travel Guides</a></li>
-              <li><a href="/contact">Contact</a></li>
-            </ul>
-          </div>
-
-          <div className="footer__col">
-            <h4>POPULAR EXPEDITIONS</h4>
-            <ul>
-              <li><a href="/expedition-detail?id=k2">K2 Base Camp Trek</a></li>
-              <li><a href="/expedition-detail?id=basho-valley">Basho Valley Trek</a></li>
-              <li><a href="/expedition-detail?id=haramosh-pass">Haramosh Pass Trek</a></li>
-              <li><a href="/expedition-detail?id=minimarg">Minimarg Valley Escape</a></li>
-              <li><a href="/expedition-detail?id=hoper-valley">Hoper Valley Explorer</a></li>
-            </ul>
-          </div>
-
-          <div className="footer__col">
-            <h4>SUPPORT</h4>
-            <ul>
-              <li><a href="/faq">FAQ</a></li>
-              <li><a href="/privacy">Privacy Policy</a></li>
-              <li><a href="/terms">Terms &amp; Conditions</a></li>
-              <li><a href="mailto:info@broadpeakadventures.com">Email Us</a></li>
-              <li><a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">WhatsApp Inquiry</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="expd-container footer__bottom">
-          <p>&copy; 2026 Broad Peak Adventures. All Rights Reserved.</p>
-        </div>
-      </footer>
+      
 
       {/* Scroll to Top */}
-      <a href="#" className="scroll-to-top" aria-label="Scroll to top">
-        <i className="ri-arrow-up-line"></i>
-      </a>
+      
     </div>
   );
 }

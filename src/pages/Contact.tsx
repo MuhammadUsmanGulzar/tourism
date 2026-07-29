@@ -5,6 +5,7 @@ import { expeditionsData } from '../data/expeditionsData';
 export default function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState<string | null>(null);
+    const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -115,49 +116,7 @@ export default function Contact() {
 
     return (
         <div className="page-wrapper animate-fade-in">
-            <header className="header" id="main-header">
-                <nav className="navbar">
-                    <div className="navbar__logo">
-                        <a href="/">BROAD PEAK</a>
-                    </div>
-
-                    <ul className="navbar__menu">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/expeditions">Expeditions</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                    </ul>
-
-                    <div className="navbar__actions">
-                        <a href="#" className="navbar__social" aria-label="Instagram"><i className="ri-instagram-line"></i></a>
-                <a href="#" className="navbar__social" aria-label="Facebook"><i className="ri-facebook-fill"></i></a>
-                <a href="/contact" className="navbar__cta">Book a Trip</a>
-                        <button className="navbar__hamburger" id="con-hamburger">
-                            <i className="ri-menu-line"></i>
-                        </button>
-                    </div>
-                </nav>
-
-
-                <div className="mobile-menu" id="con-mobile-menu">
-                    <div className="mobile-menu__header">
-                        <div className="navbar__logo">
-                            <a href="/">BROAD PEAK</a>
-                        </div>
-                        <button className="mobile-menu__close" id="con-menu-close">
-                            <i className="ri-close-line"></i>
-                        </button>
-                    </div>
-                    <ul className="mobile-menu__links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/expeditions">Expeditions</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                    </ul>
-                </div>
-            </header>
+            
 
 
             <section className="con-hero" id="con-hero">
@@ -208,49 +167,49 @@ export default function Contact() {
             </section>
 
 
-            <section className="con-inquiry-section" id="con-inquiry">
-                <div className="con-container">
-                    <div className="con-inquiry__grid">
+            <section className="editorial-content-section" id="con-inquiry" style={{ padding: '80px 0', borderTop: '1px solid var(--hairline)', background: 'var(--bg-dark-alt)' }}>
+                <div className="container">
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px' }}>
 
-                        <div className="con-inquiry__text-block">
-                            <span className="con-section-tag">TELL US ABOUT YOUR TRIP</span>
-                            <h2 className="con-section-title">PLAN YOUR ADVENTURE</h2>
-                            <p className="con-inquiry__desc">Complete this planning form and our travel coordinators will get back to you with custom itinerary drafts, pricing breakdowns, and logistical options.</p>
+                        <div style={{ paddingRight: '40px' }}>
+                            <span className="section-tag" style={{ marginBottom: '16px', display: 'block' }}>TELL US ABOUT YOUR TRIP</span>
+                            <h2 className="section-title" style={{ fontSize: '2.4rem', marginBottom: '24px' }}>PLAN YOUR ADVENTURE</h2>
+                            <p style={{ color: 'var(--text-secondary)', marginBottom: '32px', lineHeight: '1.6' }}>Complete this planning form and our travel coordinators will get back to you with custom itinerary drafts, pricing breakdowns, and logistical options.</p>
 
-                            <div className="con-inquiry__highlights">
-                                <div className="con-inquiry__highlight-item">
-                                    <i className="ri-checkbox-circle-fill"></i>
-                                    <span>All domestic permits &amp; NOC support included.</span>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', color: 'var(--white)' }}>
+                                    <i className="ri-checkbox-circle-fill" style={{ color: 'var(--gold)', marginTop: '2px' }}></i>
+                                    <span style={{ lineHeight: '1.6' }}>All domestic permits &amp; NOC support included.</span>
                                 </div>
-                                <div className="con-inquiry__highlight-item">
-                                    <i className="ri-checkbox-circle-fill"></i>
-                                    <span>100% locally owned and operated agency.</span>
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', color: 'var(--white)' }}>
+                                    <i className="ri-checkbox-circle-fill" style={{ color: 'var(--gold)', marginTop: '2px' }}></i>
+                                    <span style={{ lineHeight: '1.6' }}>100% locally owned and operated agency.</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="con-inquiry__form-wrapper">
-                            <form className="con-inquiry__form" onSubmit={handleSubmit}>
+                        <div style={{ background: 'var(--bg-dark)', padding: '40px', borderRadius: '4px', border: '1px solid var(--hairline)' }}>
+                            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
 
-                                <div className="con-inquiry__form-row">
-                                    <div className="con-inquiry__form-group">
-                                        <label htmlFor="fullname">Full Name</label>
-                                        <input type="text" id="fullname" placeholder="Your name" required disabled={isSubmitting} />
+                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                        <label htmlFor="fullname" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Full Name</label>
+                                        <input type="text" id="fullname" placeholder="Your name" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'transparent', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }} />
                                     </div>
-                                    <div className="con-inquiry__form-group">
-                                        <label htmlFor="email">Email</label>
-                                        <input type="email" id="email" placeholder="Your email" required disabled={isSubmitting} />
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                        <label htmlFor="email" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Email</label>
+                                        <input type="email" id="email" placeholder="Your email" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'transparent', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }} />
                                     </div>
                                 </div>
 
-                                <div className="con-inquiry__form-row">
-                                    <div className="con-inquiry__form-group">
-                                        <label htmlFor="country">Country</label>
-                                        <input type="text" id="country" placeholder="Your country" required disabled={isSubmitting} />
+                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                        <label htmlFor="country" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Country</label>
+                                        <input type="text" id="country" placeholder="Your country" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'transparent', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }} />
                                     </div>
-                                    <div className="con-inquiry__form-group">
-                                        <label htmlFor="interest">Expedition Interest</label>
-                                        <select id="interest" required defaultValue="" disabled={isSubmitting}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                        <label htmlFor="interest" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Expedition Interest</label>
+                                        <select id="interest" required defaultValue="" disabled={isSubmitting} style={{ padding: '16px 20px', background: 'var(--bg-dark)', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }}>
                                             <option value="" disabled>Select an expedition</option>
                                             {Object.values(expeditionsData).map((exp) => (
                                                 <option key={exp.id} value={exp.id}>{exp.title}</option>
@@ -260,10 +219,10 @@ export default function Contact() {
                                     </div>
                                 </div>
 
-                                <div className="con-inquiry__form-row">
-                                    <div className="con-inquiry__form-group">
-                                        <label htmlFor="month">Preferred Travel Month</label>
-                                        <select id="month" required defaultValue="" disabled={isSubmitting}>
+                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                        <label htmlFor="month" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Travel Month</label>
+                                        <select id="month" required defaultValue="" disabled={isSubmitting} style={{ padding: '16px 20px', background: 'var(--bg-dark)', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }}>
                                             <option value="" disabled>Select a month</option>
                                             <option value="jan">January</option>
                                             <option value="feb">February</option>
@@ -279,9 +238,9 @@ export default function Contact() {
                                             <option value="dec">December</option>
                                         </select>
                                     </div>
-                                    <div className="con-inquiry__form-group">
-                                        <label htmlFor="groupsize">Group Size</label>
-                                        <select id="groupsize" required disabled={isSubmitting}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                        <label htmlFor="groupsize" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Group Size</label>
+                                        <select id="groupsize" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'var(--bg-dark)', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }}>
                                             <option value="1">1 Person</option>
                                             <option value="2">2 People</option>
                                             <option value="3-5">3 - 5 People</option>
@@ -291,22 +250,24 @@ export default function Contact() {
                                     </div>
                                 </div>
 
-                                <div className="con-inquiry__form-group">
-                                    <label htmlFor="message">Message</label>
-                                    <textarea id="message" rows="5" placeholder="Share any specific dates, preferences, or fitness questions..." required disabled={isSubmitting}></textarea>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                    <label htmlFor="message" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Message</label>
+                                    <textarea id="message" rows={5} placeholder="Share any specific dates, preferences, or fitness questions..." required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'transparent', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%', resize: 'vertical' }}></textarea>
                                 </div>
 
                                 {submitError && (
-                                    <div className="form-error-message" style={{ color: '#ef4444', marginBottom: '1rem', fontSize: '0.875rem', fontWeight: '500' }}>
+                                    <div style={{ color: '#ef4444', fontSize: '0.9rem' }}>
                                         {submitError}
                                     </div>
                                 )}
 
-                                <div className="con-inquiry__form-buttons">
-                                    <button type="submit" className="con-btn-primary" disabled={isSubmitting}>
-                                        {isSubmitting ? 'SENDING...' : 'SEND INQUIRY'}
+                                <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginTop: '10px' }}>
+                                    <button type="submit" className="btn-editorial" disabled={isSubmitting} style={{ flex: 1, justifyContent: 'center' }}>
+                                        {isSubmitting ? 'SENDING...' : 'SEND INQUIRY'} <i className="ri-arrow-right-line"></i>
                                     </button>
-                                    <a href="https://wa.me/923001234567" target="_blank" rel="noopener" className="con-btn-whatsapp"><i className="ri-whatsapp-line"></i> WHATSAPP US</a>
+                                    <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" className="btn-editorial-outline" style={{ flex: 1, justifyContent: 'center' }}>
+                                        <i className="ri-whatsapp-line"></i> WHATSAPP US
+                                    </a>
                                 </div>
 
                             </form>
@@ -317,92 +278,37 @@ export default function Contact() {
             </section>
 
 
-            <section className="con-why">
-                <div className="con-container">
-                    <div className="con-why__header">
-                        <span className="con-section-tag">OUR PROMISE</span>
-                        <h2 className="con-section-title">WHY CONTACT US</h2>
+            <section className="editorial-content-section" style={{ padding: '80px 0', borderTop: '1px solid var(--hairline)' }}>
+                <div className="container">
+                    <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+                        <span className="section-tag" style={{ marginBottom: '16px', display: 'block' }}>OUR PROMISE</span>
+                        <h2 className="section-title" style={{ fontSize: '2.4rem' }}>WHY CONTACT US</h2>
                     </div>
 
-                    <div className="con-why__grid">
-
-                        <div className="con-why-card">
-                            <div className="con-why-card__icon"><i className="ri-chat-smile-3-line"></i></div>
-                            <h3 className="con-why-card__title">Local Experts</h3>
-                            <p className="con-why-card__desc">You speak directly to the operations team in Skardu, not an offshore booking portal. You get real mountain facts.</p>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '40px' }}>
+                        
+                        <div style={{ padding: '30px', background: 'var(--bg-dark-alt)', border: '1px solid var(--hairline)', borderRadius: '4px' }}>
+                            <div style={{ color: 'var(--gold)', fontSize: '2rem', marginBottom: '20px' }}><i className="ri-chat-smile-3-line"></i></div>
+                            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', marginBottom: '16px', color: 'var(--white)' }}>Local Experts</h3>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>You speak directly to the operations team in Skardu, not an offshore booking portal. You get real mountain facts.</p>
                         </div>
 
-                        <div className="con-why-card">
-                            <div className="con-why-card__icon"><i className="ri-flashlight-line"></i></div>
-                            <h3 className="con-why-card__title">Fast Responses</h3>
-                            <p className="con-why-card__desc">We aim to answer all email requests within 24 hours, and we provide instant support via our official WhatsApp line.</p>
+                        <div style={{ padding: '30px', background: 'var(--bg-dark-alt)', border: '1px solid var(--hairline)', borderRadius: '4px' }}>
+                            <div style={{ color: 'var(--gold)', fontSize: '2rem', marginBottom: '20px' }}><i className="ri-flashlight-line"></i></div>
+                            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', marginBottom: '16px', color: 'var(--white)' }}>Fast Responses</h3>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>We aim to answer all email requests within 24 hours, and we provide instant support via our official WhatsApp line.</p>
                         </div>
 
-                        <div className="con-why-card">
-                            <div className="con-why-card__icon"><i className="ri-magic-line"></i></div>
-                            <h3 className="con-why-card__title">Custom Itineraries</h3>
-                            <p className="con-why-card__desc">We build completely bespoke routes, adjusting altitude climb rates, campsite nights, and support staff to fit your requirements.</p>
+                        <div style={{ padding: '30px', background: 'var(--bg-dark-alt)', border: '1px solid var(--hairline)', borderRadius: '4px' }}>
+                            <div style={{ color: 'var(--gold)', fontSize: '2rem', marginBottom: '20px' }}><i className="ri-magic-line"></i></div>
+                            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', marginBottom: '16px', color: 'var(--white)' }}>Custom Itineraries</h3>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>We build completely bespoke routes, adjusting altitude climb rates, campsite nights, and support staff to fit your requirements.</p>
                         </div>
 
-                        <div className="con-why-card">
-                            <div className="con-why-card__icon"><i className="ri-heart-pulse-line"></i></div>
-                            <h3 className="con-why-card__title">Safety &amp; Logistics</h3>
-                            <p className="con-why-card__desc">We coordinate hotel lodgings, reliable 4x4 drivers, local porter associations, and high-altitude emergency safety protocols.</p>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-
-            <section className="con-faq">
-                <div className="con-container">
-                    <div className="con-faq__header">
-                        <span className="con-faq__subtitle">FAQ</span>
-                        <h2 className="con-faq__title">PLAN YOUR VISIT</h2>
-                        <p className="con-faq__desc">Essential details to help you prepare before reaching out.</p>
-                    </div>
-
-                    <div className="con-faq__accordion" id="con-faq-accordion">
-
-                        <div className="con-faq__item active">
-                            <button className="con-faq__header-btn">
-                                <span>How quickly do you respond?</span>
-                                <i className="ri-add-line con-faq__icon"></i>
-                            </button>
-                            <div className="con-faq__body con-faq__body--open">
-                                <p className="con-faq__answer">We typically respond to email inquiries within 12 to 24 hours. For urgent questions or real-time travel planning, you can get in touch with our team instantly via WhatsApp.</p>
-                            </div>
-                        </div>
-
-                        <div className="con-faq__item">
-                            <button className="con-faq__header-btn">
-                                <span>Can I request a private tour?</span>
-                                <i className="ri-add-line con-faq__icon"></i>
-                            </button>
-                            <div className="con-faq__body">
-                                <p className="con-faq__answer">Yes, absolutely. We specialize in private departures for solo travelers, families, professional photographers, and private climbing clubs. We can custom tailor the entire itinerary to your interests.</p>
-                            </div>
-                        </div>
-
-                        <div className="con-faq__item">
-                            <button className="con-faq__header-btn">
-                                <span>Do you help with permits?</span>
-                                <i className="ri-add-line con-faq__icon"></i>
-                            </button>
-                            <div className="con-faq__body">
-                                <p className="con-faq__answer">Yes. Broad Peak Adventures is a fully registered mountaineering agency. We handle all governmental NOCs, park entry fees, and special border area permissions required for foreign travelers.</p>
-                            </div>
-                        </div>
-
-                        <div className="con-faq__item">
-                            <button className="con-faq__header-btn">
-                                <span>Can beginners join expeditions?</span>
-                                <i className="ri-add-line con-faq__icon"></i>
-                            </button>
-                            <div className="con-faq__body">
-                                <p className="con-faq__answer">We offer various journeys suited for different fitness levels. While extreme treks like K2 Base Camp require high fitness and prior high-altitude experience, easy tours like Hunza Explorer and Attabad Lake are highly suitable for beginners.</p>
-                            </div>
+                        <div style={{ padding: '30px', background: 'var(--bg-dark-alt)', border: '1px solid var(--hairline)', borderRadius: '4px' }}>
+                            <div style={{ color: 'var(--gold)', fontSize: '2rem', marginBottom: '20px' }}><i className="ri-heart-pulse-line"></i></div>
+                            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', marginBottom: '16px', color: 'var(--white)' }}>Safety &amp; Logistics</h3>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>We coordinate hotel lodgings, reliable 4x4 drivers, local porter associations, and high-altitude emergency safety protocols.</p>
                         </div>
 
                     </div>
@@ -410,84 +316,69 @@ export default function Contact() {
             </section>
 
 
-            <section className="con-cta">
-                <div className="con-cta__overlay"></div>
-                <div className="con-container">
-                    <div className="con-cta__content">
-                        <div className="con-cta__text">
-                            <span className="con-cta__tag">THE KARAKORAM IS WAITING</span>
-                            <h2 className="con-cta__title">READY FOR YOUR NEXT ADVENTURE?</h2>
-                            <p className="con-cta__desc">Explore our legendary high-altitude trekking packages or discover the beautiful valleys of Gilgit-Baltistan.</p>
-                        </div>
-                        <div className="con-cta__buttons">
-                            <a href="/expeditions" className="con-btn-white">EXPLORE EXPEDITIONS</a>
-                        </div>
+            {/* EDITORIAL FAQ MATRIX */}
+            <section className="faq-section" style={{ padding: '80px 0', borderTop: '1px solid var(--hairline)' }}>
+                <div className="container">
+                  <div className="section-header" style={{ textAlign: "center" }}>
+                    <span className="section-tag">FAQ</span>
+                    <h2 className="section-title">PLAN YOUR VISIT</h2>
+                    <p style={{ color: 'var(--text-secondary)', marginTop: '8px' }}>Essential details to help you prepare before reaching out.</p>
+                  </div>
+
+                  <div className="faq-matrix">
+                    {[
+                      {
+                        q: "How quickly do you respond?",
+                        a: "We typically respond to email inquiries within 12 to 24 hours. For urgent questions or real-time travel planning, you can get in touch with our team instantly via WhatsApp."
+                      },
+                      {
+                        q: "Can I request a private tour?",
+                        a: "Yes, absolutely. We specialize in private departures for solo travelers, families, professional photographers, and private climbing clubs. We can custom tailor the entire itinerary to your interests."
+                      },
+                      {
+                        q: "Do you help with permits?",
+                        a: "Yes. Broad Peak Adventures is a fully registered mountaineering agency. We handle all governmental NOCs, park entry fees, and special border area permissions required for foreign travelers."
+                      },
+                      {
+                        q: "Can beginners join expeditions?",
+                        a: "We offer various journeys suited for different fitness levels. While extreme treks like K2 Base Camp require high fitness and prior high-altitude experience, easy tours like Hunza Explorer and Attabad Lake are highly suitable for beginners."
+                      }
+                    ].map((item, idx) => (
+                      <div key={idx} className="faq-item">
+                        <button type="button" className="faq-header" onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}>
+                          <span>{item.q}</span>
+                          <i className={activeFaq === idx ? "ri-subtract-line" : "ri-add-line"}></i>
+                        </button>
+                        {activeFaq === idx && (
+                          <div className="faq-content">
+                            {item.a}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+            </section>
+
+
+            {/* EDITORIAL CTA */}
+            <section className="editorial-cta-section" style={{ padding: '80px 0', borderTop: '1px solid var(--hairline)', background: 'var(--bg-dark-alt)' }}>
+                <div className="container" style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
+                    <span className="section-tag" style={{ marginBottom: '16px', display: 'block' }}>THE KARAKORAM IS WAITING</span>
+                    <h2 className="section-title" style={{ fontSize: '2.4rem', marginBottom: '24px' }}>READY FOR YOUR NEXT ADVENTURE?</h2>
+                    <p style={{ color: 'var(--text-secondary)', marginBottom: '40px', lineHeight: '1.6' }}>Explore our legendary high-altitude trekking packages or discover the beautiful valleys of Gilgit-Baltistan.</p>
+                    
+                    <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <a href="/expeditions" className="btn-editorial">EXPLORE EXPEDITIONS</a>
                     </div>
                 </div>
             </section>
 
 
-            <footer className="footer">
-                <div className="con-container footer__container">
+            
 
 
-                    <div className="footer__col footer__col--about">
-                        <h3 className="footer__logo"><a href="/">BROAD PEAK</a></h3>
-                        <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
-                        <div className="footer__socials">
-                <a href="#" aria-label="Instagram"><i className="ri-instagram-line"></i></a>
-                <a href="#" aria-label="Facebook"><i className="ri-facebook-fill"></i></a>
-                <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i className="ri-whatsapp-line"></i></a>
-            </div>
-                    </div>
-
-
-                    <div className="footer__col">
-                        <h4>QUICK LINKS</h4>
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/about">About Us</a></li>
-                            <li><a href="/expeditions">Expeditions</a></li>
-                            <li><a href="/travel-guides">Travel Guides</a></li>
-                            <li><a href="/contact">Contact</a></li>
-                        </ul>
-                    </div>
-
-
-                    <div className="footer__col">
-                        <h4>POPULAR EXPEDITIONS</h4>
-                        <ul>
-                            <li><a href="/expedition-detail?id=k2">K2 Base Camp Trek</a></li>
-                            <li><a href="/expedition-detail?id=basho-valley">Basho Valley Trek</a></li>
-                            <li><a href="/expedition-detail?id=haramosh-pass">Haramosh Pass Trek</a></li>
-                            <li><a href="/expedition-detail?id=minimarg">Minimarg Valley Escape</a></li>
-                            <li><a href="/expedition-detail?id=hoper-valley">Hoper Valley Explorer</a></li>
-                        </ul>
-                    </div>
-
-
-                    <div className="footer__col">
-                        <h4>SUPPORT</h4>
-                        <ul>
-                            <li><a href="/faq">FAQ</a></li>
-                            <li><a href="/privacy">Privacy Policy</a></li>
-                            <li><a href="/terms">Terms &amp; Conditions</a></li>
-                            <li><a href="mailto:info@broadpeakadventures.com">Email Us</a></li>
-                            <li><a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">WhatsApp Inquiry</a></li>
-                        </ul>
-                    </div>
-
-                </div>
-
-                <div className="con-container footer__bottom">
-                    <p>&copy; 2026 Broad Peak Adventures. All Rights Reserved.</p>
-                </div>
-            </footer>
-
-
-            <a href="#" className="scroll-to-top" aria-label="Scroll to top">
-                <i className="ri-arrow-up-line"></i>
-            </a>
+            
         </div>
     );
 }

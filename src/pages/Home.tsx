@@ -4,804 +4,408 @@ import '../css/responsive.css';
 import { expeditionsData } from '../data/expeditionsData';
 import Image from '../components/Image';
 
+// Interactive Trail Waypoint Data
+const waypointsData = [
+  {
+    id: 'askole',
+    name: 'Askole Sanctuary',
+    altitude: '3,000m',
+    day: 'Day 01',
+    temp: '18°C',
+    oxygen: '97%',
+    desc: 'The historic mountain settlement marking the transition into the wild Baltoro Glacier.',
+    image: '/assets/images/k2.webp'
+  },
+  {
+    id: 'paiju',
+    name: 'Paiju Campsite',
+    altitude: '3,450m',
+    day: 'Day 04',
+    temp: '12°C',
+    oxygen: '92%',
+    desc: 'Resting grounds beneath the vertical granite spires of Paiju Peak.',
+    image: '/assets/images/who-we-are-main.webp'
+  },
+  {
+    id: 'concordia',
+    name: 'Concordia — Throne Room of the Gods',
+    altitude: '4,691m',
+    day: 'Day 08',
+    temp: '-2°C',
+    oxygen: '78%',
+    desc: 'The world\'s premier mountain amphitheatre with 360° vistas of K2, Broad Peak, and Gasherbrum.',
+    image: '/assets/images/article_k2_guide_1783186031585.webp'
+  },
+  {
+    id: 'k2base',
+    name: 'K2 Base Camp',
+    altitude: '5,117m',
+    day: 'Day 10',
+    temp: '-6°C',
+    oxygen: '72%',
+    desc: 'At the foot of the Savage Mountain (8,611m). The ultimate high-altitude pilgrimage.',
+    image: '/assets/images/article_snow_lake_1783186049575.webp'
+  },
+  {
+    id: 'gondogoro',
+    name: 'Gondogoro Pass',
+    altitude: '5,585m',
+    day: 'Day 12',
+    temp: '-10°C',
+    oxygen: '68%',
+    desc: 'Technical high-altitude pass crossing equipped with fixed ropes and unforgettable sunrise views.',
+    image: '/assets/images/who-we-are-small.webp'
+  }
+];
+
 export default function Home() {
-  const [isMobile, setIsMobile] = useState<boolean>(() => typeof window !== 'undefined' && window.innerWidth <= 768);
+  const [activeFilter, setActiveFilter] = useState<'all' | '8000m' | 'trek' | 'culture'>('all');
+  const [activeWaypoint, setActiveWaypoint] = useState(waypointsData[2]); // Default Concordia
+  const [activeFaq, setActiveFaq] = useState<number | null>(0);
+  const [searchRegion, setSearchRegion] = useState('');
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    window.addEventListener('resize', handleResize);
     window.scrollTo(0, 0);
-    
-    // --- Navbar scroll behavior ---
-    let ticking = false;
+
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const header = document.querySelector('.header');
-          if (header) {
-            if (window.scrollY > 50) {
-              header.classList.add('header--scrolled');
-            } else {
-              header.classList.remove('header--scrolled');
-            }
-          }
-          ticking = false;
-        });
-        ticking = true;
+      const header = document.querySelector('.header');
+      if (header) {
+        if (window.scrollY > 40) {
+          header.classList.add('header--scrolled');
+        } else {
+          header.classList.remove('header--scrolled');
+        }
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // --- Mobile menu ---
-    const hamburger = document.querySelector('#hamburger-menu, .navbar__hamburger');
-    const mobileMenu = document.querySelector('#mobile-menu, .mobile-menu');
-    const menuClose  = document.querySelector('#mobile-menu-close, .mobile-menu__close');
+    const hamburger = document.querySelector('#hamburger-menu');
+    const mobileMenu = document.querySelector('#mobile-menu');
+    const menuClose = document.querySelector('#mobile-menu-close');
 
-    const openMenu = () => {
-      console.log('Opening mobile menu');
-      mobileMenu?.classList.add('active');
-    };
-    const closeMenu = () => {
-      console.log('Closing mobile menu');
-      mobileMenu?.classList.remove('active');
-    };
+    const openMenu = () => mobileMenu?.classList.add('active');
+    const closeMenu = () => mobileMenu?.classList.remove('active');
 
     hamburger?.addEventListener('click', openMenu);
     menuClose?.addEventListener('click', closeMenu);
 
-    const links = document.querySelectorAll('.mobile-menu__links a');
-    links.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    // --- Hero bg load animation ---
-    const heroBg = document.querySelector('[class$="hero__bg"]');
-    if (heroBg) {
-      heroBg.classList.add('abt-hero__bg--loaded');
-    }
-
     return () => {
-      window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
       hamburger?.removeEventListener('click', openMenu);
       menuClose?.removeEventListener('click', closeMenu);
-      links.forEach(link => {
-        link.removeEventListener('click', closeMenu);
-      });
     };
-  
   }, []);
-  
-  const scrollFeaturedTrips = (dir: 'left' | 'right') => {
-    const slider = document.querySelector('.featured-trips__slider');
-    if (slider) {
-      slider.scrollBy({ left: dir === 'left' ? -320 : 320, behavior: 'smooth' });
-    }
-  };
+
+  const filteredExpeditions = Object.values(expeditionsData).filter((exp) => {
+    if (activeFilter === '8000m') return exp.maxAltitude.includes('8,') || exp.maxAltitude.includes('7,') || exp.id === 'k2';
+    if (activeFilter === 'trek') return exp.difficultyClass === 'hard' || exp.difficultyClass === 'moderate';
+    if (activeFilter === 'culture') return exp.difficultyClass === 'easy' || exp.id.includes('valley') || exp.id.includes('minimarg');
+    return true;
+  });
 
   return (
     <div className="page-wrapper animate-fade-in">
-      <header className="header">
 
-        <nav className="navbar">
 
-            <div className="navbar__logo">
-                <a href="/">BROAD PEAK</a>
-            </div>
-
-            <ul className="navbar__menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-            <div className="navbar__actions">
-                <a href="#" className="navbar__social" aria-label="Instagram"><i className="ri-instagram-line"></i></a>
-                <a href="#" className="navbar__social" aria-label="Facebook"><i className="ri-facebook-fill"></i></a>
-                <a href="/contact" className="navbar__cta">Book a Trip</a>
-
-                
-                <button className="navbar__hamburger" id="hamburger-menu" aria-label="Open navigation menu">
-                    <i className="ri-menu-line"></i>
-                </button>
-            </div>
-
-        </nav>
-
-        
-        <div className="mobile-menu" id="mobile-menu">
-            <div className="mobile-menu__header">
-                <div className="navbar__logo">
-                    <a href="/">BROAD PEAK</a>
-                </div>
-                <button className="mobile-menu__close" id="mobile-menu-close" aria-label="Close navigation menu">
-                    <i className="ri-close-line"></i>
-                </button>
-            </div>
-            <ul className="mobile-menu__links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
-
-    </header>
-
-    
-
-    <section className="hero" id="home">
+      {/* HERO SECTION — BORDERLESS MAGAZINE UI */}
+      <section className="hero" id="home">
         <div className="hero__overlay"></div>
 
+        <div className="container hero__container">
+          <div>
+            <span className="hero__badge">
+              LICENSED MOUNTAIN EXPEDITIONARY
+            </span>
 
+            <h1 className="hero__title">
+              CONQUER THE <br />
+              <span className="hero__title-gold">SAVAGE PEAKS</span>
+            </h1>
 
-        <div className="hero__container">
+            <p className="hero__description">
+              Uncompromised alpine mastery across Pakistan’s legendary 8,000m summits and glacier sanctuaries with licensed Balti mountain leaders.
+            </p>
 
-            <div className="hero__content">
-
-                <span className="hero__tagline">
-                    Gateway to Pakistan's Greatest Mountain Adventures
-                </span>
-
-                <h1 className="hero__title">
-                    EXPLORE <br />
-                    THE ROOF <br />
-                    OF PAKISTAN
-                </h1>
-
-                <p className="hero__description">
-                    Discover legendary expeditions, breathtaking landscapes, and authentic cultural experiences across Gilgit-Baltistan, from K2 Base Camp to Hunza and beyond.
-                </p>
-
-                <div className="hero__buttons">
-
-                    <a
-                        className="hero__btn hero__btn--primary"
-                        href="/expeditions">
-                        Explore Expeditions
-                    </a>
-
-                    <a 
-                        className="hero__btn hero__btn--secondary"
-                        href="/contact">
-                        Plan Your Journey
-                    </a>
-
-                </div>
-
+            <div className="hero__actions">
+              <a href="/expeditions" className="btn-editorial">
+                Explore Journeys <i className="ri-arrow-right-line"></i>
+              </a>
+              <a href="/about" className="btn-editorial-outline">
+                Our Heritage
+              </a>
             </div>
+          </div>
 
-
-            <div className="hero__stats">
-                <div className="hero__stat">
-                    <h3>5,585m</h3>
-                    <p>HIGHEST TREK POINT</p>
-                </div>
-
-                <div className="hero__stat">
-                    <h3>20+</h3>
-                    <p>GUIDED ADVENTURES</p>
-                </div>
-
-                <div className="hero__stat">
-                    <h3>500+</h3>
-                    <p>HAPPY TRAVELERS</p>
-                </div>
+          <div style={{ textTransform: "uppercase" }}>
+            <div style={{ borderLeft: "2px solid var(--gold)", paddingLeft: "24px" }}>
+              <span style={{ fontSize: "0.75rem", letterSpacing: "3px", color: "var(--gold)", fontWeight: "700" }}>FEATURED DESTINATION</span>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: "2.4rem", color: "var(--white)", margin: "8px 0" }}>K2 BASE CAMP & CONCORDIA</h2>
+              <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", textTransform: "none", marginBottom: "16px" }}>
+                16 Days • Max Alt: 5,585m (Gondogoro Pass) • Starting from $2,450
+              </p>
+              <a href="/expedition-detail?id=k2" style={{ color: "var(--gold)", fontWeight: "700", letterSpacing: "2px", fontSize: "0.8rem" }}>
+                INSPECT ITINERARY &rarr;
+              </a>
             </div>
+          </div>
 
+          {/* Minimal Search Bar */}
+          <div className="hero__search-bar">
+            <div className="search-column">
+              <label>REGION</label>
+              <select value={searchRegion} onChange={(e) => setSearchRegion(e.target.value)}>
+                <option value="">All Karakoram Regions</option>
+                <option value="k2">K2 / Concordia</option>
+                <option value="shigar">Shigar & Basho</option>
+                <option value="hunza">Hunza & Nagar</option>
+                <option value="astore">Astore & Minimarg</option>
+              </select>
+            </div>
+            <div className="search-column">
+              <label>MAX ELEVATION</label>
+              <select>
+                <option value="">Any Altitude</option>
+                <option value="5000">Up to 5,000m</option>
+                <option value="6000">5,000m – 6,000m</option>
+                <option value="8000">8,000m Summits</option>
+              </select>
+            </div>
+            <div className="search-column">
+              <label>DURATION</label>
+              <select>
+                <option value="">Any Duration</option>
+                <option value="7">7 – 10 Days</option>
+                <option value="15">12 – 16 Days</option>
+                <option value="21">20+ Days</option>
+              </select>
+            </div>
+            <div style={{ display: "flex", alignItems: "flex-end" }}>
+              <a href={`/expeditions?query=${searchRegion}`} className="btn-editorial" style={{ width: "100%", justifyContent: "center", padding: "12px" }}>
+                FILTER JOURNEYS
+              </a>
+            </div>
+          </div>
         </div>
+      </section>
 
-    </section>
-
-    
-
-
-
-<section className="featured-trips" id="expeditions">
-    <div className="container">
-        
-        <div className="featured-trips__header">
-            <div className="featured-trips__title-area">
-                <span className="section-tag">POPULAR JOURNEYS</span>
-                <h2 className="section-title">FEATURED EXPEDITIONS</h2>
+      {/* BORDERLESS STATS DASHBOARD */}
+      <section className="stats-dashboard">
+        <div className="container">
+          <div className="stats-grid">
+            <div className="stat-column">
+              <div className="stat-num">5,585m</div>
+              <div className="stat-label">Highest Pass Crossing</div>
             </div>
-
-            <a href="/expeditions" className="featured-trips__view-all">
-                Explore All Expeditions
-                <i className="ri-arrow-right-line"></i>
-            </a>
+            <div className="stat-column">
+              <div className="stat-num">25+</div>
+              <div className="stat-label">Master Journeys</div>
+            </div>
+            <div className="stat-column">
+              <div className="stat-num">1,200+</div>
+              <div className="stat-label">Explorers Guided</div>
+            </div>
+            <div className="stat-column">
+              <div className="stat-num">100%</div>
+              <div className="stat-label">Safety Track Record</div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div className="featured-trips__slider-wrapper">
-            <button
-              className="slider-btn slider-btn--absolute slider-btn--prev"
-              id="featuredTripsPrev"
-              aria-label="Previous featured expedition"
-              onClick={() => scrollFeaturedTrips('left')}
-            >
-              <i className="ri-arrow-left-line"></i>
+      {/* CURATED EXPEDITIONS — EDITORIAL HORIZONTAL ROWS (NO BOX CARDS!) */}
+      <section className="expeditions-section" id="expeditions">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-tag">CURATED EXPEDITIONS</span>
+            <h2 className="section-title">THE EXPEDITIONARY COLLECTION</h2>
+          </div>
+
+          {/* Filter Tabs */}
+          <div className="filter-tabs">
+            <button className={`filter-tab ${activeFilter === 'all' ? 'active' : ''}`} onClick={() => setActiveFilter('all')}>
+              All Journeys
             </button>
-            <button
-              className="slider-btn slider-btn--absolute slider-btn--next"
-              id="featuredTripsNext"
-              aria-label="Next featured expedition"
-              onClick={() => scrollFeaturedTrips('right')}
-            >
-              <i className="ri-arrow-right-line"></i>
+            <button className={`filter-tab ${activeFilter === '8000m' ? 'active' : ''}`} onClick={() => setActiveFilter('8000m')}>
+              8,000m Summits
             </button>
+            <button className={`filter-tab ${activeFilter === 'trek' ? 'active' : ''}`} onClick={() => setActiveFilter('trek')}>
+              Alpine Passes
+            </button>
+            <button className={`filter-tab ${activeFilter === 'culture' ? 'active' : ''}`} onClick={() => setActiveFilter('culture')}>
+              Valley Safaris
+            </button>
+          </div>
 
-            <div className="featured-trips__slider">
-
-            {Object.values(expeditionsData).map((exp) => (
-                <article className="trip-card" key={exp.id}>
-                    <div className="trip-card__image">
-                        <Image
-                            src={exp.gallery[0] || "/assets/images/k2.webp"}
-                            alt={exp.title}
-                            width="310"
-                            height="210"
-                         />
-                        <div className="trip-card__altitude">
-                            <i className="ri-arrow-up-fill"></i>
-                            {exp.maxAltitude}
-                        </div>
-                    </div>
-                    <div className="trip-card__content">
-                        <h3 className="trip-card__title">
-                            {exp.title}
-                        </h3>
-                        <div className="trip-card__difficulty">
-                            <div className="trip-card__difficulty-label">
-                                <span>Difficulty</span>
-                                <span>{exp.difficulty}</span>
-                            </div>
-                            <div className="trip-card__difficulty-bar">
-                                <div className={`trip-card__difficulty-fill trip-card__difficulty-fill--${exp.difficultyClass}`}></div>
-                            </div>
-                        </div>
-                        <div className="trip-card__footer">
-                            <div className="trip-card__days">
-                                <strong>{exp.duration.replace(" Days", "")}</strong>
-                                <span>Days</span>
-                            </div>
-                            <a href={`/expedition-detail?id=${exp.id}`} className="trip-card__button">
-                                Book
-                                <i className="ri-arrow-right-up-line"></i>
-                            </a>
-                        </div>
-                    </div>
-                </article>
+          {/* Editorial Horizontal Rows */}
+          <div className="expeditions-list">
+            {filteredExpeditions.map((exp) => (
+              <a key={exp.id} href={`/expedition-detail?id=${exp.id}`} className="expedition-row">
+                <div>
+                  <h3 className="expedition-row__title">{exp.title}</h3>
+                  <p className="expedition-row__sub">{exp.desc.length > 90 ? exp.desc.substring(0, 90) + '...' : exp.desc}</p>
+                </div>
+                <div className="expedition-row__meta">
+                  <span>MAX ALTITUDE: {exp.maxAltitude}</span>
+                </div>
+                <div className="expedition-row__meta">
+                  <span>{exp.duration}</span>
+                </div>
+                <div className="expedition-row__price">
+                  {exp.startingPrice}
+                </div>
+                <div className="expedition-row__action">
+                  EXPLORE &rarr;
+                </div>
+              </a>
             ))}
+          </div>
+        </div>
+      </section>
 
+      {/* BORDERLESS TRAIL MATRIX (FULL-BLEED EDITORIAL DISPLAY) */}
+      <section className="trail-section">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-tag">ROUTE TELEMETRY</span>
+            <h2 className="section-title">KARAKORAM TRAIL MATRIX</h2>
+          </div>
+
+          <div className="trail-matrix">
+            {/* Trail List */}
+            <div className="trail-list">
+              {waypointsData.map((node, index) => (
+                <div
+                  key={node.id}
+                  className={`trail-item ${activeWaypoint.id === node.id ? 'active' : ''}`}
+                  onClick={() => setActiveWaypoint(node)}
+                >
+                  <div>
+                    <span style={{ fontSize: "0.75rem", color: "var(--gold)", marginRight: "12px", letterSpacing: "2px" }}>0{index + 1}</span>
+                    <span className="trail-item__title">{node.name}</span>
+                  </div>
+                  <span className="trail-item__alt">{node.altitude}</span>
+                </div>
+              ))}
             </div>
+
+            {/* Borderless Photo Display (No Clunky Rounded Inner Box) */}
+            <div className="trail-display">
+              <Image src={activeWaypoint.image} alt={activeWaypoint.name} className="trail-display__image" width="700" height="500" />
+              <div className="trail-display__overlay">
+                <div className="trail-display__tag">{activeWaypoint.day} • {activeWaypoint.altitude}</div>
+                <h3 className="trail-display__heading">{activeWaypoint.name}</h3>
+                <p className="trail-display__desc">{activeWaypoint.desc}</p>
+                <div className="trail-display__metrics">
+                  <div className="metric-box">
+                    <label>OXYGEN DENSITY</label>
+                    <span>{activeWaypoint.oxygen}</span>
+                  </div>
+                  <div className="metric-box">
+                    <label>NIGHT CLIMATE</label>
+                    <span>{activeWaypoint.temp}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
+      {/* BORDERLESS HERITAGE PILLARS */}
+      <section className="why-section">
+        <div className="container">
+          <div className="section-header" style={{ textTransform: "uppercase" }}>
+            <span className="section-tag">STANDARDS OF MASTERY</span>
+            <h2 className="section-title">THE PILLARS OF OUR CRAFT</h2>
+          </div>
 
-        
+          <div className="why-grid">
+            <div className="editorial-pillar">
+              <div className="pillar-num">01</div>
+              <h3 className="pillar-title">BALTI HERITAGE</h3>
+              <p className="pillar-desc">Born and raised in the high valleys of Skardu. Generational mountain wisdom and supreme high-altitude stamina.</p>
+            </div>
 
-        <div className="featured-trips__progress-container">
-            <div className="featured-trips__progress-bar"></div>
+            <div className="editorial-pillar">
+              <div className="pillar-num">02</div>
+              <h3 className="pillar-title">LICENSED LEADERS</h3>
+              <p className="pillar-desc">Licensed IFMGA and Balti mountain leaders trained in emergency wilderness first response and oxygen management.</p>
+            </div>
+
+            <div className="editorial-pillar">
+              <div className="pillar-num">03</div>
+              <h3 className="pillar-title">PRECISION LOGISTICS</h3>
+              <p className="pillar-desc">24/7 satellite comms, real-time GPS telemetry, and immediate helicopter rescue evacuation protocols.</p>
+            </div>
+
+            <div className="editorial-pillar">
+              <div className="pillar-num">04</div>
+              <h3 className="pillar-title">ZERO-TRACE ETHICS</h3>
+              <p className="pillar-desc">Uncompromising commitment to protecting the fragile Baltoro Glacier ecosystem and supporting local mountain communities.</p>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div className="featured-trips__pagination">
-            
-        </div>
-
-    </div>
-
-</section>
-
-
-
-
-<section className="who-we-are" id="who-we-are">
-    <div className="container who-we-are__container">
-        
-        
-        <div className="who-we-are__images">
-            <div className="who-we-are__badge"><span>2021</span><span>EST</span></div>
-            <Image src="/assets/images/who-we-are-main.webp" alt="Hunza Valley Morning" className="who-we-are__img-main" width="600" height="400" />
-            <Image src="/assets/images/who-we-are-small.webp" alt="Mountain Tea" className="who-we-are__img-small" width="300" height="250" />
-        </div>
-
-        
-        <div className="who-we-are__content">
-            <span className="section-tag">WHY TRAVEL WITH US</span>
-            <h2 className="section-title">LOCAL ROOTS,<br />GLOBAL STANDARDS</h2>
-            
-            <p className="who-we-are__desc">
-                Our team combines local knowledge, experienced guides, and authentic cultural connections to create unforgettable journeys across Northern Pakistan.
+      {/* TESTIMONIAL QUOTE */}
+      <section className="testimonials-section">
+        <div className="container">
+          <div className="testimonial-editorial">
+            <span className="section-tag" style={{ marginBottom: "20px" }}>VERIFIED EXPEDITIONARY REVIEW</span>
+            <p className="quote-text">
+              "Standing at Concordia surrounded by four 8,000m summits was a lifelong dream. Broad Peak Adventures executed every camp setup, meal, and rope section with world-class precision."
             </p>
-
-            <div className="who-we-are__grid">
-                
-                <div className="who-we-are__feature">
-                    <i className="ri-compass-3-line feature-icon"></i>
-                    <h3>LOCAL EXPERTISE</h3>
-                    <p>Deep roots and unmatched local knowledge across Gilgit-Baltistan.</p>
-                </div>
-
-                <div className="who-we-are__feature">
-                    <i className="ri-user-star-line feature-icon"></i>
-                    <h3>EXPERIENCED GUIDES</h3>
-                    <p>Decades of high-altitude mountain and trekking experience.</p>
-                </div>
-
-                <div className="who-we-are__feature">
-                    <i className="ri-fire-line feature-icon"></i>
-                    <h3>AUTHENTIC EXPERIENCES</h3>
-                    <p>Genuine cultural immersion and deep local connections.</p>
-                </div>
-
-                <div className="who-we-are__feature">
-                    <i className="ri-shield-check-line feature-icon"></i>
-                    <h3>SAFETY FIRST</h3>
-                    <p>Meticulous logistics with full contingency planning and emergency protocols.</p>
-                </div>
-
+            <div className="quote-author">
+              LIU WEI — K2 BASE CAMP EXPLORER • CHINA
             </div>
-
-            <a href="/about" className="btn btn--primary" style={{ marginTop: "20px" }}>WHY CHOOSE US</a>
+          </div>
         </div>
+      </section>
 
-    </div>
-</section>
+      {/* FAQ MATRIX */}
+      <section className="faq-section">
+        <div className="container">
+          <div className="section-header" style={{ textAlign: "center" }}>
+            <span className="section-tag">PREPARATION & PERMITS</span>
+            <h2 className="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+          </div>
 
-
-
-
-<section className="testimonials" id="testimonials">
-    
-    <div className="container testimonials__header">
-        
-        <div className="testimonials__title-wrap">
-            <span className="section-subtitle">VERIFIED REVIEWS</span>
-            <h2 className="section-title">WHAT TREKKERS SAY</h2>
-        </div>
-        
-        <div className="testimonials__rating">
-            <div className="testimonials__stars">
-                <i className="ri-star-fill"></i>
-                <i className="ri-star-fill"></i>
-                <i className="ri-star-fill"></i>
-                <i className="ri-star-fill"></i>
-                <i className="ri-star-fill"></i>
-            </div>
-            <span>5.0 average • 100+ reviews</span>
-        </div>
-
-    </div>
-
-    <div className="testimonials__slider-container">
-        <div className="testimonials__slider" id="testimonialsSlider">
-            
-            
-            <div className="testimonial-card">
-                <div className="testimonial-card__bg-quote">"</div>
-                <div className="testimonial-card__header">
-                    <span className="testimonial-card__trek">K2 BASE CAMP TREK</span>
-                </div>
-                <p className="testimonial-card__text">
-                    "My K2 Base Camp Trek with Broad Peak Adventures was phenomenal, largely thanks to our guide Basharat. His deep knowledge of the Karakoram Range and infectious enthusiasm made every step unforgettable."
-                </p>
-                <div className="testimonial-card__author">
-                    <div className="testimonial-card__avatar">L</div>
-                    <div className="testimonial-card__author-info">
-                        <strong>Liu</strong>
-                        <span>China</span>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div className="testimonial-card">
-                <div className="testimonial-card__bg-quote">"</div>
-                <div className="testimonial-card__header">
-                    <span className="testimonial-card__trek">GONDOGORO LA & K2 TREK</span>
-                </div>
-                <p className="testimonial-card__text">
-                    "The challenging trail took us through jaw-dropping landscapes, from glacier crossings to Concordia's stunning views. Our local guide's expertise made the journey safe and unforgettable."
-                </p>
-                <div className="testimonial-card__author">
-                    <div className="testimonial-card__avatar">S</div>
-                    <div className="testimonial-card__author-info">
-                        <strong>Sophie</strong>
-                        <span>France</span>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div className="testimonial-card">
-                <div className="testimonial-card__bg-quote">"</div>
-                <div className="testimonial-card__header">
-                    <span className="testimonial-card__trek">SKARDU & HUNZA TOUR</span>
-                </div>
-                <p className="testimonial-card__text">
-                    "Thoroughly impressed with the level of customer service. From the initial consultation to ongoing support, the team has been nothing but professional and responsive throughout."
-                </p>
-                <div className="testimonial-card__author">
-                    <div className="testimonial-card__avatar">L</div>
-                    <div className="testimonial-card__author-info">
-                        <strong>Lena</strong>
-                        <span>Germany</span>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div className="testimonial-card">
-                <div className="testimonial-card__bg-quote">"</div>
-                <div className="testimonial-card__header">
-                    <span className="testimonial-card__trek">K2 BASE CAMP TREK</span>
-                </div>
-                <p className="testimonial-card__text">
-                    "My K2 Base Camp Trek with Broad Peak Adventures was phenomenal, largely thanks to our guide Basharat. His deep knowledge of the Karakoram Range and infectious enthusiasm made every step unforgettable."
-                </p>
-                <div className="testimonial-card__author">
-                    <div className="testimonial-card__avatar">L</div>
-                    <div className="testimonial-card__author-info">
-                        <strong>Liu</strong>
-                        <span>China</span>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div className="testimonial-card">
-                <div className="testimonial-card__bg-quote">"</div>
-                <div className="testimonial-card__header">
-                    <span className="testimonial-card__trek">GONDOGORO LA & K2 TREK</span>
-                </div>
-                <p className="testimonial-card__text">
-                    "The challenging trail took us through jaw-dropping landscapes, from glacier crossings to Concordia's stunning views. Our local guide's expertise made the journey safe and unforgettable."
-                </p>
-                <div className="testimonial-card__author">
-                    <div className="testimonial-card__avatar">S</div>
-                    <div className="testimonial-card__author-info">
-                        <strong>Sophie</strong>
-                        <span>France</span>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div className="testimonial-card">
-                <div className="testimonial-card__bg-quote">"</div>
-                <div className="testimonial-card__header">
-                    <span className="testimonial-card__trek">SKARDU & HUNZA TOUR</span>
-                </div>
-                <p className="testimonial-card__text">
-                    "Thoroughly impressed with the level of customer service. From the initial consultation to ongoing support, the team has been nothing but professional and responsive throughout."
-                </p>
-                <div className="testimonial-card__author">
-                    <div className="testimonial-card__avatar">L</div>
-                    <div className="testimonial-card__author-info">
-                        <strong>Lena</strong>
-                        <span>Germany</span>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div className="testimonial-card">
-                <div className="testimonial-card__bg-quote">"</div>
-                <div className="testimonial-card__header">
-                    <span className="testimonial-card__trek">K2 BASE CAMP TREK</span>
-                </div>
-                <p className="testimonial-card__text">
-                    "My K2 Base Camp Trek with Broad Peak Adventures was phenomenal, largely thanks to our guide Basharat. His deep knowledge of the Karakoram Range and infectious enthusiasm made every step unforgettable."
-                </p>
-                <div className="testimonial-card__author">
-                    <div className="testimonial-card__avatar">L</div>
-                    <div className="testimonial-card__author-info">
-                        <strong>Liu</strong>
-                        <span>China</span>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div className="testimonial-card">
-                <div className="testimonial-card__bg-quote">"</div>
-                <div className="testimonial-card__header">
-                    <span className="testimonial-card__trek">GONDOGORO LA & K2 TREK</span>
-                </div>
-                <p className="testimonial-card__text">
-                    "The challenging trail took us through jaw-dropping landscapes, from glacier crossings to Concordia's stunning views. Our local guide's expertise made the journey safe and unforgettable."
-                </p>
-                <div className="testimonial-card__author">
-                    <div className="testimonial-card__avatar">S</div>
-                    <div className="testimonial-card__author-info">
-                        <strong>Sophie</strong>
-                        <span>France</span>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div className="testimonial-card">
-                <div className="testimonial-card__bg-quote">"</div>
-                <div className="testimonial-card__header">
-                    <span className="testimonial-card__trek">SKARDU & HUNZA TOUR</span>
-                </div>
-                <p className="testimonial-card__text">
-                    "Thoroughly impressed with the level of customer service. From the initial consultation to ongoing support, the team has been nothing but professional and responsive throughout."
-                </p>
-                <div className="testimonial-card__author">
-                    <div className="testimonial-card__avatar">L</div>
-                    <div className="testimonial-card__author-info">
-                        <strong>Lena</strong>
-                        <span>Germany</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div className="container">
-        <div className="testimonials__progress-container" id="testimonialsProgressContainer">
-            <div className="testimonials__progress-bar" id="testimonialsProgressBar"></div>
-        </div>
-    </div>
-
-</section>
-
-
-<section className="travel-insights" id="travel-insights">
-    <div className="container">
-        
-        <div className="travel-insights__header">
-            <div className="travel-insights__title-wrap">
-                <span className="section-subtitle">TRAVEL GUIDES</span>
-                <h2 className="section-title">PLAN YOUR ADVENTURE</h2>
-            </div>
-            <a href="/travel-guides" className="btn btn--outline">EXPLORE GUIDES <i className="ri-arrow-right-line"></i></a>
-        </div>
-
-        <div className="travel-insights__grid">
-            
-            
-            <a href="/travel-guides" className="insight-card insight-card--large">
-                <Image src="/assets/images/article_k2_guide_1783186031585.webp" alt="K2 Base Camp Guide" className="insight-card__image" width="600" height="400" />
-                <div className="insight-card__overlay"></div>
-                <div className="insight-card__content">
-                    <span className="insight-card__category">TRAVEL GUIDE</span>
-                    <h3 className="insight-card__title">K2 Base Camp Trek 2026: Essential Planning Guide for First-Time Visitors</h3>
-                    <span className="insight-card__date">17 January 2026</span>
-                </div>
-                <div className="insight-card__hover-element">
-                    <span>READ STORY</span>
-                    <i className="ri-arrow-right-line"></i>
-                </div>
-            </a>
-
-            
-            <div className="travel-insights__stack">
-                
-                <a href="/blog-post?id=visa-logistics" className="insight-card insight-card--small">
-                    <Image src="/assets/images/article_visa_logistics_1783186040279.webp" alt="Visa Logistics" className="insight-card__image" width="400" height="250" />
-                    <div className="insight-card__overlay"></div>
-                    <div className="insight-card__content">
-                        <span className="insight-card__category">TRAVEL LOGISTICS</span>
-                        <h3 className="insight-card__title">Pakistan Visa, Permits & Travel Requirements for International Travelers</h3>
-                        <span className="insight-card__date">15 January 2026</span>
-                    </div>
-                    <div className="insight-card__hover-element">
-                        <span>READ STORY</span>
-                        <i className="ri-arrow-right-line"></i>
-                    </div>
-                </a>
-
-                <a href="/blog-post?id=snow-lake" className="insight-card insight-card--small">
-                    <Image src="/assets/images/article_snow_lake_1783186049575.webp" alt="Snow Lake Trek" className="insight-card__image" width="400" height="250" />
-                    <div className="insight-card__overlay"></div>
-                    <div className="insight-card__content">
-                        <span className="insight-card__category">TREKKING & EXPEDITIONS</span>
-                        <h3 className="insight-card__title">Snow Lake Trek: Everything You Need to Know Before You Go</h3>
-                        <span className="insight-card__date">11 January 2026</span>
-                    </div>
-                    <div className="insight-card__hover-element">
-                        <span>READ STORY</span>
-                        <i className="ri-arrow-right-line"></i>
-                    </div>
-                </a>
-
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<section className="faq-preview-section" id="faq-preview" style={{ padding: "100px 0", backgroundColor: "#faf9f7" }}>
-    <div className="container">
-        
-        <div className="faq-preview__header" style={{ textAlign: "center" }}>
-            <span className="section-subtitle">FREQUENTLY ASKED QUESTIONS</span>
-            <h2 className="section-title">PLAN WITH CONFIDENCE</h2>
-            <p className="section-desc" style={{ maxWidth: "600px", margin: "0 auto 40px auto", color: "#555", fontFamily: "'Lora', serif", lineHeight: "1.6", fontSize: "1.05rem" }}>
-                Everything you need to know before exploring Northern Pakistan.
-            </p>
-        </div>
-
-        <div className="faq-accordion" style={{ maxWidth: "800px", margin: "0 auto" }}>
-            
-            <div className="faq-accordion__item active">
-                <button className="faq-accordion__header">
-                    <span>What is the best time to visit Northern Pakistan?</span>
-                    <i className="ri-subtract-line faq-icon"></i>
+          <div className="faq-matrix">
+            {[
+              {
+                q: "What is the optimal season for K2 Base Camp & Concordia?",
+                a: "The prime expedition window spans mid-June through late August, offering stable weather along the Baltoro glacier and clear pass conditions at Gondogoro."
+              },
+              {
+                q: "Are official trekking permits and NOC clearances included?",
+                a: "Yes. Broad Peak Adventures secures 100% of official government permits, Gilgit-Baltistan tourism clearances, and military NOCs prior to departure."
+              },
+              {
+                q: "What physical fitness level is required for high-altitude passes?",
+                a: "High-altitude journeys require strong cardiovascular endurance and leg stamina. We recommend 3 to 6 months of endurance training before arrival."
+              },
+              {
+                q: "How are dietary requirements handled on high camps?",
+                a: "Our expedition chefs prepare fresh, high-calorie meals daily, accommodating vegetarian, vegan, gluten-free, and halal diets throughout the trek."
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="faq-item">
+                <button className="faq-header" onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}>
+                  <span>{item.q}</span>
+                  <i className={activeFaq === idx ? "ri-subtract-line" : "ri-add-line"}></i>
                 </button>
-                <div className="faq-accordion__body" style={{ display: "block" }}>
-                    <div className="faq-accordion__content">
-                        The ideal season is from May to October. Spring offers blooming valleys, summer provides comfortable trekking conditions, and autumn brings spectacular colors across Hunza, Skardu, and surrounding regions.
-                    </div>
-                </div>
-            </div>
-
-            <div className="faq-accordion__item">
-                <button className="faq-accordion__header">
-                    <span>Do international travelers need special permits?</span>
-                    <i className="ri-add-line faq-icon"></i>
-                </button>
-                <div className="faq-accordion__body" style={{ display: "none" }}>
-                    <div className="faq-accordion__content">
-                        Most visitors only require a valid Pakistani visa, although certain border regions may need additional permits. Our team assists guests with all necessary travel requirements before arrival.
-                    </div>
-                </div>
-            </div>
-
-            <div className="faq-accordion__item">
-                <button className="faq-accordion__header">
-                    <span>Are your tours suitable for beginners?</span>
-                    <i className="ri-add-line faq-icon"></i>
-                </button>
-                <div className="faq-accordion__body" style={{ display: "none" }}>
-                    <div className="faq-accordion__content">
-                        Yes. We offer everything from easy cultural tours to challenging high-altitude expeditions, with clear difficulty levels and guidance for every experience level.
-                    </div>
-                </div>
-            </div>
-
-            <div className="faq-accordion__item">
-                <button className="faq-accordion__header">
-                    <span>What is included in expedition packages?</span>
-                    <i className="ri-add-line faq-icon"></i>
-                </button>
-                <div className="faq-accordion__body" style={{ display: "none" }}>
-                    <div className="faq-accordion__content">
-                        Packages typically include accommodation, transportation, local guides, permits, meals during treks, camping equipment, and logistical support. Specific inclusions vary by itinerary.
-                    </div>
-                </div>
-            </div>
-
-            <div className="faq-accordion__item">
-                <button className="faq-accordion__header">
-                    <span>Is it safe to travel in Gilgit-Baltistan?</span>
-                    <i className="ri-add-line faq-icon"></i>
-                </button>
-                <div className="faq-accordion__body" style={{ display: "none" }}>
-                    <div className="faq-accordion__content">
-                        Yes. Gilgit-Baltistan is considered one of Pakistan's safest tourism regions. We work with experienced local teams and maintain strict safety protocols for all journeys.
-                    </div>
-                </div>
-            </div>
-
-            <div className="faq-accordion__item">
-                <button className="faq-accordion__header">
-                    <span>Can I customize my itinerary?</span>
-                    <i className="ri-add-line faq-icon"></i>
-                </button>
-                <div className="faq-accordion__body" style={{ display: "none" }}>
-                    <div className="faq-accordion__content">
-                        Absolutely. We provide tailored experiences for families, photographers, adventure travelers, and private groups based on individual interests and schedules.
-                    </div>
-                </div>
-            </div>
-
+                {activeFaq === idx && (
+                  <div className="faq-content">
+                    {item.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
-
-        <div style={{ textAlign: "center", marginTop: "40px" }}>
-            <a href="/faq" className="faq-preview__link" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.2rem", color: "var(--primary-color)", letterSpacing: "1px", display: "inline-block", textDecoration: "none", transition: "color 0.3s ease" }}>VIEW ALL FAQS &rarr;</a>
-        </div>
-
-    </div>
-</section>
+      </section>
 
 
-
-<section className="cta-section" id="contact">
-    
-    <div className="cta-section__overlay"></div>
-    
-    <div className="container cta-section__content">
-        
-        <div className="cta-section__text">
-            <span className="section-subtitle section-subtitle--light">THE ULTIMATE KARAKORAM EXPERIENCE</span>
-            <h2 className="cta-section__title">READY FOR YOUR NEXT ADVENTURE?</h2>
-            <p className="cta-section__desc">From the legendary K2 Base Camp to the hidden valleys of Gilgit-Baltistan, we create unforgettable journeys for travelers seeking adventure, culture, and the world's most spectacular mountain landscapes.</p>
-        </div>
-        
-        <div className="cta-section__buttons">
-            <a href="/expeditions" className="btn btn--white">
-                EXPLORE EXPEDITIONS <i className="ri-compass-3-line" style={{ marginLeft: "8px" }}></i>
-            </a>
-            <a href="/contact" className="btn btn--outline-light">
-                PLAN YOUR JOURNEY
-            </a>
-        </div>
-
-    </div>
-
-</section>
-
-
-<footer className="footer">
-    <div className="container footer__container">
-        
-        
-        <div className="footer__col footer__col--about">
-            <h3 className="footer__logo">BROAD PEAK</h3>
-            <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
-            <div className="footer__socials">
-                <a href="#" aria-label="Instagram"><i className="ri-instagram-line"></i></a>
-                <a href="#" aria-label="Facebook"><i className="ri-facebook-fill"></i></a>
-                <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i className="ri-whatsapp-line"></i></a>
-            </div>
-        </div>
-
-        
-        <div className="footer__col">
-            <h4>QUICK LINKS</h4>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/travel-guides">Travel Guides</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
-
-        
-        <div className="footer__col">
-            <h4>POPULAR EXPEDITIONS</h4>
-            <ul>
-                <li><a href="/expedition-detail?id=k2">K2 Base Camp Trek</a></li>
-                <li><a href="/expedition-detail?id=basho-valley">Basho Valley Trek</a></li>
-                <li><a href="/expedition-detail?id=haramosh-pass">Haramosh Pass Trek</a></li>
-                <li><a href="/expedition-detail?id=minimarg">Minimarg Valley Escape</a></li>
-                <li><a href="/expedition-detail?id=hoper-valley">Hoper Valley Explorer</a></li>
-            </ul>
-        </div>
-
-        
-        <div className="footer__col">
-            <h4>SUPPORT</h4>
-            <ul>
-                <li><a href="/faq">FAQ</a></li>
-                <li><a href="/privacy">Privacy Policy</a></li>
-                <li><a href="/terms">Terms & Conditions</a></li>
-                <li><a href="mailto:info@broadpeakadventures.com">Email Us</a></li>
-                <li><a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">WhatsApp Inquiry</a></li>
-            </ul>
-        </div>
-
-    </div>
-    
-    <div className="container footer__bottom" style={{ justifyContent: "center", textAlign: "center" }}>
-        <p>&copy; 2026 Broad Peak Adventures. All Rights Reserved.</p>
-    </div>
-</footer>
-
-    
-    <a href="#" className="scroll-to-top" aria-label="Scroll to top">
-        <i className="ri-arrow-up-line"></i>
-    </a>
     </div>
   );
 }

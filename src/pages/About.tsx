@@ -59,49 +59,7 @@ export default function About() {
 
   return (
     <div className="page-wrapper animate-fade-in">
-      <header className="header" id="main-header">
-        <nav className="navbar">
-            <div className="navbar__logo">
-                <a href="/">BROAD PEAK</a>
-            </div>
-
-            <ul className="navbar__menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-
-            <div className="navbar__actions">
-                <a href="#" className="navbar__social" aria-label="Instagram"><i className="ri-instagram-line"></i></a>
-                <a href="#" className="navbar__social" aria-label="Facebook"><i className="ri-facebook-fill"></i></a>
-                <a href="/contact" className="navbar__cta">Book a Trip</a>
-                <button className="navbar__hamburger" id="abt-hamburger">
-                    <i className="ri-menu-line"></i>
-                </button>
-            </div>
-        </nav>
-
-        
-        <div className="mobile-menu" id="abt-mobile-menu">
-            <div className="mobile-menu__header">
-                <div className="navbar__logo">
-                    <a href="/">BROAD PEAK</a>
-                </div>
-                <button className="mobile-menu__close" id="abt-menu-close">
-                    <i className="ri-close-line"></i>
-                </button>
-            </div>
-            <ul className="mobile-menu__links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/expeditions">Expeditions</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
-    </header>
+      
 
     
     <section className="abt-hero" id="abt-hero">
@@ -221,102 +179,41 @@ export default function About() {
     </section>
 
     
-    <section className="abt-safety">
-        <div className="abt-container">
-            <div className="abt-safety__inner">
-                <div className="abt-safety__media">
-                    <img src="/assets/images/travel-tent.webp" alt="High-altitude camping setup" width="600" height="400" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
+    <section className="editorial-content-section" style={{ padding: '80px 0', borderTop: '1px solid var(--hairline)' }}>
+        <div className="container">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
+                <div>
+                    <img src="/assets/images/travel-tent.webp" alt="High-altitude camping setup" width="600" height="400" loading="lazy" decoding="async" referrerPolicy="no-referrer" style={{ width: '100%', height: 'auto', borderRadius: '4px' }} />
                 </div>
-                <div className="abt-safety__text">
-                    <span className="abt-section-tag">TRAVEL ETHICS</span>
-                    <h2 className="abt-section-title">SAFETY &amp; RESPONSIBILITY</h2>
-                    <p className="abt-safety__desc">High-altitude expeditions carry inherent challenges, which is why safety is built into every element of our operations. Our guides undergo regular wilderness medicine training and carry emergency oxygen and pulse oximeters on all treks above 4,000m.</p>
-                    <p className="abt-safety__desc">Equally important is our responsibility to the land and its people. We support waste cleanup campaigns, limit our group sizes to minimize environmental impact, and provide proper cold-weather gear and fair compensation to our team of porters.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    
-    <section className="abt-cta" id="abt-contact">
-        <div className="abt-cta__overlay"></div>
-        <div className="abt-container">
-            <div className="abt-cta__content">
-                <div className="abt-cta__text">
-                    <span className="abt-cta__tag">START YOUR JOURNEY</span>
-                    <h2 className="abt-cta__title">READY TO EXPLORE WITH US?</h2>
-                    <p className="abt-cta__desc">Join our team of local guides and discover the valleys, cultures, and mountains of Northern Pakistan.</p>
-                </div>
-                <div className="abt-cta__buttons">
-                    <a href="/expeditions" className="abt-btn-white">VIEW EXPEDITIONS</a>
-                    <a href="/contact" className="abt-btn-outline-light">CONTACT OUR TEAM</a>
+                <div>
+                    <span className="section-tag" style={{ marginBottom: '16px', display: 'block' }}>TRAVEL ETHICS</span>
+                    <h2 className="section-title" style={{ fontSize: '2.4rem', marginBottom: '24px' }}>SAFETY &amp; RESPONSIBILITY</h2>
+                    <p style={{ color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: '1.6' }}>High-altitude expeditions carry inherent challenges, which is why safety is built into every element of our operations. Our guides undergo regular wilderness medicine training and carry emergency oxygen and pulse oximeters on all treks above 4,000m.</p>
+                    <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>Equally important is our responsibility to the land and its people. We support waste cleanup campaigns, limit our group sizes to minimize environmental impact, and provide proper cold-weather gear and fair compensation to our team of porters.</p>
                 </div>
             </div>
         </div>
     </section>
 
     
-    <footer className="footer">
-        <div className="abt-container footer__container">
-
+    <section className="editorial-cta-section" style={{ padding: '80px 0', borderTop: '1px solid var(--hairline)', background: 'var(--bg-dark-alt)' }}>
+        <div className="container" style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
+            <span className="section-tag" style={{ marginBottom: '16px', display: 'block' }}>START YOUR JOURNEY</span>
+            <h2 className="section-title" style={{ fontSize: '2.4rem', marginBottom: '24px' }}>READY TO EXPLORE WITH US?</h2>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '40px', lineHeight: '1.6' }}>Join our team of local guides and discover the valleys, cultures, and mountains of Northern Pakistan.</p>
             
-            <div className="footer__col footer__col--about">
-                <h3 className="footer__logo">BROAD PEAK</h3>
-                <p>Authentic mountain experiences across Gilgit-Baltistan, combining local expertise, cultural immersion, and world-class expedition planning.</p>
-                <div className="footer__socials">
-                <a href="#" aria-label="Instagram"><i className="ri-instagram-line"></i></a>
-                <a href="#" aria-label="Facebook"><i className="ri-facebook-fill"></i></a>
-                <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i className="ri-whatsapp-line"></i></a>
+            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <a href="/expeditions" className="btn-editorial">VIEW EXPEDITIONS</a>
+                <a href="/contact" className="btn-editorial-outline">CONTACT OUR TEAM</a>
             </div>
-            </div>
-
-            
-            <div className="footer__col">
-                <h4>QUICK LINKS</h4>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/expeditions">Expeditions</a></li>
-                    <li><a href="/travel-guides">Travel Guides</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-            </div>
-
-            
-            <div className="footer__col">
-                <h4>POPULAR EXPEDITIONS</h4>
-                <ul>
-                    <li><a href="/expedition-detail?id=k2">K2 Base Camp Trek</a></li>
-                    <li><a href="/expedition-detail?id=basho-valley">Basho Valley Trek</a></li>
-                    <li><a href="/expedition-detail?id=haramosh-pass">Haramosh Pass Trek</a></li>
-                    <li><a href="/expedition-detail?id=minimarg">Minimarg Valley Escape</a></li>
-                    <li><a href="/expedition-detail?id=hoper-valley">Hoper Valley Explorer</a></li>
-                </ul>
-            </div>
-
-            
-            <div className="footer__col">
-                <h4>SUPPORT</h4>
-                <ul>
-                    <li><a href="/faq">FAQ</a></li>
-                    <li><a href="/privacy">Privacy Policy</a></li>
-                    <li><a href="/terms">Terms &amp; Conditions</a></li>
-                    <li><a href="mailto:info@broadpeakadventures.com">Email Us</a></li>
-                    <li><a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">WhatsApp Inquiry</a></li>
-                </ul>
-            </div>
-
         </div>
-
-        <div className="abt-container footer__bottom">
-            <p>&copy; 2026 Broad Peak Adventures. All Rights Reserved.</p>
-        </div>
-    </footer>
+    </section>
 
     
-    <a href="#" className="scroll-to-top" aria-label="Scroll to top">
-        <i className="ri-arrow-up-line"></i>
-    </a>
+    
+
+    
+    
     </div>
   );
 }
