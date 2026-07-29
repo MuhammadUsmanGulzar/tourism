@@ -139,7 +139,7 @@ export default function Home() {
           <div style={{ textTransform: "uppercase" }}>
             <div style={{ borderLeft: "2px solid var(--gold)", paddingLeft: "24px" }}>
               <span style={{ fontSize: "0.75rem", letterSpacing: "3px", color: "var(--gold)", fontWeight: "700" }}>FEATURED DESTINATION</span>
-              <h2 style={{ fontFamily: "var(--font-display)", fontSize: "2.4rem", color: "var(--white)", margin: "8px 0" }}>K2 BASE CAMP & CONCORDIA</h2>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.5rem, 6vw, 2.4rem)", color: "var(--white)", margin: "8px 0" }}>K2 BASE CAMP & CONCORDIA</h2>
               <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", textTransform: "none", marginBottom: "16px" }}>
                 16 Days • Max Alt: 5,585m (Gondogoro Pass) • Starting from $2,450
               </p>
