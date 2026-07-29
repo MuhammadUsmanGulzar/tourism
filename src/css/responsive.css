@@ -35,7 +35,7 @@ a,
 }
 
 .header--scrolled .navbar__hamburger {
-    color: #111;
+    color: var(--white);
 }
 
 .mobile-menu {

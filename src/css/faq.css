@@ -134,12 +134,12 @@ ul { list-style: none; }
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
 
-.header--scrolled .navbar__logo a { color: #111; }
-.header--scrolled .navbar__menu a { color: #444; font-weight: 500; }
-.header--scrolled .navbar__menu a:hover { color: var(--primary-color); }
-.header--scrolled .navbar__cta { color: var(--white); }
-.header--scrolled .navbar__social { color: #111; }
-.header--scrolled .navbar__hamburger { color: #111; }
+
+
+
+
+
+
 
 /* Mobile menu */
 .mobile-menu {

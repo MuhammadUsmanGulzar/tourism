@@ -169,7 +169,7 @@ export default function Contact() {
 
             <section className="editorial-content-section" id="con-inquiry" style={{ padding: '80px 0', borderTop: '1px solid var(--hairline)', background: 'var(--bg-dark-alt)' }}>
                 <div className="container">
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px' }}>
+                    <div className="con-inquiry__grid">
 
                         <div style={{ paddingRight: '40px' }}>
                             <span className="section-tag" style={{ marginBottom: '16px', display: 'block' }}>TELL US ABOUT YOUR TRIP</span>
@@ -191,7 +191,7 @@ export default function Contact() {
                         <div style={{ background: 'var(--bg-dark)', padding: '40px', borderRadius: '4px', border: '1px solid var(--hairline)' }}>
                             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
 
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                <div className="con-inquiry__form-row">
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                                         <label htmlFor="fullname" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Full Name</label>
                                         <input type="text" id="fullname" placeholder="Your name" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'transparent', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }} />
@@ -202,7 +202,7 @@ export default function Contact() {
                                     </div>
                                 </div>
 
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                <div className="con-inquiry__form-row">
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                                         <label htmlFor="country" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Country</label>
                                         <input type="text" id="country" placeholder="Your country" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'transparent', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }} />
@@ -219,7 +219,7 @@ export default function Contact() {
                                     </div>
                                 </div>
 
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                <div className="con-inquiry__form-row">
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                                         <label htmlFor="month" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Travel Month</label>
                                         <select id="month" required defaultValue="" disabled={isSubmitting} style={{ padding: '16px 20px', background: 'var(--bg-dark)', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }}>
