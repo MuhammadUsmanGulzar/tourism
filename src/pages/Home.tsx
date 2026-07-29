@@ -3,6 +3,7 @@ import '../css/style.css';
 import '../css/responsive.css';
 import { expeditionsData } from '../data/expeditionsData';
 import Image from '../components/Image';
+import CustomDropdown from '../components/CustomDropdown';
 
 // Interactive Trail Waypoint Data
 const waypointsData = [
@@ -63,6 +64,8 @@ export default function Home() {
   const [activeWaypoint, setActiveWaypoint] = useState(waypointsData[2]); // Default Concordia
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
   const [searchRegion, setSearchRegion] = useState('');
+  const [searchElevation, setSearchElevation] = useState('');
+  const [searchDuration, setSearchDuration] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -152,32 +155,44 @@ export default function Home() {
           {/* Minimal Search Bar */}
           <div className="hero__search-bar">
             <div className="search-column">
-              <label>REGION</label>
-              <select value={searchRegion} onChange={(e) => setSearchRegion(e.target.value)}>
-                <option value="">All Karakoram Regions</option>
-                <option value="k2">K2 / Concordia</option>
-                <option value="shigar">Shigar & Basho</option>
-                <option value="hunza">Hunza & Nagar</option>
-                <option value="astore">Astore & Minimarg</option>
-              </select>
+              <CustomDropdown 
+                label="REGION"
+                value={searchRegion}
+                onChange={setSearchRegion}
+                options={[
+                  { value: "", label: "All Karakoram Regions" },
+                  { value: "k2", label: "K2 / Concordia" },
+                  { value: "shigar", label: "Shigar & Basho" },
+                  { value: "hunza", label: "Hunza & Nagar" },
+                  { value: "astore", label: "Astore & Minimarg" }
+                ]}
+              />
             </div>
             <div className="search-column">
-              <label>MAX ELEVATION</label>
-              <select>
-                <option value="">Any Altitude</option>
-                <option value="5000">Up to 5,000m</option>
-                <option value="6000">5,000m – 6,000m</option>
-                <option value="8000">8,000m Summits</option>
-              </select>
+              <CustomDropdown 
+                label="MAX ELEVATION"
+                value={searchElevation}
+                onChange={setSearchElevation}
+                options={[
+                  { value: "", label: "Any Altitude" },
+                  { value: "5000", label: "Up to 5,000m" },
+                  { value: "6000", label: "5,000m – 6,000m" },
+                  { value: "8000", label: "8,000m Summits" }
+                ]}
+              />
             </div>
             <div className="search-column">
-              <label>DURATION</label>
-              <select>
-                <option value="">Any Duration</option>
-                <option value="7">7 – 10 Days</option>
-                <option value="15">12 – 16 Days</option>
-                <option value="21">20+ Days</option>
-              </select>
+              <CustomDropdown 
+                label="DURATION"
+                value={searchDuration}
+                onChange={setSearchDuration}
+                options={[
+                  { value: "", label: "Any Duration" },
+                  { value: "7", label: "7 – 10 Days" },
+                  { value: "15", label: "12 – 16 Days" },
+                  { value: "21", label: "20+ Days" }
+                ]}
+              />
             </div>
             <div style={{ display: "flex", alignItems: "flex-end" }}>
               <a href={`/expeditions?query=${searchRegion}`} className="btn-editorial" style={{ width: "100%", justifyContent: "center", padding: "12px" }}>

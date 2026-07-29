@@ -1,6 +1,7 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { expeditionsData } from '../data/expeditionsData';
 import '../css/expedition-detail.css';
+import CustomDropdown from '../components/CustomDropdown';
 
 export default function ExpeditionDetail() {
   const [scrolled, setScrolled] = useState(false);
@@ -9,6 +10,7 @@ export default function ExpeditionDetail() {
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [groupSize, setGroupSize] = useState('1');
 
   // Parse the current expedition ID from the query parameter
   const searchParams = new URLSearchParams(window.location.search);
@@ -57,7 +59,7 @@ export default function ExpeditionDetail() {
     const email = (form.querySelector('#email') as HTMLInputElement).value;
     const country = (form.querySelector('#country') as HTMLInputElement).value;
     const date = (form.querySelector('#date') as HTMLInputElement).value;
-    const size = (form.querySelector('#size') as HTMLSelectElement).value;
+    const size = groupSize;
     const message = (form.querySelector('#message') as HTMLTextAreaElement).value;
 
     const webhookUrl = import.meta.env.VITE_N8N_EXPEDITION_WEBHOOK_URL || '';
@@ -355,7 +357,7 @@ export default function ExpeditionDetail() {
                   <input type="email" id="email" placeholder="Your email address" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'transparent', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }} />
                 </div>
                 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                <div className="expd-form-row">
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     <label htmlFor="country" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Country</label>
                     <input type="text" id="country" placeholder="Your country" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'transparent', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }} />
@@ -367,14 +369,19 @@ export default function ExpeditionDetail() {
                 </div>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label htmlFor="size" style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-secondary)' }}>Group Size</label>
-                  <select id="size" defaultValue="1" required disabled={isSubmitting} style={{ padding: '16px 20px', background: 'var(--bg-dark)', border: '1px solid var(--hairline)', color: 'var(--white)', fontFamily: 'var(--font-body)', outline: 'none', width: '100%' }}>
-                    <option value="1">1 Person</option>
-                    <option value="2">2 People</option>
-                    <option value="3-5">3 - 5 People</option>
-                    <option value="6-10">6 - 10 People</option>
-                    <option value="11+">11+ People</option>
-                  </select>
+                  <CustomDropdown
+                    label="GROUP SIZE"
+                    value={groupSize}
+                    onChange={setGroupSize}
+                    variant="outline"
+                    options={[
+                      { value: "1", label: "1 Person" },
+                      { value: "2", label: "2 People" },
+                      { value: "3-5", label: "3 - 5 People" },
+                      { value: "6-10", label: "6 - 10 People" },
+                      { value: "11+", label: "11+ People" }
+                    ]}
+                  />
                 </div>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
